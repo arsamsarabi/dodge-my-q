@@ -1,0 +1,17 @@
+{
+  "matches": [
+    {
+      "lane": "TOP",
+      "gameId": 3731062787,
+      "champion": 122,
+      "platformId": "EUW1",
+      "timestamp": 1534058829072,
+      "queue": 400,
+      "role": "SOLO",
+      "season": 11
+    }
+  ],
+  "endIndex": 100,
+  "startIndex": 0,
+  "totalGames": 163
+}

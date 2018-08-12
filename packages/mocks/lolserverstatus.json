@@ -1,0 +1,71 @@
+{
+  "name": "EU West",
+  "region_tag": "eu",
+  "hostname": "prod.euw1.lol.riotgames.com",
+  "services": [{
+      "status": "online",
+      "incidents": [],
+      "name": "Game",
+      "slug": "game"
+    },
+    {
+      "status": "online",
+      "incidents": [{
+        "active": true,
+        "created_at": "2018-07-18T12:58:51.063Z",
+        "id": 8990,
+        "updates": [{
+          "severity": "info",
+          "author": "",
+          "created_at": "2018-07-18T12:58:51.063Z",
+          "translations": [{
+              "locale": "fr_FR",
+              "content": "Nous sommes conscients des problèmes qui affectent les transferts de compte et nous faisons notre possible pour les corriger.",
+              "heading": "Problèmes liés aux transferts de comptes"
+            },
+            {
+              "locale": "de_DE",
+              "content": "Wir wissen, dass es ein Problem gibt, durch das Kontotransfers fehlschlagen, und arbeiten gerade an einer Lösung.",
+              "heading": "Probleme mit Kontotransfers"
+            },
+            {
+              "locale": "it_IT",
+              "content": "Siamo a conoscenza dei problemi che provocano errori intermittenti nei trasferimenti degli account e stiamo lavorando a una soluzione.",
+              "heading": "Problemi con i trasferimenti dell'account"
+            },
+            {
+              "locale": "es_ES",
+              "content": "Somos conscientes de que existen problemas que provocan que la transferencia de cuentas falle de forma intermitente y estamos trabajando para solucionarlos.",
+              "heading": "Problemas con la transferencia de cuenta."
+            }
+          ],
+          "updated_at": "2018-07-18T12:58:51.063Z",
+          "content": "We are aware of issues causing account transfers to intermittently fail, and are working on a fix.",
+          "id": "5b4f398bcba95e0100f143ee"
+        }]
+      }],
+      "name": "Store",
+      "slug": "store"
+    },
+    {
+      "status": "online",
+      "incidents": [],
+      "name": "Website",
+      "slug": "website"
+    },
+    {
+      "status": "online",
+      "incidents": [],
+      "name": "Client",
+      "slug": "client"
+    }
+  ],
+  "slug": "euw",
+  "locales": [
+    "en_GB",
+    "fr_FR",
+    "it_IT",
+    "es_ES",
+    "de_DE"
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "gameId": 3731046801,
+  "gameStartTime": 1534060955562,
+  "platformId": "EUW1",
+  "gameMode": "CLASSIC",
+  "mapId": 11,
+  "gameType": "MATCHED_GAME",
+  "gameQueueConfigId": 420,
+  "observers": {
+    "encryptionKey": "LNzOTWT8yAt0XMWxd1zRsKtdjOuCqyz7"
+  },
+  "participants": [{
+      "profileIconId": 1667,
+      "championId": 10,
+      "summonerName": "Dawidsonek",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8000,
+        "perkIds": [
+          8008,
+          9111,
+          9104,
+          8299,
+          8210,
+          8236
+        ],
+        "perkSubStyle": 8200
+      },
+      "spell2Id": 12,
+      "teamId": 100,
+      "spell1Id": 4,
+      "summonerId": 53436826
+    },
+    {
+      "profileIconId": 3541,
+      "championId": 223,
+      "summonerName": "Raxxo",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8300,
+        "perkIds": [
+          8351,
+          8304,
+          8345,
+          8352,
+          8444,
+          8453
+        ],
+        "perkSubStyle": 8400
+      },
+      "spell2Id": 1,
+      "teamId": 100,
+      "spell1Id": 4,
+      "summonerId": 32188888
+    },
+    {
+      "profileIconId": 949,
+      "championId": 59,
+      "summonerName": "Silvanas Shadow",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8100,
+        "perkIds": [
+          8112,
+          8143,
+          8138,
+          8105,
+          9104,
+          9111
+        ],
+        "perkSubStyle": 8000
+      },
+      "spell2Id": 11,
+      "teamId": 100,
+      "spell1Id": 4,
+      "summonerId": 19527003
+    },
+    {
+      "profileIconId": 1413,
+      "championId": 110,
+      "summonerName": "Elite DoubleAiM",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8200,
+        "perkIds": [
+          8229,
+          8226,
+          8234,
+          8237,
+          8345,
+          8352
+        ],
+        "perkSubStyle": 8300
+      },
+      "spell2Id": 4,
+      "teamId": 100,
+      "spell1Id": 12,
+      "summonerId": 19717072
+    },
+    {
+      "profileIconId": 657,
+      "championId": 157,
+      "summonerName": "Cpt KilleR",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8000,
+        "perkIds": [
+          8010,
+          9111,
+          9104,
+          8014,
+          8224,
+          8234
+        ],
+        "perkSubStyle": 8200
+      },
+      "spell2Id": 4,
+      "teamId": 100,
+      "spell1Id": 14,
+      "summonerId": 89187062
+    },
+    {
+      "profileIconId": 3523,
+      "championId": 163,
+      "summonerName": "Fluor ",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8100,
+        "perkIds": [
+          8112,
+          8126,
+          8120,
+          8135,
+          8234,
+          8232
+        ],
+        "perkSubStyle": 8200
+      },
+      "spell2Id": 11,
+      "teamId": 200,
+      "spell1Id": 4,
+      "summonerId": 20525508
+    },
+    {
+      "profileIconId": 3384,
+      "championId": 41,
+      "summonerName": "VGIA Th3Antonio",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8400,
+        "perkIds": [
+          8437,
+          8473,
+          8444,
+          8453,
+          8345,
+          8352
+        ],
+        "perkSubStyle": 8300
+      },
+      "spell2Id": 4,
+      "teamId": 200,
+      "spell1Id": 12,
+      "summonerId": 33543827
+    },
+    {
+      "profileIconId": 1071,
+      "championId": 202,
+      "summonerName": "COMES PUT0 SUELO",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8100,
+        "perkIds": [
+          9923,
+          8126,
+          8138,
+          8105,
+          8234,
+          8236
+        ],
+        "perkSubStyle": 8200
+      },
+      "spell2Id": 4,
+      "teamId": 200,
+      "spell1Id": 7,
+      "summonerId": 34518587
+    },
+    {
+      "profileIconId": 3556,
+      "championId": 61,
+      "summonerName": "TNT IamDiamond",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8200,
+        "perkIds": [
+          8214,
+          8226,
+          8234,
+          8237,
+          8316,
+          8352
+        ],
+        "perkSubStyle": 8300
+      },
+      "spell2Id": 21,
+      "teamId": 200,
+      "spell1Id": 4,
+      "summonerId": 20814554
+    },
+    {
+      "profileIconId": 2087,
+      "championId": 555,
+      "summonerName": "RØYAL Wh1t3zZ",
+      "gameCustomizationObjects": [],
+      "bot": false,
+      "perks": {
+        "perkStyle": 8400,
+        "perkIds": [
+          8439,
+          8473,
+          8472,
+          8453,
+          8232,
+          8210
+        ],
+        "perkSubStyle": 8200
+      },
+      "spell2Id": 14,
+      "teamId": 200,
+      "spell1Id": 4,
+      "summonerId": 33147001
+    }
+  ],
+  "gameLength": 1079,
+  "bannedChampions": [{
+      "teamId": 100,
+      "championId": 91,
+      "pickTurn": 1
+    },
+    {
+      "teamId": 100,
+      "championId": 145,
+      "pickTurn": 2
+    },
+    {
+      "teamId": 100,
+      "championId": 164,
+      "pickTurn": 3
+    },
+    {
+      "teamId": 100,
+      "championId": 142,
+      "pickTurn": 4
+    },
+    {
+      "teamId": 100,
+      "championId": 104,
+      "pickTurn": 5
+    },
+    {
+      "teamId": 200,
+      "championId": 84,
+      "pickTurn": 6
+    },
+    {
+      "teamId": 200,
+      "championId": 13,
+      "pickTurn": 7
+    },
+    {
+      "teamId": 200,
+      "championId": 497,
+      "pickTurn": 8
+    },
+    {
+      "teamId": 200,
+      "championId": 25,
+      "pickTurn": 9
+    },
+    {
+      "teamId": 200,
+      "championId": 266,
+      "pickTurn": 10
+    }
+  ]
+}
