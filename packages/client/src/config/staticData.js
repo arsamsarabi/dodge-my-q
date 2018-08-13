@@ -71,6 +71,12 @@ const gameTypes = egg => {
 }
 staticData.gameTypes = gameTypes
 
+const getChampionSquareImage = (version, key) => `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${key}.png`
+staticData.getChampionSquareImage = getChampionSquareImage
+
+const getChampionLoadingScreenImage = key => `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${key}_0.jpg
+`
+staticData.getChampionLoadingScreenImage = getChampionLoadingScreenImage
 
 export default staticData
 export {
@@ -78,4 +84,6 @@ export {
   rankedQueueNames,
   gameModes,
   gameTypes,
+  getChampionSquareImage,
+  getChampionLoadingScreenImage,
 }

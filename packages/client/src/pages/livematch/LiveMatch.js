@@ -24,6 +24,8 @@ class LiveMatch extends Reflux.Component {
     this.storeKeys = [
       'match',
       'isLoading',
+      'ddVersion',
+      'champions',
     ]
   }
 
@@ -39,9 +41,11 @@ class LiveMatch extends Reflux.Component {
     const {
       match,
       isLoading,
+      ddVersion,
+      champions,
     } = this.state
 
-    console.log(match)
+    // console.log(match)
     
     return (
       <Wrapper>
@@ -74,11 +78,15 @@ class LiveMatch extends Reflux.Component {
                 players={match.participants.filter(player => player.teamId === 100)}
                 bans={match.bannedChampions.filter(champ => champ.teamId === 100)}
                 color="blue"
+                ddVersion={ddVersion}
+                champions={champions}
               />
               <Team
                 players={match.participants.filter(player => player.teamId === 200)}
                 bans={match.bannedChampions.filter(champ => champ.teamId === 200)}
                 color="red"
+                ddVersion={ddVersion}
+                champions={champions}
               />
             </Card>
           </div>

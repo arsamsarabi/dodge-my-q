@@ -10,7 +10,7 @@
   ],
   "env": {
     "NODE_ENV": "development",
-    "PORT": 4123,
+    "PORT": 4100,
     "RIOT_API_KEY": "YOUR RIOT API KEY GOES HERE 😬"
   },
   "ext": "js json",

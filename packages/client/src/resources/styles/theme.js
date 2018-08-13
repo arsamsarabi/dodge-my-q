@@ -16,6 +16,7 @@ const theme = {
   lightGrey: colors.lightGrey,
   blue:colors.primary,
   red: colors.danger,
+  white: colors.white,
 }
 
 export { theme }
