@@ -20,7 +20,7 @@ app.use(wpmw)
 app.use(wphmw)
 
 app.listen(process.env.PORT, () => {
-  asciify('GraphQl Test', { font: 'speed' }, (err, res) => {
+  asciify('DmQ', { font: 'alligator' }, (err, res) => {
     console.log(chalk.bgRed.white(` Magic happens on port ${process.env.PORT}! `))
     console.log(' ')
     console.log(chalk.cyan(res))
