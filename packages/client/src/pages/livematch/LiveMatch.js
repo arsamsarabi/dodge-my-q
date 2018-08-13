@@ -8,7 +8,7 @@ import RefreshRounded from '@material-ui/icons/RefreshRounded'
 import LeagueStore from 'stores/league/store'
 import LeagueActions from 'stores/league/actions'
 import Loading from 'components/loading/Loading'
-import { Text } from 'components/Text'
+import { H4, Text } from 'components/Text'
 import { gameModes } from 'config/staticData'
 import REGIONS from 'config/regions'
 import Team from './components/team'
@@ -45,7 +45,7 @@ class LiveMatch extends Reflux.Component {
       champions,
     } = this.state
 
-    // console.log(match)
+    console.log('match', match)
     
     return (
       <Wrapper>
@@ -54,23 +54,34 @@ class LiveMatch extends Reflux.Component {
           : <div className="match">
             <Card className="match_info">
               <div className="details">
-                <Text>{`Start Time: ${moment(match.gameStartTime).format('hh:mma')}`}</Text>
-                <Text>{`Game length ${(match.gameLength/60).toFixed(0)} minutes`}</Text>
-                <Text>{`Region: ${REGIONS.find(region => region.id === match.platformId).name}`}</Text>
-                {match.gameType === 'CUSTOM_GAME' || match.gameType === 'TUTORIAL_GAME'
-                  ? <Text>{`Game Mode: ${match.gameType}`}</Text>
-                  : ''
-                }
-                <Text>{`Game Mode: ${gameModes(match.gameMode)}`}</Text>
-              </div>
-              <div className="button">
-                <IconButton
-                  variant="outlined"
-                  color="primary"
-                  onClick={this.handleSearch}
-                >
-                  <RefreshRounded/>
-                </IconButton>
+                <div className="row row_one">
+                  <Text>{`Started at: ${moment(match.gameStartTime).format('hh:mma')}`}</Text>
+                  <Text>{`${(match.gameLength/60).toFixed(0)} minutes into the game`}</Text>
+                  <Text>{REGIONS.find(region => region.id === match.platformId).name}</Text>
+                </div>
+                <div className="row row_two">
+                  {match.gameType === 'CUSTOM_GAME' || match.gameType === 'TUTORIAL_GAME'
+                    ? <Text>{`Game Mode: ${match.gameType}`}</Text>
+                    : ''
+                  }
+                  <H4>{`${gameModes(match.gameMode)}`}</H4>
+                  <H4>{
+                    gameModes(match.gameMode) === 'Classic Game' && '-'
+                  }</H4>
+                  <H4>{gameModes(match.gameMode) === 'Classic Game'
+                    ? match.participants.length === 10
+                      ? 'Summoner\'s Rift'
+                      : 'Twisted Treeline'
+                    : ''
+                  }</H4>
+                  <IconButton
+                    variant="outlined"
+                    color="primary"
+                    onClick={this.handleSearch}
+                  >
+                    <RefreshRounded/>
+                  </IconButton>
+                </div>
               </div>
             </Card>
             <Card className="teams">

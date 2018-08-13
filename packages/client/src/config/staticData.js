@@ -20,7 +20,7 @@ staticData.rankedQueueNames = rankedQueueNames
 const gameModes = egg => {
   switch (egg) {
   case 'CLASSIC':
-    return 'Classic'
+    return 'Classic Game'
   case 'ODIN':
     return 'Dominion/Crystal Scar'
   case 'ARAM':

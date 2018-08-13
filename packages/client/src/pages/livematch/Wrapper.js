@@ -6,13 +6,36 @@ const Wrapper = styled.div`
   padding-top: 50px;
   .match_info {
     padding: 24px;
-    display: flex;
     & > div.details {
       flex: 1;
-    }
-    & > div.button {
-      display: flex;
-      align-items: flex-end;
+      & > .row {
+        display: flex;
+        align-items: center;
+        &.row_one {
+          margin-bottom: 12px;
+          p {
+            font-size: 0.9rem;
+            color: ${props => props.theme.darkGrey};
+            &:first-of-type {
+              margin-right: 12px;
+            }
+            &:last-of-type {
+              margin-left: auto;
+            }
+          }
+        }
+        &.row_two {
+          h4 {
+            color: ${props => props.theme.primary};
+            &:not(:first-of-type) {
+              margin-left: 12px;
+            }
+          }
+          button {
+            margin-left: auto;
+          }
+        }
+      }
     }
   }
   .teams {
