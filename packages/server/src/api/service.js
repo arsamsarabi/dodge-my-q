@@ -1,45 +1,50 @@
-import axios from 'axios'
-import RIOT from './consts'
+import Summoner from '../models/Summoner'
+import riot from './riot'
 
-const axiosInstance = axios.create({
-  headers: { 'X-Riot-Token': process.env.RIOT_API_KEY }
-})
+const fetchSummonerFromRito = async (data, callback) => {
+  let newSummoner = {}
+
+  newSummoner = await riot.getSummonerByName(data)
+  newSummoner.masteryPoints = await riot.getSummonerMasteryPoints(data, newSummoner.summonerId)
+  newSummoner.championMasteries = await riot.getSummonerChampionMasteries(data, newSummoner.summonerId)
+  newSummoner.leaguePositions = await riot.getSummonerLeaguesPosition(data, newSummoner.summonerId)
+  newSummoner.matches = await riot.getSummonerRecentMatches(data, newSummoner.accountId)
+  
+  // Save to DB and return response data
+  saveSummoner(newSummoner, callback)
+}
+
+const saveSummoner = async (data, callback) => {
+  let summoner = new Summoner(data)
+  summoner.save((err, results) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, results)
+    }    
+  })
+}
 
 const service = {}
 
 service.getSummonerByName = (data, callback) => {
-  const url = `${RIOT.base}${data.region}${RIOT.summoner.getByName}${encodeURIComponent(data.summonerName)}`
-  axiosInstance.get(url)
-    .then(response => callback(null, response.data))
-    .catch(error => callback(error))
+  Summoner.find(data, (err, summoners) => {
+    if (err) {
+      callback(err)
+    } else {
+      if (summoners.length === 0) {
+        fetchSummonerFromRito(data, saveSummoner, callback)
+      } else {
+        callback(null, summoners[0])
+      }      
+    }
+  })
+
 }
 
 service.getLiveGameBySummonerID = async (data, callback) => {
-  axiosInstance.get(`${RIOT.base}${data.region}${RIOT.match.getMatchBySummonerId}${data.summonerId}`)
-    .then(response => callback(null, response.data))
-    .catch(error => callback(error))
+  const result = await riot.getLiveGameBySummonerID(data)
+  callback(null, result)
 }
-
-// const getFullMatch = (region, gameId, callback) => {
-//   console.log('getFullMatch')
-//   axiosInstance.get(`${RIOT.base}${region}${RIOT.match.getFullMatchbyGameId}${gameId}`)
-//     .then(response => {
-//       result.fullMatch = response.data
-//       console.log('result', result)
-//       getMatchTimeline(region, gameId, callback)
-//     })
-//     .catch(error => callback(error))
-// }
-
-// const getMatchTimeline = (region, gameId, callback) => {
-//   console.log('getMatchTimeline')
-//   axiosInstance.get(`${RIOT.base}${region}${RIOT.match.getMatchTimeLineByMatchId}${gameId}`)
-//     .then(response => {
-//       result.timeLine = response.data
-//       console.log('result', result)
-//       callback(null, result)
-//     })
-//     .catch(error => callback(error))
-// }
 
 export default service
