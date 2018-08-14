@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { rgba } from 'polished'
 import {
   getChampionSquareImage,
   getChampionLoadingScreenImage,
@@ -21,12 +22,30 @@ const Wrapper = styled.div`
       background-size: contain;
       border-radius: 5px;
       box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.3);
+      position: relative;
+      &:after,
+      &:before {
+        content: '';
+        display: block;
+        width: 125%;
+        height: 10px;
+        background-color: ${props => rgba(props.theme.danger, 0.4)};
+        position: absolute;
+        border-radius: 3px;
+      }
+      &:after{
+        bottom: 0;
+        transform: rotate(45deg) translate(-12px, -6px);
+      }
+      &:before {
+        transform: rotate(-45deg) translate(-12px, 6px);
+      }
     }
   }
   .players {
     display: flex;
     justify-content: space-around;
-    height: 300px;
+    height: 320px;
   }
 `
 
@@ -71,7 +90,7 @@ const Team = props => {
           const backgroundImage = {
             backgroundImage: `url(${getChampionLoadingScreenImage(champKey)})`
           }
-          return <Player key={player.summonerId} player={player} color={color} background={backgroundImage}/>
+          return <Player key={player.summonerId} player={player} color={color} background={backgroundImage} version={ddVersion}/>
         })}
       </div>
     </Wrapper>

@@ -74,9 +74,14 @@ staticData.gameTypes = gameTypes
 const getChampionSquareImage = (version, key) => `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${key}.png`
 staticData.getChampionSquareImage = getChampionSquareImage
 
-const getChampionLoadingScreenImage = key => `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${key}_0.jpg
-`
+const getChampionLoadingScreenImage = key => `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${key}_0.jpg`
 staticData.getChampionLoadingScreenImage = getChampionLoadingScreenImage
+
+const getRunesImage = (version, key) => `http://ddragon.leagueoflegends.com/cdn/${version}/img/rune/${key}.png`
+staticData.getRunesImage = getRunesImage
+
+const getSummonerSpellsImage = (version, key) => `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${key}.png`
+staticData.getSummonerSpellsImage = getSummonerSpellsImage
 
 export default staticData
 export {
@@ -86,4 +91,6 @@ export {
   gameTypes,
   getChampionSquareImage,
   getChampionLoadingScreenImage,
+  getRunesImage,
+  getSummonerSpellsImage,
 }

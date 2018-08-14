@@ -21,3 +21,25 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
+/* Scrollbar Chrome only */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #b2bec3;
+  transition: 0.2s all linear ;
+}
+::-webkit-scrollbar-track:hover {
+	background: #F2F1EF;
+  transition: 0.2s all linear ;
+}
+::-webkit-scrollbar-thumb {
+	background: #0967b3;
+  transition: 0.2s all linear ;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #636e72;
+  transition: 0.2s all linear ;
+}

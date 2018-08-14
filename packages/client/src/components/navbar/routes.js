@@ -1,5 +1,5 @@
-import React from 'react';
-import HomeOutlined from '@material-ui/icons/HomeOutlined';
+import React from 'react'
+import HomeOutlined from '@material-ui/icons/HomeOutlined'
 
 const routes = [
   {
@@ -9,6 +9,6 @@ const routes = [
     active: false,
     icon: <HomeOutlined/>,
   },
-];
+]
 
-export default routes;
+export default routes

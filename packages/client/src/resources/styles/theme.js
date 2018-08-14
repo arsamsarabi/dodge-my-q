@@ -5,7 +5,7 @@ const theme = {
   darkBackground: colors.black,
   text: colors.black,
   lightText: colors.white,
-  primary: colors.purple,
+  primary: colors.primary,
   secondary: colors.secondary,
   accent: colors.blue,
   success: colors.success,
@@ -17,6 +17,7 @@ const theme = {
   blue:colors.primary,
   red: colors.danger,
   white: colors.white,
+  fontHeading: '\'Press Start 2P\', Roboto',
 }
 
 export { theme }

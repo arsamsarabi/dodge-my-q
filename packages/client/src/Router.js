@@ -41,8 +41,10 @@ class Router extends Reflux.Component {
           <Wrapper>
             <Route exact path="/" render={() => <Redirect to="/home"/>}/>
             <Route path="*" component={Navbar}/>
-            <Route exact path="/home" component={Home}/>
-            <Route exact path="/livematch/:region/:summonerName" component={LiveMatch}/>
+            <div className="page_Wrapper">
+              <Route exact path="/home" component={Home}/>
+              <Route exact path="/livematch/:region/:summonerName" component={LiveMatch}/>
+            </div>
           </Wrapper>
           <Route exact path="/home" component={GrabTeemo}/>
           <Route exact path="/loading" component={Loading}/>
