@@ -9,7 +9,7 @@ api.use((req, res, next) => {
   next()
 })
 
-api.get('/getSummonerByName/:region/:summonerName', controller.getSummonerByName)
+api.get('/getSummonerByName/:region/:name', controller.getSummonerByName)
 api.get('/getLiveGameBySummonerID/:region/:summonerId', controller.getLiveGameBySummonerID)
 
 

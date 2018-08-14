@@ -4,7 +4,7 @@ const controller = {}
 
 controller.getSummonerByName = (req, res) => {
   const data = {
-    summonerName: req.params.summonerName.toLowerCase().replace(/^\s+/g, ''),
+    name: req.params.name.toLowerCase().replace(/^\s+/g, ''),
     region: req.params.region,
   }
   service.getSummonerByName(data, (error, results) => {

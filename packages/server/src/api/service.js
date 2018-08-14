@@ -5,13 +5,20 @@ const fetchSummonerFromRito = async (data, callback) => {
   let newSummoner = {}
 
   newSummoner = await riot.getSummonerByName(data)
-  newSummoner.masteryPoints = await riot.getSummonerMasteryPoints(data, newSummoner.summonerId)
-  newSummoner.championMasteries = await riot.getSummonerChampionMasteries(data, newSummoner.summonerId)
-  newSummoner.leaguePositions = await riot.getSummonerLeaguesPosition(data, newSummoner.summonerId)
-  newSummoner.matches = await riot.getSummonerRecentMatches(data, newSummoner.accountId)
+  const masteryPoints = await riot.getSummonerMasteryPoints(data, newSummoner.summonerId)
+  const championMasteries = await riot.getSummonerChampionMasteries(data, newSummoner.summonerId)
+  const leaguePositions = await riot.getSummonerLeaguesPosition(data, newSummoner.summonerId)
+  const matches = await riot.getSummonerRecentMatches(data, newSummoner.accountId)
   
-  // Save to DB and return response data
-  saveSummoner(newSummoner, callback)
+  Promise.all([
+    masteryPoints, championMasteries, leaguePositions, matches
+  ]).then(values => {
+    newSummoner.masteryPoints = values[0]
+    newSummoner.championMasteries = values[1]
+    newSummoner.leaguePositions = values[2]
+    newSummoner.matches = values[3]
+    saveSummoner(newSummoner, callback)
+  })
 }
 
 const saveSummoner = async (data, callback) => {
@@ -33,7 +40,7 @@ service.getSummonerByName = (data, callback) => {
       callback(err)
     } else {
       if (summoners.length === 0) {
-        fetchSummonerFromRito(data, saveSummoner, callback)
+        fetchSummonerFromRito(data, callback)
       } else {
         callback(null, summoners[0])
       }      
@@ -44,7 +51,7 @@ service.getSummonerByName = (data, callback) => {
 
 service.getLiveGameBySummonerID = async (data, callback) => {
   const result = await riot.getLiveGameBySummonerID(data)
-  callback(null, result)
+  callback(null,result)
 }
 
 export default service

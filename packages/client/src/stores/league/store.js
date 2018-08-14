@@ -49,7 +49,10 @@ export default class store extends Reflux.Store {
   lookupSummoner = (summonerName, region, cb) => { 
     const uri = `${API}/getSummonerByName/${region}/${encodeURIComponent(summonerName)}`
     axios.get(uri)
-      .then(response => this.lookupMatch(response.data.id, region, cb))
+      .then(response => {
+        debugger;
+        this.lookupMatch(response.data.summonerId, region, cb)
+      })
       .catch(error => {
         this.setState({ isLoading: false })
         console.log(error)        

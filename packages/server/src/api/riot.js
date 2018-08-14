@@ -101,6 +101,7 @@ riot.getSummonerRecentMatches = async (data, id) => {
 }
 
 riot.getLiveGameBySummonerID = async data => {
+  debugger;
   const liveMatchUrl = `${RIOT.base}${data.region}${RIOT.match.getMatchBySummonerId}${data.summonerId}`
   const response = await axiosInstance.get(liveMatchUrl).catch(error => console.error(error))
   return response.data

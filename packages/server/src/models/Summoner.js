@@ -5,8 +5,14 @@ const Schema = mongoose.Schema
 const SummonerSchema = new Schema({
   summonerName: String,
   name: String,
-  summonerId: Number,
-  accountId: Number,
+  summonerId: {
+    type: Number,
+    unique: true,
+  },
+  accountId:  {
+    type: Number,
+    unique: true,
+  },
   region: String,
   level: Number,
   avatar: Number,

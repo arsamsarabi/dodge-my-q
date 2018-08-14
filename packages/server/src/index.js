@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 4200
 
 const app = express()
 
-mongoose.connect('mongodb://localhost:27017/dodgemyqinshaallah', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/dodgemyq', { useNewUrlParser: true })
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
 mongoose.connection.once('open', function() {
   console.log(chalk.bgCyanBright.black('🧙  db connected 🧙  '))
