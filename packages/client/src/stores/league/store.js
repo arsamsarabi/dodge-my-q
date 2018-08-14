@@ -10,21 +10,25 @@ export default class store extends Reflux.Store {
     super()
     this.listenToMany(LeagueActions)
     this.state = {
+      summoner: undefined,
       match: undefined,
       fullMatch: undefined,
       matchTimeLine: undefined,
       isLoading: false,
-      ddVersion: '',
+      ddVersion: undefined,
+      champions: undefined,
     }
   }
 
   reset = () => {
     this.setState({
+      summoner: undefined,
       match: undefined,
       fullMatch: undefined,
       matchTimeLine: undefined,
       isLoading: false,
-      ddVersion: '',
+      ddVersion: undefined,
+      champions: undefined,
     })
   };
 
@@ -41,17 +45,18 @@ export default class store extends Reflux.Store {
       })
   }
 
-  lookupLiveMatchBySummonerName = (summonerName, region, cb) => {
-    this.setState({ isLoading: true })
-    this.lookupSummoner(summonerName, region, cb)
-  }
-
-  lookupSummoner = (summonerName, region, cb) => { 
+  getSummonerByName = (summonerName, region, cb) => { 
+    if (!this.state.isLoading) {
+      this.setState({ isLoading: true })
+    }
     const uri = `${API}/getSummonerByName/${region}/${encodeURIComponent(summonerName)}`
     axios.get(uri)
       .then(response => {
-        debugger;
-        this.lookupMatch(response.data.summonerId, region, cb)
+        if (cb) cb()
+        this.setState({
+          summoner: response.data,
+          isLoading: false,
+        })
       })
       .catch(error => {
         this.setState({ isLoading: false })

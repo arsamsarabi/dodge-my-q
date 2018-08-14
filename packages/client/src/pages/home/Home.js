@@ -39,13 +39,13 @@ export default class Home extends Reflux.Component {
       summonerName,
       region,
     } = this.state
-    LeagueActions.lookupLiveMatchBySummonerName(summonerName, region, this.redirect)
+    LeagueActions.getSummonerByName(summonerName, region, this.handleRedirect)
   }
 
-  redirect = () => {
+  handleRedirect = () => {
     const { history } = this.props
     const { summonerName, region } = this.state
-    history.push(`livematch/${region}/${urlFriendly(summonerName)}`)
+    history.push(`summoner/${region}/${urlFriendly(summonerName)}`)
   }
 
   render() {
@@ -103,7 +103,6 @@ export default class Home extends Reflux.Component {
                   onClick={this.handleSearch}
                   disabled={!this.state.summonerName || this.state.summonerName.length <= 1 || isLoading}
                 >
-                  
                   Search
                 </Button>
               }

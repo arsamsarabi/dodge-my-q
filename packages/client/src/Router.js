@@ -13,7 +13,7 @@ import Navbar from 'components/navbar/Navbar'
 import GrabTeemo from 'components/grabTeemo'
 import Loading from 'components/loading/Loading'
 import Home from 'pages/home/Home'
-import LiveMatch from 'pages/livematch/LiveMatch'
+import Summoner from 'pages/summoner/Summoner'
 import Wrapper from './Wrapper'
 import './resources/styles/reset.css'
 import './resources/styles/styles.css'
@@ -32,6 +32,9 @@ class Router extends Reflux.Component {
     if (!this.state.champions) {
       LeagueActions.getChampions()
     }
+    if (!this.state.champions) {
+      LeagueActions.getChampions()
+    }
   }
 
   render() {
@@ -43,7 +46,7 @@ class Router extends Reflux.Component {
             <Route path="*" component={Navbar}/>
             <div className="page_Wrapper">
               <Route exact path="/home" component={Home}/>
-              <Route exact path="/livematch/:region/:summonerName" component={LiveMatch}/>
+              <Route exact path="/summoner/:region/:summoner" component={Summoner}/>
             </div>
           </Wrapper>
           <Route exact path="/home" component={GrabTeemo}/>

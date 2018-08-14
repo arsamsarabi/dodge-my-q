@@ -9,9 +9,9 @@ const riot = {}
 
 riot.getSummonerByName = async (data) => {
   const result = {}
-  const summonerUrl = `${RIOT.base}${data.region}${RIOT.summoner.getByName}${encodeURIComponent(data.summonerName)}`
+  const summonerUrl = `${RIOT.base}${data.region}${RIOT.summoner.getByName}${encodeURIComponent(data.name)}`
   const response = await axiosInstance.get(summonerUrl).catch(error => console.error(error))
-
+  
   result.summonerName = response.data.name
   result.name = response.data.name.toLowerCase().replace(/\s/g, '')
   result.summonerId = response.data.id
@@ -101,7 +101,6 @@ riot.getSummonerRecentMatches = async (data, id) => {
 }
 
 riot.getLiveGameBySummonerID = async data => {
-  debugger;
   const liveMatchUrl = `${RIOT.base}${data.region}${RIOT.match.getMatchBySummonerId}${data.summonerId}`
   const response = await axiosInstance.get(liveMatchUrl).catch(error => console.error(error))
   return response.data

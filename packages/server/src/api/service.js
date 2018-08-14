@@ -3,7 +3,6 @@ import riot from './riot'
 
 const fetchSummonerFromRito = async (data, callback) => {
   let newSummoner = {}
-
   newSummoner = await riot.getSummonerByName(data)
   const masteryPoints = await riot.getSummonerMasteryPoints(data, newSummoner.summonerId)
   const championMasteries = await riot.getSummonerChampionMasteries(data, newSummoner.summonerId)
@@ -35,7 +34,10 @@ const saveSummoner = async (data, callback) => {
 const service = {}
 
 service.getSummonerByName = (data, callback) => {
-  Summoner.find(data, (err, summoners) => {
+  Summoner.find({
+    name: data.name.toLowerCase().replace(/\s/g, ''),
+    region: data.region,
+  }, (err, summoners) => {
     if (err) {
       callback(err)
     } else {
