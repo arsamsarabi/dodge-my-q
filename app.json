@@ -1,0 +1,25 @@
+{
+  "name": "dodge-my-q",
+  "scripts": {
+    "start": "cd packages\\server && npm start"
+  },
+  "env": {
+    "PORT": {
+      "required": true
+    },
+    "RIOT_API_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
