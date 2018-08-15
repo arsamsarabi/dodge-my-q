@@ -56,7 +56,7 @@ export default class store extends Reflux.Store {
           isLoading: false,
         })
         if (history) {
-          history.push(`summoner/${region}/${response.data.name}}`)          
+          history.push(`summoner/${region}/${response.data.name}`)          
         }
       })
       .catch(error => {
@@ -69,7 +69,7 @@ export default class store extends Reflux.Store {
     if (!this.state.ddVersion) {
       this.getDdVersion(this.getChampions)
     } else {
-      axios.get(`http://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/champion.json`)
+      axios.get(`https://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/champion.json`)
         .then(response => {
           const championsObject = response.data.data
           let champions = []
