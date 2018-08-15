@@ -5,12 +5,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "build": "rimraf dist && babel src -d dist",
+    "build": "rimraf dist && babel-node src -d dist",
     "start": "node dist/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.3",
