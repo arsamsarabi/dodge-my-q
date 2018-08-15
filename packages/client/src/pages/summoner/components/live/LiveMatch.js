@@ -45,7 +45,7 @@ class LiveMatch extends Reflux.Component {
       champions,
     } = this.state
 
-    console.log('match', match)
+    // console.log('match', match)
     
     return (
       <Wrapper>

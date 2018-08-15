@@ -86,9 +86,12 @@ class FavouriteChampions extends Component {
           </H5>
           <div className="champions">
             {displayArray.map(championMastery => {
-              const _champ = champions.find(champion => champion.championId === championMastery.championId)
+              const _champ = champions.find(champion => parseInt(champion.key) === championMastery.championId)
+
+              
+
               return (
-                <div key={_champ.championId}>
+                <div key={_champ.key}>
                   <img
                     src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${_champ.key}.png`}
                     alt={_champ.name}
@@ -130,7 +133,7 @@ class FavouriteChampions extends Component {
 
 FavouriteChampions.propTypes = {
   masteries: PropTypes.arrayOf(PropTypes.object).isRequired,
-  champions: PropTypes.object.isRequired,
+  champions: PropTypes.arrayOf(PropTypes.object).isRequired,
   display: PropTypes.number,
   version: PropTypes.string.isRequired,
   theme: PropTypes.object,

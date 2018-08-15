@@ -70,7 +70,11 @@ export default class store extends Reflux.Store {
     } else {
       axios.get(`http://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/champion.json`)
         .then(response => {
-          const champions = response.data.data
+          const championsObject = response.data.data
+          let champions = []
+          Object.keys(championsObject).forEach(key => {
+            champions.push(championsObject[key])
+          })
           this.setState({ champions })
         })
         .catch(error => {

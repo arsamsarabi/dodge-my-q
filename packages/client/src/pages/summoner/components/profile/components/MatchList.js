@@ -65,7 +65,7 @@ class MatchList extends React.Component {
           </H5>
           {matches.length > 0
             ? matches.map(match => {
-              const _champ = champions.find(champion => champion.championId === match.champion)
+              const _champ = champions.find(champion => parseInt(champion.key) === match.champion)
               return <Match key={match.gameId} version={version} champion={_champ} match={match}/>
             })
             : <Text>
@@ -88,7 +88,7 @@ class MatchList extends React.Component {
 
 MatchList.propTypes = {
   matches: PropTypes.arrayOf(PropTypes.object).isRequired,
-  champions: PropTypes.object.isRequired,
+  champions: PropTypes.arrayOf(PropTypes.object).isRequired,
   version: PropTypes.string.isRequired,
   theme: PropTypes.object,
 }

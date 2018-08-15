@@ -2,12 +2,12 @@
   eslint
     "react/prefer-stateless-function": "off"
 */
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { darken } from 'polished';
-import moment from 'moment';
-import { Text } from 'components/Text';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { darken } from 'polished'
+import moment from 'moment'
+import { Text } from 'components/Text'
 
 const Wrapper = styled.div`
   border: 1px dotted ${props => darken(0.2, `${props.theme.lightGrey}`)};
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   & > div.matchDetails {
     
   }
-`;
+`
 
 class Match extends React.Component {
   render() {
@@ -35,7 +35,7 @@ class Match extends React.Component {
       match,
       champion,
       version,
-    } = this.props;
+    } = this.props
     return (
       <Wrapper>
         <div className="champImage">
@@ -50,7 +50,7 @@ class Match extends React.Component {
           </Text>
         </div>
       </Wrapper>
-    );
+    )
   }
 }
 
@@ -58,8 +58,8 @@ Match.propTypes = {
   match: PropTypes.object.isRequired,
   champion: PropTypes.object.isRequired,
   version: PropTypes.string.isRequired,
-};
+}
 
-Match.defaultProps = {};
+Match.defaultProps = {}
 
-export default Match;
+export default Match

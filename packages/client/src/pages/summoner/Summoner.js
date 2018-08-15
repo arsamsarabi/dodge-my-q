@@ -132,7 +132,7 @@ export default class Summoner extends Reflux.Component {
       champions,
     } = this.state
 
-    console.log('SUMMONER MATCHES', summoner.matches)
+    // console.log('SUMMONER MATCHES', summoner.matches)
 
     return (
       <Wrapper>
