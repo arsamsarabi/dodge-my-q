@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
-import styled from 'styled-components';
-import Card from '@material-ui/core/Card';
-import { profileIcon } from 'config/staticData';
-import { H1, H6, Text } from 'components/Text';
-import Button from '@material-ui/core/Button';
+import React from 'react'
+import PropTypes from 'prop-types'
+import moment from 'moment'
+import styled from 'styled-components'
+import Card from '@material-ui/core/Card'
+import { profileIcon } from 'config/staticData'
+import { H1, H6, Text } from 'components/Text'
+import Button from '@material-ui/core/Button'
 
 const Wrapper = styled.div`
   & > div {
@@ -39,17 +39,17 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 
 const SummonerDetails = ({ summoner, ddVersion, theme, updateSummoner }) => {
-  const nowMinusOneHour = moment(new Date()).subtract(1, 'hour');
-  const cantUpdate = moment(summoner.updated_at).isAfter(nowMinusOneHour);
-  const minuteUntilUpdate = moment.duration(moment(summoner.updated_at).diff(nowMinusOneHour)).asMinutes().toFixed(0);
+  const nowMinusOneHour = moment(new Date()).subtract(1, 'hour')
+  const cantUpdate = moment(summoner.updated_at).isAfter(nowMinusOneHour)
+  const minuteUntilUpdate = moment.duration(moment(summoner.updated_at).diff(nowMinusOneHour)).asMinutes().toFixed(0)
   return (
     <Wrapper>
       <Card>
         <img
-          src={profileIcon(summoner.profileIconId, ddVersion)}
+          src={profileIcon(summoner.avatar, ddVersion)}
           alt={`${summoner.displayName}'s Profile Icon`}
         />
         <div className="summoner_details">
@@ -82,18 +82,18 @@ const SummonerDetails = ({ summoner, ddVersion, theme, updateSummoner }) => {
         </div>
       </Card>
     </Wrapper>
-  );
-};
+  )
+}
 
 SummonerDetails.propTypes = {
   theme: PropTypes.object,
   ddVersion: PropTypes.string.isRequired,
   summoner: PropTypes.object.isRequired,
   updateSummoner: PropTypes.func.isRequired,
-};
+}
 
 SummonerDetails.defaultProps = {
   theme: {},
-};
+}
 
-export default SummonerDetails;
+export default SummonerDetails

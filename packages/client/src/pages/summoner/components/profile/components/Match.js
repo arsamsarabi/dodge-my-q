@@ -36,11 +36,12 @@ class Match extends React.Component {
       champion,
       version,
     } = this.props
+    console.log(champion)
     return (
       <Wrapper>
         <div className="champImage">
           <img
-            src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.key}.png`}
+            src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`}
             alt={champion.name}
           />
         </div>
