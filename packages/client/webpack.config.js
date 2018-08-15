@@ -125,11 +125,11 @@ const config = {
       }
     }),
     new HtmlWebpackPlugin({
-      title: 'Graphql Test',
+      title: 'Dodge my Q',
       filename: 'index.html',
       template: path.join(PATHS.src, 'index.ejs'),
-      cache: isDev ? false : true,
-      hash: isDev ? false : true,
+      cache: !isDev,
+      hash: !isDev,
     }),
   ],
 }
@@ -150,7 +150,7 @@ if (!isDev) {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: 'css/[name].css',
+      filename: 'css/style-bundle.css',
       chunkFilename: '[id].css'
     })
   )

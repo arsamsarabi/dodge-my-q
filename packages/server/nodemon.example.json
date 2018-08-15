@@ -11,7 +11,9 @@
   "env": {
     "NODE_ENV": "development",
     "PORT": 4100,
-    "RIOT_API_KEY": "YOUR RIOT API KEY GOES HERE 😬"
+    "RIOT_API_KEY": "YOUR RIOT API KEY GOES HERE 😬",
+    "DB_USER": "username",
+    "DB_PASS": "shhhhh top secret stuff"
   },
   "ext": "js json",
   "exec": "babel-node --inspect"
