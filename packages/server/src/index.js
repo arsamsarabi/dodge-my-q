@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import chalk from 'chalk'
 import cors from 'cors'
 import mongoose from 'mongoose'
@@ -17,6 +18,10 @@ mongoose.connection.once('open', function() {
 })
 
 app.use(cors())
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../client/dist/index.html'))
+})
 
 app.use('/api', api)
 

@@ -18,6 +18,7 @@ const SummonerSchema = new Schema({
   avatar: Number,
   updatedAt: Date,
   masteryPoints: Number,
+  updated_at: Date,
   championMasteries: [{
     championLevel: Number,
     chestGranted: Boolean,

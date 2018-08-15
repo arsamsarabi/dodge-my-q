@@ -50,64 +50,63 @@ class LiveMatch extends Reflux.Component {
     const matchNotFound = !match && !isLoading
 
     if (matchIsLoading) return <Loading/>
+
+    if (matchNotFound) return null
     
     // console.log('match', match)
     return (
       <Wrapper>
         <div className="match">
-          {matchNotFound
-            ? <H1>{errorMessages.liveMatch}</H1>
-            : <div>
-              <Card className="match_info">
-                <div className="details">
-                  <div className="row row_one">
-                    <Text>{`Started at: ${moment(match.gameStartTime).format('hh:mma')}`}</Text>
-                    <Text>{`${(match.gameLength/60).toFixed(0)} minutes into the game`}</Text>
-                    <Text>{REGIONS.find(region => region.id === match.platformId).name}</Text>
-                  </div>
-                  <div className="row row_two">
-                    {match.gameType === 'CUSTOM_GAME' || match.gameType === 'TUTORIAL_GAME'
-                      ? <Text>{`Game Mode: ${match.gameType}`}</Text>
-                      : ''
-                    }
-                    <H4>{`${gameModes(match.gameMode)}`}</H4>
-                    <H4>{
-                      gameModes(match.gameMode) === 'Classic Game' && '-'
-                    }</H4>
-                    <H4>{gameModes(match.gameMode) === 'Classic Game'
-                      ? match.participants.length === 10
-                        ? 'Summoner\'s Rift'
-                        : 'Twisted Treeline'
-                      : ''
-                    }</H4>
-                    <IconButton
-                      variant="outlined"
-                      color="primary"
-                      onClick={this.handleSearch}
-                    >
-                      <RefreshRounded/>
-                    </IconButton>
-                  </div>
+          <div>
+            <Card className="match_info">
+              <div className="details">
+                <div className="row row_one">
+                  <Text>{`Started at: ${moment(match.gameStartTime).format('hh:mma')}`}</Text>
+                  <Text>{`${(match.gameLength/60).toFixed(0)} minutes into the game`}</Text>
+                  <Text>{REGIONS.find(region => region.id === match.platformId).name}</Text>
                 </div>
-              </Card>
-              <Card className="teams">
-                <Team
-                  players={match.participants.filter(player => player.teamId === 100)}
-                  bans={match.bannedChampions.filter(champ => champ.teamId === 100)}
-                  color="blue"
-                  ddVersion={version}
-                  champions={champions}
-                />
-                <Team
-                  players={match.participants.filter(player => player.teamId === 200)}
-                  bans={match.bannedChampions.filter(champ => champ.teamId === 200)}
-                  color="red"
-                  ddVersion={version}
-                  champions={champions}
-                />
-              </Card>
-            </div>
-          }
+                <div className="row row_two">
+                  {match.gameType === 'CUSTOM_GAME' || match.gameType === 'TUTORIAL_GAME'
+                    ? <Text>{`Game Mode: ${match.gameType}`}</Text>
+                    : ''
+                  }
+                  <H4>{`${gameModes(match.gameMode)}`}</H4>
+                  <H4>{
+                    gameModes(match.gameMode) === 'Classic Game' && '-'
+                  }</H4>
+                  <H4>{gameModes(match.gameMode) === 'Classic Game'
+                    ? match.participants.length === 10
+                      ? 'Summoner\'s Rift'
+                      : 'Twisted Treeline'
+                    : ''
+                  }</H4>
+                  <IconButton
+                    variant="outlined"
+                    color="primary"
+                    onClick={this.handleSearch}
+                  >
+                    <RefreshRounded/>
+                  </IconButton>
+                </div>
+              </div>
+            </Card>
+            <Card className="teams">
+              <Team
+                players={match.participants.filter(player => player.teamId === 100)}
+                bans={match.bannedChampions.filter(champ => champ.teamId === 100)}
+                color="blue"
+                ddVersion={version}
+                champions={champions}
+              />
+              <Team
+                players={match.participants.filter(player => player.teamId === 200)}
+                bans={match.bannedChampions.filter(champ => champ.teamId === 200)}
+                color="red"
+                ddVersion={version}
+                champions={champions}
+              />
+            </Card>
+          </div>
         </div>
       </Wrapper>
     )

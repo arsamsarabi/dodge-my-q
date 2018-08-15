@@ -32,8 +32,8 @@ class Router extends Reflux.Component {
     if (!this.state.champions) {
       LeagueActions.getChampions()
     }
-    if (!this.state.champions) {
-      LeagueActions.getChampions()
+    if (!this.state.ddVersion) {
+      LeagueActions.getDdVersion()
     }
   }
 

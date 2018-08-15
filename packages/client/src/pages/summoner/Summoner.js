@@ -89,6 +89,7 @@ export default class Summoner extends Reflux.Component {
       'summoner',
       'ddVersion',
       'champions',
+      'match',
     ]
   }
 
@@ -131,10 +132,11 @@ export default class Summoner extends Reflux.Component {
       ddVersion,
       value,
       champions,
+      match,
     } = this.state
 
     // console.log('SUMMONER MATCHES', summoner.matches)
-
+    console.log(match)
     return (
       <Wrapper>
         <SummonerDetails
@@ -161,6 +163,7 @@ export default class Summoner extends Reflux.Component {
                 className="matchTabButton"
                 label="Live Match"
                 icon={<span className="matchTabIcon"/>}
+                disabled={match === undefined}
               />
             </Tabs>
           </Card>

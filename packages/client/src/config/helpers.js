@@ -106,7 +106,6 @@ const getLeagueImage = (tier, rank) => {
 helpers.getLeagueImage = getLeagueImage
 
 const getPerkImages = id => {
-  debugger;
   return perks[`p${id}`]
 }
 helpers.getPerkImages = getPerkImages

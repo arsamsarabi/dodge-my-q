@@ -47,18 +47,17 @@ export default class store extends Reflux.Store {
       })
   }
 
-  getSummonerByName = (summonerName, region, cb) => { 
-    if (!this.state.isLoading) {
-      this.setState({ isLoading: true })
-    }
+  getSummonerByName = (summonerName, region, history = null) => { 
     const uri = `${API}/getSummonerByName/${region}/${encodeURIComponent(summonerName)}`
     axios.get(uri)
       .then(response => {
-        if (cb) cb()
         this.setState({
           summoner: response.data,
           isLoading: false,
         })
+        if (history) {
+          history.push(`summoner/${region}/${response.data.name}}`)          
+        }
       })
       .catch(error => {
         this.setState({ isLoading: false })

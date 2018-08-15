@@ -1,9 +1,9 @@
-import path from 'path'
-import webpack from 'webpack'
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+const path = require('path')
+const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const PATHS = {
   src: path.resolve(__dirname, './src'),
@@ -63,12 +63,10 @@ const config = {
   output: {
     path: path.resolve(PATHS.dist),
     filename: 'js/app-bundle.js',
-    publicPath: '/',
   },
   devtool: isDev ? 'eval-source-map' : '',
   devServer: {
     hot: true,
-    publicPath: '/',
     historyApiFallback: true,
     overlay: true,
     open: true,

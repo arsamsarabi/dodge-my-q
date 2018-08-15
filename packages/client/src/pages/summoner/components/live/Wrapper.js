@@ -40,7 +40,7 @@ const Wrapper = styled.div`
   }
   .teams {
     padding: 24px;
-    margin-top: 48px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     & > div:first-of-type {

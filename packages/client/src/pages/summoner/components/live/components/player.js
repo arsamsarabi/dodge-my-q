@@ -56,7 +56,7 @@ const Wrapper = styled.div`
 `
 
 const Player = ({ player, color, background, version }) => {
-  console.dir(player)
+  // console.dir(player)
   return (
     <Wrapper color={color} style={background}>
       <div className="content">
