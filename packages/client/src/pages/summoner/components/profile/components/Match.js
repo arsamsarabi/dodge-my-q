@@ -36,7 +36,6 @@ class Match extends React.Component {
       champion,
       version,
     } = this.props
-    console.log(champion)
     return (
       <Wrapper>
         <div className="champImage">

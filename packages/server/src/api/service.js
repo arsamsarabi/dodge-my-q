@@ -52,8 +52,7 @@ service.getSummonerByName = (data, callback) => {
 }
 
 service.getLiveGameBySummonerID = async (data, callback) => {
-  const result = await riot.getLiveGameBySummonerID(data)
-  callback(null,result)
+  riot.getLiveGameBySummonerID(data, callback)
 }
 
 export default service

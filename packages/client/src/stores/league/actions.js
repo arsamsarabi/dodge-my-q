@@ -5,6 +5,7 @@ const actions = Reflux.createActions([
   'getDdVersion',
   'getChampions',
   'getSummonerByName',
+  'lookupLiveMatch',
 ])
 
 export default actions

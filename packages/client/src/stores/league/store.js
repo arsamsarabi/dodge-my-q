@@ -17,6 +17,7 @@ export default class store extends Reflux.Store {
       isLoading: false,
       ddVersion: undefined,
       champions: undefined,
+      errorMessages: {},
     }
   }
 
@@ -29,6 +30,7 @@ export default class store extends Reflux.Store {
       isLoading: false,
       ddVersion: undefined,
       champions: undefined,
+      errorMessages: {},
     })
   };
 
@@ -83,15 +85,27 @@ export default class store extends Reflux.Store {
     }
   }
 
-  lookupMatch = (id, region, cb) => {
+  lookupLiveMatch = (id, region, cb) => {
+    this.setState({ isLoading: true })
     axios.get(`${API}/getLiveGameBySummonerID/${region}/${id}`)
       .then(response => {
-        this.setState({ match: response.data })
-        this.setState({ isLoading: false })
+        const errorMessages = this.state.errorMessages
+        errorMessages.liveMatch = null
+        this.setState({
+          match: response.data,
+          isLoading: false,
+          errorMessages,
+        })
+        this.setState({  })
         if (cb) cb()
       })
       .catch(error => {
-        this.setState({ isLoading: false })
+        const errorMessages = this.state.errorMessages
+        errorMessages.liveMatch = error.response.status === 404 ? 'Summoner is not in a live game' : null
+        this.setState({
+          isLoading: false,
+          errorMessages,
+        })
         console.log(error)
       })
   }

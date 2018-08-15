@@ -100,10 +100,18 @@ riot.getSummonerRecentMatches = async (data, id) => {
   return result
 }
 
-riot.getLiveGameBySummonerID = async data => {
+riot.getLiveGameBySummonerID = async (data, callback) => {
   const liveMatchUrl = `${RIOT.base}${data.region}${RIOT.match.getMatchBySummonerId}${data.summonerId}`
-  const response = await axiosInstance.get(liveMatchUrl).catch(error => console.error(error))
-  return response.data
+  axiosInstance.get(liveMatchUrl)
+    .then(response => {
+      console.log(response)
+      callback(null, response.data)
+    })
+    .catch(err => {
+      console.error(err)
+      const notInGameError = new Error('NOT IN A GAME')
+      callback(notInGameError)
+    })
 }
 
 // const getFullMatch = (region, gameId, callback) => {

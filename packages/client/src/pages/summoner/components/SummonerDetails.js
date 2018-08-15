@@ -58,7 +58,7 @@ const SummonerDetails = ({ summoner, ddVersion, theme, updateSummoner }) => {
               {summoner.displayName}
             </H1>
             <H6 color={theme.darkGrey}>
-              {`Summoner Level: ${summoner.level} - Total Champion Masteries: ${summoner.totalChampionMasteries}`}
+              {`Summoner Level: ${summoner.level} - Total Champion Masteries: ${summoner.masteryPoints}`}
             </H6>
             <Text>
               DmQ Profile updated at:

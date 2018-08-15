@@ -24,7 +24,11 @@ controller.getLiveGameBySummonerID = (req, res) => {
   }
   service.getLiveGameBySummonerID(data, (error, results) => {
     if (error) {
-      res.status(500).send()
+      if (error.message === 'NOT IN A GAME') {
+        res.status(404).send()
+      } else {
+        res.status(500).send()
+      }      
     } else {
       res.json(results)
     }

@@ -1,6 +1,6 @@
 
 Todo:
-  ☐ Live Match basic info
-  ☐ GQL Summoner Schema
-  ☐ RIOT Get Summoner if not in DB
+  ☐ Live Match 
+  ✔ GQL Summoner Schema @done(18-08-15 10:48)
+  ✔ RIOT Get Summoner if not in DB @done(18-08-15 10:48)
   

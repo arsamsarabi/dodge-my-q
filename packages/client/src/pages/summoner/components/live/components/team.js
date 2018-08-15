@@ -63,8 +63,8 @@ const Team = props => {
         {bans.map(champ => {
           let champKey
           let backgroundImage
-          champions.map(champ => {
-            if (parseInt(champ.key) === champ.championId) champKey = champ.id
+          champions.map(_champ => {
+            if (parseInt(_champ.key) === champ.championId) champKey = _champ.id
           })
           if (champKey) {
             backgroundImage = {

@@ -20,6 +20,7 @@ import IconsSprite from 'resources/images/pixel_sprite.png'
 import { pageContainer } from '../../resources/styles/helpers'
 import SummonerProfile from './components/profile/Profile'
 import SummonerDetails from './components/SummonerDetails'
+import LiveMatch from './components/live/LiveMatch'
 
 function TabContainer({ children }) {
   return (
@@ -177,7 +178,11 @@ export default class Summoner extends Reflux.Component {
               />
             </TabContainer>
             <TabContainer dir={theme.direction}>
-              Live Game
+              <LiveMatch
+                version={ddVersion}
+                champions={champions}
+                summoner={summoner}
+              />
             </TabContainer>
           </SwipeableViews>
         </main>
