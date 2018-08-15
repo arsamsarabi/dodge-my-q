@@ -4,41 +4,16 @@
     "complexity": "off",
 */
 
+import * as perks from './perkImages'
 import {
-  bronze_i,
-  bronze_ii,
-  bronze_iii,
-  bronze_iv,
-  bronze_v,
-  silver_i,
-  silver_ii,
-  silver_iii,
-  silver_iv,
-  silver_v,
-  gold_i,
-  gold_ii,
-  gold_iii,
-  gold_iv,
-  gold_v,
-  platinum_i,
-  platinum_ii,
-  platinum_iii,
-  platinum_iv,
-  platinum_v,
-  diamond_i,
-  diamond_ii,
-  diamond_iii,
-  diamond_iv,
-  diamond_v,
-  provisional,
-  bronze,
-  silver,
-  gold,
-  platinum,
-  diamond,
-  master,
-  challenger,
+  bronze_i, bronze_ii, bronze_iii, bronze_iv, bronze_v,
+  silver_i, silver_ii, silver_iii, silver_iv, silver_v,
+  gold_i, gold_ii, gold_iii, gold_iv, gold_v,
+  platinum_i, platinum_ii, platinum_iii, platinum_iv, platinum_v,
+  diamond_i, diamond_ii, diamond_iii, diamond_iv, diamond_v,
+  provisional, bronze, silver, gold, platinum, diamond, master, challenger,
 } from './leagueImages'
+
 
 const helpers = {}
 
@@ -130,8 +105,15 @@ const getLeagueImage = (tier, rank) => {
 }
 helpers.getLeagueImage = getLeagueImage
 
+const getPerkImages = id => {
+  debugger;
+  return perks[`p${id}`]
+}
+helpers.getPerkImages = getPerkImages
+
 export default helpers
 export {
   urlFriendly,
   getLeagueImage,
+  getPerkImages
 }

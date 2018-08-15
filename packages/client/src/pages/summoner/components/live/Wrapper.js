@@ -3,7 +3,7 @@ import { pageContainer } from 'resources/styles/helpers'
 
 const Wrapper = styled.div`
   ${pageContainer()}
-  padding-top: 50px;
+  padding-top: 24px;
   .match_info {
     padding: 24px;
     & > div.details {

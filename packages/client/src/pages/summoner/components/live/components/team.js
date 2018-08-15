@@ -105,7 +105,7 @@ Team.propTypes = {
   players: PropTypes.arrayOf(PropTypes.object),
   bans: PropTypes.arrayOf(PropTypes.object),
   ddVersion: PropTypes.string.isRequired,
-  champions: PropTypes.object,
+  champions: PropTypes.arrayOf(PropTypes.object),
 }
 
 Team.defaultProps = {

@@ -2,19 +2,19 @@
   eslint
     "import/extensions": "off"
 */
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Card from '@material-ui/core/Card';
-import IconButton from '@material-ui/core/IconButton';
-import InfoOutlined from '@material-ui/icons/InfoOutlined';
-import Close from '@material-ui/icons/close';
-import { rankedQueueNames } from 'config/staticData';
-import { getLeagueImage } from 'config/helpers';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import Card from '@material-ui/core/Card'
+import IconButton from '@material-ui/core/IconButton'
+import InfoOutlined from '@material-ui/icons/InfoOutlined'
+import Close from '@material-ui/icons/close'
+import { rankedQueueNames } from 'config/staticData'
+import { getLeagueImage } from 'config/helpers'
 import pixelSprite from 'resources/images/pixel_sprite.png'
-import LabelAndText from 'components/LabelAndText';
-import { H5 } from 'components/Text';
-import LeagueIconsHelper from './LeagueIconsHelper';
+import LabelAndText from 'components/LabelAndText'
+import { H5 } from 'components/Text'
+import LeagueIconsHelper from './LeagueIconsHelper'
 
 const Wrapper = styled.div`
   font-size: 0.8rem;
@@ -95,7 +95,7 @@ const Wrapper = styled.div`
       }
     }    
   }
-`;
+`
 
 class SummonerLeagues extends React.Component {
   state = {
@@ -108,7 +108,7 @@ class SummonerLeagues extends React.Component {
     const {
       leagues,
       theme,
-    } = this.props;
+    } = this.props
     return (
       <Wrapper>
         <Card>
@@ -183,17 +183,17 @@ class SummonerLeagues extends React.Component {
           </div>
         </Card>
       </Wrapper>
-    );
+    )
   }
 }
 
 SummonerLeagues.propTypes = {
   leagues: PropTypes.arrayOf(PropTypes.object).isRequired,
   theme: PropTypes.object,
-};
+}
 
 SummonerLeagues.defaultProps = {
   theme: {},
-};
+}
 
-export default SummonerLeagues;
+export default SummonerLeagues

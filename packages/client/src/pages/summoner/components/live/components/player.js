@@ -9,6 +9,7 @@ import {
   getRunesImage,
   getSummonerSpellsImage
 } from 'config/staticData'
+import { getPerkImages } from 'config/helpers'
 
 const Wrapper = styled.div`
   flex: 1;
@@ -31,13 +32,25 @@ const Wrapper = styled.div`
     background-color: rgba(0,0,0,0.6);
     padding: 12px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .summonerName {
-      /* font-family: ${props => props.theme.fontHeading}; */
       font-size: 1rem;
       overflow: hidden;
       word-wrap: break-word;
       text-align: center;
       margin-top: 6px;
+    }
+    .runes {
+      .rune_row1,
+      .rune_row2 {
+        display: flex;
+      }
+      .rune_imagebox {
+        max-width: 35px;
+        max-height: 35px;
+      }
     }
   }
 `
@@ -51,20 +64,22 @@ const Player = ({ player, color, background, version }) => {
           color={theme.white}
           className="summonerName"
         >{player.summonerName}</Text>
-        {/* <img src={getLeagueImage()} alt="jjj"/> */}
         <div className="runes">
-          {
-            player.perks.perkIds.map(rune => <img key={rune} src={getRunesImage(version, rune)} alt="jjj"/>)
-          }
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
-          {/* <img src={getLeagueImage()} alt="jjj"/> */}
+          <div className="rune_row1">
+            <div className="rune_imagebox">
+              <img src={getPerkImages(player.perks.perkStyle)} alt="runes"/>
+            </div>
+            <div className="rune_imagebox">
+              <img src={getPerkImages(player.perks.perkSubStyle)} alt="runes"/>
+            </div>
+          </div>
+          <div className="rune_row2">
+            {player.perks.perkIds.map(rune => {
+              return (<div className="rune_imagebox" key={rune}>
+                <img src={getPerkImages(rune)} alt="runes"/>
+              </div>)
+            })}
+          </div>
         </div>
       </div>
     </Wrapper>
