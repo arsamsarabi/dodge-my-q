@@ -93,7 +93,7 @@ class FavouriteChampions extends Component {
               return (
                 <div key={_champ.key}>
                   <img
-                    src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${_champ.key}.png`}
+                    src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${_champ.id}.png`}
                     alt={_champ.name}
                   />
                   <div className="favchamp_details">
