@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "cors": "^2.8.4",
@@ -18,15 +21,12 @@
     "graphql": "^0.13.2",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "mongoose": "^5.2.7"
+    "mongoose": "^5.2.7",
+    "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.6",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
     "eslint-plugin-react": "^7.10.0",
-    "nodemon": "^1.18.3",
-    "rimraf": "^2.6.2"
+    "nodemon": "^1.18.3"
   }
 }
