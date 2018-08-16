@@ -100,6 +100,12 @@ export default class Summoner extends Reflux.Component {
         this.props.match.params.region
       )
     }
+    if (!this.state.champions) {
+      LeagueActions.getChampions()
+    }
+    if (!this.state.ddVersion) {
+      LeagueActions.getDdVersion()
+    }
   }
 
   componentWillUnmount() {

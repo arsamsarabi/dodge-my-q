@@ -47,9 +47,9 @@ export default class store extends Reflux.Store {
       })
   }
 
-  getSummonerByName = (summonerName, region, history = null) => { 
+  getSummonerByName = async (summonerName, region, history = null) => { 
     const uri = `${API}/getSummonerByName/${region}/${encodeURIComponent(summonerName)}`
-    axios.get(uri)
+    await axios.get(uri)
       .then(response => {
         this.setState({
           summoner: response.data,

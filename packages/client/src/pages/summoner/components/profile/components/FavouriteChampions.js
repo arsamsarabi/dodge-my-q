@@ -75,7 +75,9 @@ class FavouriteChampions extends Component {
     const displayArray = this.getDisplayArray(masteries, display)
 
     displayArray.forEach(_champ => {
-      _champ.friendlyDate = moment(_champ.lastPlayTime).format('Do/MMM/YY')
+      if (_champ) {
+        _champ.friendlyDate = moment(_champ.lastPlayTime).format('Do/MMM/YY')
+      }
     })
 
     return (
@@ -86,43 +88,44 @@ class FavouriteChampions extends Component {
           </H5>
           <div className="champions">
             {displayArray.map(championMastery => {
-              const _champ = champions.find(champion => parseInt(champion.key) === championMastery.championId)
-
-              
-
-              return (
-                <div key={_champ.key}>
-                  <img
-                    src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${_champ.id}.png`}
-                    alt={_champ.name}
-                  />
-                  <div className="favchamp_details">
-                    <Text>
-                      {_champ.name}
-                    </Text>
-                    {/* <Text>
-                    <span></span>
-                    {championMastery.championLevel}
-                  </Text> */}
-                    <Text>
-                      {/* <span>
-                      MP:
-                      </span> */}
-                      {championMastery.championPoints}
-                    </Text>
-                    {/* <Text>
-                    <span></span>
-                    {championMastery.chestGranted}
-                  </Text> */}
-                    <Text>
-                      {/* <span>
-                      Played:
-                      </span> */}
-                      {championMastery.friendlyDate}
-                    </Text>
+              if (championMastery) {
+                const _champ = champions.find(champion => parseInt(champion.key) === championMastery.championId)
+                return (
+                  <div key={_champ.key}>
+                    <img
+                      src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${_champ.id}.png`}
+                      alt={_champ.name}
+                    />
+                    <div className="favchamp_details">
+                      <Text>
+                        {_champ.name}
+                      </Text>
+                      {/* <Text>
+                      <span></span>
+                      {championMastery.championLevel}
+                    </Text> */}
+                      <Text>
+                        {/* <span>
+                        MP:
+                        </span> */}
+                        {championMastery.championPoints}
+                      </Text>
+                      {/* <Text>
+                      <span></span>
+                      {championMastery.chestGranted}
+                    </Text> */}
+                      <Text>
+                        {/* <span>
+                        Played:
+                        </span> */}
+                        {championMastery.friendlyDate}
+                      </Text>
+                    </div>
                   </div>
-                </div>
-              )
+                )
+              } else {
+                return ''
+              }
             })}
           </div>
         </Card>

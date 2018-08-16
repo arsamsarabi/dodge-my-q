@@ -58,8 +58,12 @@ const config = {
   entry: isDev ? [
     'react-hot-loader/patch',
     hotMiddlewareScript,
+    'babel-polyfill',
     './src/index.js'
-  ] : './src/index.js',
+  ] : [
+    'babel-polyfill',
+    './src/index.js',
+  ],
   output: {
     path: path.resolve(PATHS.dist),
     filename: 'js/app-bundle.js',
