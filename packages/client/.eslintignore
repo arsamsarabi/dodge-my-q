@@ -1,0 +1,6 @@
+.vscode
+dist
+node_modules
+webpack.config.js
+jest.config.js
+jest.config.watch.js

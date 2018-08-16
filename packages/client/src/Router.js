@@ -17,6 +17,7 @@ import Summoner from 'pages/summoner/Summoner'
 import Wrapper from './Wrapper'
 import './resources/styles/reset.css'
 import './resources/styles/styles.css'
+import './polyfills'
 
 class Router extends Reflux.Component {
   constructor(props) {

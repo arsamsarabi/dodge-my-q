@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heading element Should render a H1 element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+<h1
+  className="c0"
+  color="#333"
+>
+  H1 Heading
+</h1>
+`;
+
+exports[`Heading element Should render a H2 element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  font-size: 1.5em;
+}
+
+<h2
+  className="c0"
+  color="#333"
+>
+  H2 Heading
+</h2>
+`;
+
+exports[`Heading element Should render a H3 element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  font-size: 1.3em;
+}
+
+<h3
+  className="c0"
+  color="#333"
+>
+  H3 Heading
+</h3>
+`;
+
+exports[`Heading element Should render a H4 element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  font-size: 1.3em;
+  font-size: 1em;
+}
+
+<h4
+  className="c0"
+  color="#333"
+>
+  H4 Heading
+</h4>
+`;
+
+exports[`Heading element Should render a H5 element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  font-size: 1.3em;
+  font-size: 0.8em;
+}
+
+<h5
+  className="c0"
+  color="#333"
+>
+  H5 Heading
+</h5>
+`;
+
+exports[`Heading element Should render a H6 element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  font-size: 1.3em;
+  font-size: 0.7em;
+}
+
+<h6
+  className="c0"
+  color="#333"
+>
+  H6 Heading
+</h6>
+`;
+
+exports[`Heading element Should render a Text element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  font-family: 'Roboto',Arial,Helvetica,sans-serif;
+  font-size: 1em;
+}
+
+<p
+  className="c0"
+  color="#333"
+>
+  Text Paragraph
+</p>
+`;
+
+exports[`Heading element Should render a Text element with theme 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  border-bottom: 1px  solid #333;
+  font-family: 'Roboto',Arial,Helvetica,sans-serif;
+  font-size: 1em;
+}
+
+<p
+  className="c0"
+  color="#333"
+>
+  Themed Text Paragraph
+</p>
+`;
+
+exports[`Heading element Should render a Text element without theme 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  border-bottom: 1px  solid #333;
+  font-family: 'Roboto',Arial,Helvetica,sans-serif;
+  font-size: 1em;
+}
+
+<p
+  className="c0"
+  color="#333"
+>
+  Not themed Text Paragraph
+</p>
+`;
+
+exports[`Heading element Should render an underlined dashed heading element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  border-bottom: 1px  dashed #333;
+}
+
+<h1
+  className="c0"
+  color="#333"
+>
+  Underlined Dashed H1 Heading
+</h1>
+`;
+
+exports[`Heading element Should render an underlined dotted heading element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  border-bottom: 1px  dotted #333;
+}
+
+<h1
+  className="c0"
+  color="#333"
+>
+  Underlined Dotted H1 Heading
+</h1>
+`;
+
+exports[`Heading element Should render an underlined heading element 1`] = `
+.c0 {
+  color: #333;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  border-bottom: 1px  solid #333;
+}
+
+<h1
+  className="c0"
+  color="#333"
+>
+  Underlined H1 Heading
+</h1>
+`;
