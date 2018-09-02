@@ -9,7 +9,6 @@ import {
   getRunesImage,
   getSummonerSpellsImage
 } from 'config/staticData'
-import { getPerkImages } from 'config/helpers'
 
 const Wrapper = styled.div`
   flex: 1;
@@ -55,7 +54,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Player = ({ player, color, background, version }) => {
+const Player = ({ player, color, background, version, runes }) => {
   // console.dir(player)
   return (
     <Wrapper color={color} style={background}>
@@ -67,16 +66,16 @@ const Player = ({ player, color, background, version }) => {
         <div className="runes">
           <div className="rune_row1">
             <div className="rune_imagebox">
-              <img src={getPerkImages(player.perks.perkStyle)} alt="runes"/>
+              <img src={getRunesImage(runes, player.perks.perkStyle, true)} alt="runes"/>
             </div>
             <div className="rune_imagebox">
-              <img src={getPerkImages(player.perks.perkSubStyle)} alt="runes"/>
+              <img src={getRunesImage(runes, player.perks.perkSubStyle, true)} alt="runes"/>
             </div>
           </div>
           <div className="rune_row2">
             {player.perks.perkIds.map(rune => {
               return (<div className="rune_imagebox" key={rune}>
-                <img src={getPerkImages(rune)} alt="runes"/>
+                <img src={getRunesImage(runes, rune)} alt="runes"/>
               </div>)
             })}
           </div>
@@ -94,6 +93,7 @@ Player.propTypes = {
   player: PropTypes.object.isRequired,
   background: PropTypes.object.isRequired,
   version: PropTypes.string.isRequired,
+  runes: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 Player.defaultProps = {}

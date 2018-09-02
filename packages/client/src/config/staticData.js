@@ -77,7 +77,25 @@ staticData.getChampionSquareImage = getChampionSquareImage
 const getChampionLoadingScreenImage = key => `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${key}_0.jpg`
 staticData.getChampionLoadingScreenImage = getChampionLoadingScreenImage
 
-const getRunesImage = (version, key) => `http://ddragon.leagueoflegends.com/cdn/${version}/img/rune/${key}.png`
+const getRunesImage = (runes, key, parent = false) => {
+  let iconLink
+  runes.forEach(runeTree => {
+    if (parent)  {
+      if (runeTree.id === key) {
+        iconLink = runeTree.icon
+      }
+    } else {
+      runeTree.slots.forEach(runeObject => {
+        runeObject.runes.forEach(rune => {
+          if (rune.id === key) {
+            iconLink = rune.icon
+          }
+        })
+      })
+    }
+  })
+  return `https://ddragon.leagueoflegends.com/cdn/img/${iconLink}`
+}
 staticData.getRunesImage = getRunesImage
 
 const getSummonerSpellsImage = (version, key) => `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${key}.png`

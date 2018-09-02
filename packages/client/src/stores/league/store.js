@@ -18,6 +18,7 @@ export default class store extends Reflux.Store {
       ddVersion: undefined,
       champions: undefined,
       errorMessages: {},
+      runes: [],
     }
   }
 
@@ -31,8 +32,15 @@ export default class store extends Reflux.Store {
       ddVersion: undefined,
       champions: undefined,
       errorMessages: {},
+      runes: [],
     })
   };
+
+  init = async () => {
+    await this.getDdVersion()
+    await this.getRunesData()
+    await this.getChampions()
+  }
 
   getDdVersion = (cb) => {
     axios.get('https://ddragon.leagueoflegends.com/api/versions.json')
@@ -45,6 +53,23 @@ export default class store extends Reflux.Store {
       .catch(error => {
         console.log(error)
       })
+  }
+
+  getRunesData = (cb) => {
+    if (!this.state.ddVersion) {
+      this.getDdVersion(this.getRunesData)
+    } else {
+      axios.get(`http://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/runesReforged.json`)
+        .then(response => {
+          this.setState({
+            runes: response.data,
+          })
+          if (cb) cb()
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }
 
   getSummonerByName = async (summonerName, region, history = null) => { 

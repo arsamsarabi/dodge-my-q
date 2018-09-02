@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#answer-6129 -->
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues. More info: h5bp.com/i/378 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+
+    <title>Data Dragon api? - Riot Developer Community</title>
+    <meta name="description" content="Riot Community Developer Support">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html">
+
+
+
+<script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript">
+    var askFormURL = '/questions/ask.html';
+    var logoutURL = '/users/logout.html';
+    var voteUpJsonURL = '/commands/0/voteup.json';
+    var voteDownJsonURL = '/commands/0/votedown.json';
+    var getVotesJsonUrl = '/%7Bnode%7D/getVotes.json';
+    var related_questions_url = '/search.json';
+    var emailCheckerURL = '/users/temporaryLogin/dupsUserEmailCheck.json';
+
+    var authorizedFileTypes = 'gif,png,jpg,jpeg,zip,tar.gz,pdf,txt'.split(",");
+    var authorizedImageTypes = 'gif,png,jpg,jpeg'.split(",");
+
+    var flashMessages = [];
+
+    var pageContext = {
+        currentUser: {
+            id: '261',
+            username: 'Picklè Rick (EUW)',
+            url: '/users/261/tang0-with-reng0-euw.html',
+            avatar: 'https://secure.gravatar.com/avatar/?d=identicon&r=PG',
+            reputation: '1',
+            follows: null,
+            canCreateTopics: false
+        },
+        attachments: {
+            maxSizeBytes: 524288,
+            maxSizeBytesTotal: 1048576
+        },
+        i18n: {
+            confirm: "Are you sure?",
+            yes: "Yes",
+            no: "No",
+            save: "Save",
+            cancel: "Cancel",
+            close: "Close",
+            edit: "Edit",
+            insert: "Insert",
+            upload: "Upload",
+            download: "Download",
+            choose: "Choose",
+            deleted: "Deleted",
+            ok: "Ok",
+            by: "by",
+            word: "word",
+            words: "words",
+            character: "character",
+            characters: "characters",
+            login: "Sign in",
+            register: "Register",
+            timeAgo: "{0} ago",
+            timeAt: "at",
+            day: "day",
+            days: "days",
+            hour: "hour",
+            hours: "hours",
+            minute: "minute",
+            minutes: "minutes",
+            second: "sec",
+            seconds: "secs",
+            justNow: "just now",
+            retag: "retag",
+            comment: "Comment",
+            comments: "Comments",
+            showOneComment: "<i class='icon-comments'></i> Show 1",
+            hideOneComment: "<i class='icon-comments'></i> Hide 1",
+            showNComments: "<i class='icon-comments'></i> Show $n",
+            hideNComments: "<i class='icon-comments'></i> Hide $n",
+            question: "question",
+            questions: "Questions",
+            answer: "Answer",
+            answers: "Answers",
+            posts: "Posts",
+            wiki: "Wiki",
+            reputation: "Reputation",
+            unlike: "Unlike",
+            like: "Like",
+            likes: "Likes",
+            follow: "Follow",
+            unfollow: "Unfollow",
+            following: "Following",
+            followers: "Followers",
+            awarded: "Awarded",
+            completedBy: "Recently completed by",
+            joined: "Joined",
+            authorizedTypes: "Allowed Upload Types",
+            uploadDialog: {
+                uploadFile: "Choose a file to upload",
+                doUpload: "Upload",
+                fileTooBig: "Your attachment must be $size or smaller.",
+                invalidAttachmentType: "Your attachment must be one of: gif,png,jpg,jpeg,zip,tar.gz,pdf,txt",
+                invalidImageType: "Your image must be one of: gif,png,jpg,jpeg"
+            },
+            previewAndCropDialog: {
+                previewAndResize: "Preview and resize",
+                accept: "Accept"
+            },
+
+            closeQuestionTitle: "Close or Flag",
+            lockPostModalTitle: "Lock",
+            reportQuestionModalTitle: "Report",
+            confirmModalTitle: "Please confirm",
+            convertToAnswerText: "Are you sure you want to convert this comment to answer?",
+            unlockPostModalText: "Are you sure you want to allow comments on this post?",
+            cancelReportModalText: "Are you sure you want to undo reporting this post?",
+
+            reportSuccessText: "This post has been successfully reported.",
+            reportCancelText: "Your report on this post has been sucessfully canceled.",
+
+            commandsMoveToSpace: "Move",
+            commandsGiveReputation: "Reward user",
+            commandsGiveReputationSuccess: "Points awarded successfully",
+            commandsConvertToCommentTitle: "Select comment location",
+            uploadProfilePictureSelectButton: "Select photo from your computer",
+            changeAvatarSelectButton: "Select photo from your computer",
+            changeAvatarSelectNoPhoto: "No photo selected",
+            postControlsRedirectTitle: "Redirect",
+
+            WMDImageDialogText: "Enter image url",
+            WMDLinkDialogText: "Enter url",
+            WMDUploadImage: "upload image",
+            WMDBold: "Strong <strong> Ctrl+B",
+            WMDItalic: "Emphasis <em> Ctrl+I",
+            WMDLink: "Hyperlink <a> Ctrl+L",
+            WMDQuote: "Blockquote <blockquote> Ctrl+Q",
+            WMDCode: "Code Sample <pre><code> Ctrl+K",
+            WMDImage: "Image <img> Ctrl+G",
+            WMDAttachment: "Attachment Ctrl+U",
+            WMDOrderedList: "Numbered List <ol> Ctrl+O",
+            WMDUnorderedList: "Bulleted List <ul> Ctrl+U",
+            WMDHeading: "Heading <h1>/<h2> Ctrl+H",
+            WMDHorizontalRule: "Horizontal Rule <hr> Ctrl+R",
+            WMDUndo: "Undo - Ctrl+Z",
+            WMDRedoWin: "Redo - Ctrl+Y",
+            WMDRedoOther: "Redo - Ctrl+Shift+Z",
+            WMDHelp: "Markdown Help",
+
+            draftMessage: "We noticed that you were previously working on TYPO. What would you like to do now?",
+            draftSaveMessage: "Saving Draft...",
+            draftLoadButton: "Load Draft",
+            draftDeleteButton: "Delete Draft",
+
+            linkMenuInsertLink: "Insert link",
+            linkMenuEditLink: "Edit link",
+            linkMenuUnlink: "Remove link",
+            linkMenuAnchor: "Anchor",
+            linkMenuMailto: "Email",
+            inputTextPrompt: "Text",
+            inputWebPrompt: "URL",
+            inputLinkNewTab: "Open link in a new tab",
+            inputImageForm: "Update Image",
+            inputImageTitle: "Title",
+            inputImagePosition: "Position",
+            inputImagePositionNone: "None",
+            inputImagePositionLeft: "Left",
+            inputImagePositionRight: "Right",
+
+            formattingLabel: "Formatting",
+            formattingParagraph: "Normal Text",
+            formattingQuote: "Quote",
+            formattingCode: "Code",
+            formattingHeader: "Header",
+            formattingBold: "Bold",
+            formattingItalic: "Italic",
+            formattingUnderline: "Underline",
+            formattingFontColor: "Font Color",
+            formattingBackColor: "Back Color",
+            formattingIndent: "Indent",
+            formattingOutdent: "Outdent",
+            formattingAlignment: "Alignment",
+            formattingAlignLeft: "Align text to the left",
+            formattingAlignCenter: "Center text",
+            formattingAlignRight: "Align text to the right",
+            formattingAlignJustify: "Justify text",
+            formattingHorizontalRule: "Insert Horizontal Rule",
+
+            toolTipsInsertImage: "Insert Image",
+            toolTipsInsertFile: "Insert File",
+            toolTipsInsertCode: "Insert Code",
+            toolTipsInsertVideo: "Insert Video",
+            toolTipsInsertTable: "Insert Table",
+            toolTipsorderedList: "Ordered List",
+            toolTipsunorderedList: "Unordered List",
+            toolTipLink: "Link",
+
+            tableInsert: "Insert Table",
+            tableRows: "Rows",
+            tableColumns: "Columns",
+            tableInsertRowAbove: "Add Row Above",
+            tableInsertRowBelow: "Add Row Below",
+            tableInsertColumnLeft: "Add Column Left",
+            tableInsertColumnRight: "Add Column Right",
+            tableDelete: "Delete Table",
+            tableDeleteColumn: "Delete Column",
+            tableDeleteRow: "Delete Row",
+            tableAddHead: "Add Header",
+            tableDeleteHead: "Delete Header",
+
+            uploadOrChoose: "Or Choose",
+            uploadDropFileHere: "Drop file here",
+            uploadFilenameOptional: "Name (optional)",
+
+            emailValidationPrompt: "Resend validation email",
+            emailValidationPromptBody: "Do you want to resend email validation?",
+            invalidReputation: "Error: You must enter a valid Integer without commas."
+        },
+        url: {
+            login: "/users/login.html",
+            register: "/users/register.html",
+            getRevision: "/revisions/get-revision.json",
+            getComments: "/comments/%25ID%25/list.json",
+            uploadFile: "/uploadFile.html",
+            uploadProgress: "/uploadProgress.json",
+            uploadPreview: "/uploadPreview.html",
+            cropUpload: "/cropUpload.json",
+            cancelUpload: "/cancelUpload.json",
+            markdownHelp: "/static/markdown/help.html",
+            updateMarkdown: "/commands/updateMarkdown.json",
+            profile: "/users/{id}/{plug}.html",
+            extractKeywords: "/extract-keywords.json",
+            follow: "/follow/%7BobjId%7D/%7Btype%7D.json",
+            unfollow: "/unfollow/%7BobjId%7D/%7Btype%7D.json",
+            getUserFollows: "/%7Buser%7D/getUserFollows.json",
+            condensedProfileUrl: "/users/%7Buser%7D/condensedProfile.json",
+            viewTopicJSON: "/topics/%7Btopic%7D/view.json",
+            topicIcon: "/topics/%7Btopic%7D/icon.html",
+            topic: "/topics/%7Btopic%7D.html",
+            topicSearch: "/search/topics.json",
+            awardListUrl: "/badge/%7BawardType%7D/%7Bdesc%7D.json",
+            usersSearch: "/users/list.json",
+            usersLookup: "/users/lookup.json",
+            mentionsSearch: "/users/mentionsSearch.json",
+            searchJson: "/search.json",
+            trackJs: "/static/trackJs.json",
+            userAvatar: "/users/%7BuserId%7D/photo/view.html",
+            revisionView: "/revisions/{nodeId}.html"
+        },
+        extraScripts: {
+            jcrop: {
+                js: '/themes/thub/scripts/jcrop/js/jquery.Jcrop.js',
+                css: '/themes/thub/scripts/jcrop/css/jquery.Jcrop.css'
+            }
+        },
+        options: {
+        	maxTopics: '5',
+            gravatarEnabled: true
+        },
+        additional: {"TH_CSRF":"i3126571153755400127"},
+        useRelativeTime: true,
+        userRealName: false
+    };
+    pageContext.i18n["delete"] = "Delete";
+</script>
+
+        <!--[if lte IE 10]>
+    <script src="/themes/base/scripts/compatibility/indexOf.js" type="text/javascript"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/themes/base/scripts/compatibility/document.getSelection.js" type="text/javascript"></script>
+    <script src="/themes/base/scripts/compatibility/ierange-m2-packed.js" type="text/javascript"></script>
+    <style type="text/css">
+        input[type="password"] {
+            font-family: Arial;
+        }
+    </style>
+    <![endif]-->
+<script type="text/javascript" src="./Data Dragon api_ - Riot Developer Community_files/combined.js.h-1429239052.pack" charset="utf-8"></script>
+
+<script type="text/javascript">
+(function ($) {
+    "use strict";
+
+    $.extend($.fn.select2.defaults, {
+        formatNoMatches: function () {
+            return 'No matches found';
+        },
+        formatInputTooShort: function (input, min) {
+            var n = min - input.length;
+            if (n == 1) {
+                return 'Please enter 1 more character.';
+            }
+            else {
+                var return_str = "Please enter $n more characters.";
+                return return_str.replace("$n", n.toString());
+            }
+        },
+        formatInputTooLong: function (input, max) {
+            var n = input.length - max;
+            if (n == 1)
+                return 'Please delete 1 character.';
+            else {
+                var return_str = 'Please delete $n characters.';
+                return return_str.replace("$n", n.toString());
+            }
+        },
+        formatSelectionTooBig: function (limit) {
+            if (limit == 1)
+                return 'You can only select 1 item.';
+            else {
+                var return_str = 'You can only select $n items.';
+                return return_str.replace("$n", limit.toString());
+            }
+        },
+        formatLoadMore: function (pageNumber) {
+            return 'Loading more results...';
+        },
+        formatSearching: function () {
+            return 'Searching...';
+        }
+    });
+})(jQuery);
+</script>
+
+    <script src="./Data Dragon api_ - Riot Developer Community_files/jquery.tmpl.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="https://discussion.developer.riotgames.com/themes/thub/images/favicon.ico">
+
+    <!-- Core Bootstrap css + Kickstrap styles -->
+<link rel="stylesheet" type="text/css" href="./Data Dragon api_ - Riot Developer Community_files/combined.css.h670284354.pack" charset="utf-8"><link rel="stylesheet" type="text/css" href="./Data Dragon api_ - Riot Developer Community_files/combined.css.h2028845431.pack" charset="utf-8">
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var $style;
+            $style = $('<style type="text/css">:before,:after{content:none !important}</style>');
+            $('head').append($style);
+            return setTimeout((function() {
+                return $style.remove();
+            }), 0);
+        });
+    </script>
+    <![endif]-->
+
+        
+                
+
+        
+
+    <style type="text/css">
+            
+        </style>
+
+    <script type="text/javascript">
+        $(document).ready(function(){pageContext.options.commentsAttachmentsEnabled = true});
+    </script>
+
+
+        
+
+    
+
+    <script type="text/javascript">
+        $(function () {
+pageContext.i18n.modTalk = 'moderation talk';
+pageContext.i18n.replyToComment = 'Reply';
+pageContext.i18n.modTalkEmpty = 'moderation talk is empty';
+pageContext.url.getModTalk = "/comments/%25ID%25/listModTalk.json";
+pageContext.url.possibleCommentRecipients = "/comments/%ID%/possibleRecipients.json";
+pageContext.url.commentEdit = '/comments/%25ID%25/edit.html';
+pageContext.url.commentView = '/comments/%ID%/view.html';
+
+pageContext.i18n.commentVisibility = {
+'full': 'Viewable by all users',
+'op': 'Viewable by the original poster',
+'mod': 'Viewable by moderators',
+'opAndMod': 'Viewable by moderators and the original poster',
+'other': 'Advanced visibility',
+'dialogTitle': 'Comment visibility',
+'selectGroups': 'Visible to groups',
+'selectOther': 'Other recipients',
+'selectOriginalPoster': 'Original poster',
+'selectModerators': 'Moderators',
+'selectAssignees': 'Asked to answer users'
+};
+
+pageContext.i18n.commentMenuLabels = {
+'comment-edit': 'comments.menu.edit',
+'comment-delete': 'comments.menu.delete',
+'comment-convert': 'comments.menu.convert'
+};pageContext.i18n.answer= {
+	bestAnswer: 'Best Answer',
+	controlBar : {
+		accept: 'Accept',
+		unaccept: 'Unaccept',
+		acceptCommand: 'Accept this answer as correct',
+		cancelAcceptedCommand: 'Remove this answers accepted status'
+	}
+};
+    window.croles = {
+        u: false, op: false, m: false,
+        og: false, as: false, ag: false,
+        dc: false, doc: true, eo: true, ea: false
+    };
+
+    tools.init({
+        q: {
+            e: false, ew: false, eo: true,
+            r: false, ro: true,
+            d: false, dow: true, fv: true,
+            c: false, co: true,
+            p: false, tm: false
+            , ms: false, mos: true
+        },
+        n: {
+            f: false, vf: false, vfo: false,
+            vr: false, vro: true,
+            c: true, co: true,
+            vu: false, vd: false,
+            w: false, wo: true,
+            l: false
+        },
+        c: {
+            e: false, eo: true,
+            d: false, dow: true,
+            ta: false, tao: true,
+            l: false
+        },
+        a: {
+            e: false, ew: false, eo: true,
+            d: false, dow: true,
+            a: false, aoq: true, ao: false,
+            tc: false, tco: true,
+            p: false, tm: false
+        },
+        pc: croles
+    }, {
+        tc: true,
+        nsc: true
+    });
+
+                initCommandOverrides();
+            commandUtils.initializeLabels();
+        });
+    </script>
+
+</head>
+
+<body style="">
+        <div>
+                
+
+        </div>
+
+<div id="not-footer" style="margin-bottom: -169px;">
+
+<div id="main-navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner brand-nav">
+        <div class="container brand-container">
+            <a class="brand" href="https://discussion.developer.riotgames.com/">
+                <img src="./Data Dragon api_ - Riot Developer Community_files/teamhub-logo.png">
+            </a>
+        </div>
+    </div>
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="search-wrapper span8">
+                    <a type="button" class="btn btn-navbar off-canvas-nav-btn" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#sidr">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </a>
+                    <form action="https://discussion.developer.riotgames.com/search.html" method="get" class="navbar-search">
+                        <input type="hidden" id="search-filters" name="f" value="">
+                        <input type="hidden" id="search-types" name="type" value="question OR kbentry">
+                        <input type="hidden" id="search-redirect" name="redirect" value="search/search">
+                        <input type="hidden" id="search-sort" name="sort" value="relevance">
+                        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="search-query ui-autocomplete-input" value="" name="q" id="search-query" data-provide="typeahead" data-items="4" autocomplete="off" placeholder="Find posts, topics, and users...">
+                        <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="search-button no-style-link"><i class="icon-search"></i></a>
+
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+//                                var ie7 = $.browser.msie && $.browser.version <= 7;
+
+                                var label = $('.navbar-search label[for=search_box]');
+                                label.css({
+                                    position: 'absolute',
+                                    top: 4,
+                                    left: 17,
+                                    zindex: 10
+                                });
+                                $('#search_box')
+                                        .focus(function () {
+                                            label.hide()
+                                        })
+                                        .blur(function () {
+                                            this.value == "" ? label.show() : label.hide()
+                                        })
+                            });
+                        </script>
+                        <div id="searchResultsAutoComplete"><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+                    </form>
+                </div>
+
+                <ul class="nav-links span4">
+                    <li>
+
+
+                                <div class="btn-group navbar-action">
+                                    <a id="create-button" class="btn btn-success" href="https://discussion.developer.riotgames.com/questions/ask.html?space=8">Ask a question</a>
+                                </div>
+                    </li>
+
+
+
+
+                            <li class="dropdown">
+                                <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" id="spaces-menu-dropdown" class="dropdown-toggle" data-toggle="dropdown">
+Spaces                                    <i class="icon-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    
+                                                                    <li>
+                                    <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/11/index.html">Announcements</a>
+                                </li><li>
+                                    <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/9/index.html">Discussions</a>
+                                </li><li class="active">
+                                    <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/8/index.html">Help</a>
+                                </li><li>
+                                    <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/24/index.html">Guides and Knowledge</a>
+                                </li><li>
+                                    <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/21/index.html">Feedback</a>
+
+                                </li></ul>
+                            </li>
+
+                    <li class="dropdown">
+                        <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" id="explore-menu-dropdown" class="dropdown-toggle" title="Explore" data-toggle="dropdown">
+                            <i class="icon-sitemap"></i>
+                            <i class="icon-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="https://discussion.developer.riotgames.com/topics.html">Topics</a>
+                            </li>
+
+                                <li>
+                                    <a href="https://discussion.developer.riotgames.com/questions/index.html">Questions</a>
+                                </li>
+                                <li>
+                                    <a href="https://discussion.developer.riotgames.com/content/kbentry/list.html">Articles</a>
+                                </li>
+
+                            <li>
+                                <a href="https://discussion.developer.riotgames.com/users/index.html">Users</a>
+                            </li>
+
+
+                             <li>
+                                <a href="https://discussion.developer.riotgames.com/badge/types.html">Badges</a>
+                            </li>
+                        </ul>
+                    </li>
+                        <li class="dropdown">
+                            <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" id="profile-menu-dropdown" class="dropdown-toggle user-dropdown" data-toggle="dropdown">
+    		  <img class="gravatar " width="20" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource" id="" alt="avatar image" title="Picklè Rick (EUW)">
+
+                                <i class="icon-caret-down"></i>
+                            </a>
+
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw.html">Profile</a></li>
+                                <li><a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw/preferences.html">My Preferences</a></li>
+
+                                <li class="divider"></li>
+                                <li><a href="https://discussion.developer.riotgames.com/users/logout.html">Logout</a></li>
+                            </ul>
+                        </li>
+
+                    <li style="margin-left:10px;">
+                        <a href="http://developer.riotgames.com/">
+                        <img src="./Data Dragon api_ - Riot Developer Community_files/riot-fist-inverted.png" width="25px" style="padding-right:5px"> Developer Portal</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main-breadcrumb" class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="https://discussion.developer.riotgames.com/">Home</a> <span class="divider">/</span>
+            </li>
+                        <li><a href="https://discussion.developer.riotgames.com/spaces/8/default.html">Help</a> <span class="divider">/</span>
+                        </li>
+        </ul>
+</div>
+
+
+    <section id="middle">
+
+        <div class="main">
+
+            <div class="main-inner">
+
+                <div class="container">
+                    <div class="row">
+                                <div class="span8 mainContent">
+
+                                        
+
+
+
+
+<script>
+
+
+    var jsonTopicSearch = '/search/topics.json';
+
+    var retagUrl = '/commands/6121/editQuestionTopics.json';
+
+
+    function submit_retag() {
+        $.post(retagUrl, $("#topics_retag_container").serializeArray(), function (data) {
+            document.location.reload();
+        });
+    }
+    function setup_retag() {
+        $("#topics_retag_container").css("display", "inline");
+//        $("#topics_retag_container").show();
+
+        $("#id_tags_container").hide();
+        $("#topics_retag").select2({
+            placeholder: 'Enter topics...',
+            minimumInputLength: 1,
+            width: "250px",
+            ajax: {
+                url: jsonTopicSearch,
+                dataType: 'json',
+                data: function (term, page) {
+                    return {
+                        q: term
+                    };
+                },
+                results: function (data, page) {
+                    for (var i = 0; i < data.topics.length; i++) {
+                        data.topics[i].text = data.topics[i].name;
+                        data.topics[i].id = data.topics[i].name;
+                    }
+                    return {results: data.topics};
+                }
+            },
+            tokenSeparators: [","],
+            tags: true,
+            createSearchChoice: function (term) {
+                return {id: term, text: term};
+            },
+            formatResult: function (item, container, query, escapeMarkup){
+                return escapeMarkup(item.text);
+            },
+            formatSelection: function(item,container, escapeMarkup) {
+                return escapeMarkup(item.text);
+            },
+            initSelection: function (element, callback) {
+                var data = [];
+                $(element.val().split(",")).each(function () {
+                    data.push({id: this, text: this});
+                });
+                callback(data);
+            }
+        });
+
+
+    }
+    $(document).ready(function () {
+        $("#id_do_retag").click(function () {
+            setup_retag();
+            return false;
+        });
+
+        $("#topics_retag_cancel").click(function () {
+
+            $("#topics_retag_container").hide();
+            $("#id_tags_container").show();
+        });
+    });
+</script>
+
+<div class="widget widget-nopad smallmargin" xmlns="http://www.w3.org/1999/html">
+    <div class="widget-content">
+
+
+        <div id="question-container-6121" class="post-container question-container" nodeid="6121">
+            <div id="question-6121" class="question post">
+
+<div class="post-gravatar question-gravatar">
+<a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw.html" style="display: inline-block; max-width: 48px;" rel="user" nodeid="261" data-hasqtip="0"> <img class="gravatar " width="48" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource(1)" id="" alt="avatar image" title="Picklè Rick (EUW)">
+</a></div>
+            <div class="muted author-info">
+            <strong>Question</strong> by <a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw.html" rel="user" nodeid="261" data-hasqtip="1">Picklè Rick (EUW)</a>                
+ ·
+
+            12 hours ago ·
+                <span class="tags" id="id_tags_container">
+<a href="https://discussion.developer.riotgames.com/topics/api+data.html" class="tag" rel="topic" nodeid="126" data-hasqtip="14">api data</a><a href="https://discussion.developer.riotgames.com/topics/data+dragon.html" class="tag" rel="topic" nodeid="426" data-hasqtip="15">data dragon</a><a href="https://discussion.developer.riotgames.com/topics/runes.html" class="tag" rel="topic" nodeid="2433" data-hasqtip="16">runes</a><a href="https://discussion.developer.riotgames.com/topics/seed+data.html" class="tag" rel="topic" nodeid="12" data-hasqtip="17">seed data</a>                        <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" title="Edit topics" class="btn-mini" id="id_do_retag"><i class="icon-edit"></i></a>
+                </span>
+                <form id="topics_retag_container" style="display:none" method="post"><input type="hidden" name="TH_CSRF" value="i3126571153755400127">
+                    <input type="hidden" name="node" value="6121">
+                    <input type="text" id="topics_retag" name="topics" value="api data,data dragon,runes,seed data">
+                    <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="btn-mini" onclick="submit_retag(); return false;"><i class=" icon-ok">Save</i></a>
+                    <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="btn-mini" id="topics_retag_cancel"><i class=" icon-remove"></i></a>
+                </form>
+            </div>
+                <div class="post-tools" nodeid="6121">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#"><i class="icon-cog"></i></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li class="item">
+                                <a rel="nofollow" class="node-tools-edit-link" href="https://discussion.developer.riotgames.com/questions/6121/edit.html"><i class="icon-edit"></i> Edit</a>
+                            </li>
+
+                            <li class="item">
+                                <a rel="nofollow" class="node-tools-revisions-link" href="https://discussion.developer.riotgames.com/revisions/6121.html">See revisions</a>
+                            </li>
+
+                            <li class="item">
+                                <a title="" class="ajax-command" command="redirectQuestion" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Redirect</a>
+                            </li>
+
+                            <li class="item">
+                                <a class="ajax-command" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="closeQuestion">Close</a>
+                            </li>
+
+
+
+
+
+                            <li class="item">
+                                <a class="ajax-command" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="wikifyPost">Wikify</a>
+                            </li>
+
+
+                            <li class="item">
+                                <a class="ajax-command" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="moveToSpace">Move</a>
+                            </li>
+
+
+                    </ul>
+                </div>
+                <h1 class="question-title">Data Dragon api?</h1>
+
+                <div class="question-body">
+                <p></p>
+<p>Is there an api documentation for data dragon ? How can I retrieve the new runes images ?</p> 
+<p></p>
+                </div>
+
+            <div class="comment-tools hidden"><span class="add-comment-link "><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Comment</a></span></div>
+<div class="control-bar" nodeid="6121">
+    <div id="post-6121-stats" class="post-stats" nodeid="6121">
+
+        <div id="post-6121-users-liked" class="hidden">
+        </div>
+        <div id="post-6121-votes-modal" class="post-votes-modal modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+            <div class="modal-header">
+                <h3 id="myModalLabel">People who like this</h3>
+            </div>
+            <div class="modal-body">
+                <ul class="clearfix unstyled">
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            if ($("#post-6121-users-liked").children().length > 0) {
+                $('#post-6121-score-wrapper').tooltip({
+                    html: true,
+                    title: $("#post-6121-users-liked").html(),
+                    trigger: 'hover'
+                })
+            }
+        </script>
+    </div>
+
+    <div class="post-controls" nodeid="6121">
+        <span id="post-6121-score-wrapper" class="post-score-wrapper count" data-toggle="modal" data-target="#post-6121-votes-modal">
+            <span id="post-6121-score" class="score"><i class="icon-thumbs-up"></i> 0</span>
+        </span>
+            ·
+            <a id="favorite-mark-6121" class="ajax-command action-favorite ajax-command favorite-mark " href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="markFavorite" title="Mark this question as favorite">
+                <i class="icon-star-empty"></i>
+            </a>
+        ·
+                <a class="reply-link" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Add comment</a>
+
+    <a id="6121-show-comments-container" class="show-comments-container" commentcount="0" style="display: none;"><i class="icon-comments"></i> Show 0</a>
+
+
+        <a id="vote-down-button-6121" class="hidden" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="voteDown" title="Click to down vote"></a>
+    </div>
+</div>
+<div id="comment-6121-form-container" class="clearfix well comment-form-container">
+    <form id="comment-6121-form" action="https://discussion.developer.riotgames.com/comments/6121/add.json" method="POST" accept-charset="utf-8"><input type="hidden" name="TH_CSRF" value="i3126571153755400127">
+        <div class="comment-form-widgets-container">
+        
+            <div class="comment-form-textarea-container">
+                <div class="redactor_box"><ul class="redactor_toolbar" id="redactor_toolbar_1"><li><a href="javascript:;" title="Bold" tabindex="-1" class="redactor_btn redactor_btn_bold"></a></li><li><a href="javascript:;" title="Italic" tabindex="-1" class="redactor_btn redactor_btn_italic"></a></li><li><a href="javascript:;" title="• Unordered List" tabindex="-1" class="redactor_btn redactor_btn_unorderedlist"></a></li><li><a href="javascript:;" title="1. Ordered List" tabindex="-1" class="redactor_btn redactor_btn_orderedlist"></a></li><li></li><div class="redactor_dropdown redactor_dropdown_box_link" style="display: none;"><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_link" tabindex="-1">Insert link</a><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_unlink" tabindex="-1">Remove link</a></div><li><a href="javascript:;" title="Link" tabindex="-1" class="redactor_btn redactor_btn_link"></a></li><li><a href="javascript:;" title="Insert Image" tabindex="-1" class="redactor_btn redactor_btn_image"></a></li><li><a href="javascript:;" title="Insert File" tabindex="-1" class="redactor_btn redactor_btn_file"></a></li><li><a href="javascript:;" title="Insert Code" tabindex="-1" class="redactor_btn redactor_btn_code"></a></li></ul><div class="redactor_commentBox redactor_editor" contenteditable="true" dir="ltr"><p>​</p></div><textarea name="body" class="commentBox" data-type="comment" dir="ltr" style="display: none;"></textarea></div>
+            </div>
+            <div class="comment-form-buttons">
+                <span id="comment-{{ post.id }}-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count warn">10
+                        |60000</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg">characters left</span>
+                    <span class="comments-chars-exceeded-msg">characters exceeded</span>
+                </span>
+
+                <div class="comment-form-buttons-container">
+                    <input type="submit" class="btn btn-primary comment-submit" value="Submit">
+                    <input type="submit" class="btn comment-cancel" value="Cancel">
+                </div>
+                
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <input type="hidden" name="parent" value="6121">
+        <input type="hidden" name="visibility" value="full">
+
+        <div style="display: none" class="comment-form-extra-inputs"></div>
+    <div class="comments-form-attachments"><div></div><div></div></div></form>
+</div>
+	                <div class="comments-container" id="comments-container-6121" nodeid="6121">
+	                </div>
+                <script type="text/javascript">$(function () {
+                    setupComments($('#question-container-6121'), true, false, croles, "full", false)
+                });</script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $question = $("#question-container-6121");
+        var $replyLink = $question.find(".reply-link");
+        $replyLink.click(function (e) {
+            e.preventDefault();
+            $question.find(".add-comment-link").click();
+        });
+
+        $(".ajax-command").click(function () {
+            $('.dropdown-toggle').dropdown('toggle');
+        });
+    })
+</script>
+
+<div class="widget widget-nopad answer-list">
+    <div class="widget-header">
+        <h3><strong>2</strong> Replies</h3> · <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#answer-form">Add your reply</a>
+        <ul class="nav nav-pills sort">
+            <li class="sort-label">Sort:&nbsp;</li>
+            <li title="Votes" class="active"><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?sort=votes"><i class="icon-thumbs-up"></i></a></li>
+            <li title="Created"><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?sort=newest"><i class="icon-time"></i></a></li>
+            <li title="Oldest"><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?sort=oldest"><i class="icon-history"></i></a></li>
+        </ul>
+    </div>
+
+<div class="widget-content">
+                <div id="answer-container-6122" class="post-container answer-container clearfix               accepted-answer" nodeid="6122">
+            <div id="answer-6122" class="answer clearfix post">
+<div class="post-gravatar answer-gravatar">
+<a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html" style="display: inline-block; max-width: 48px;" rel="user" nodeid="50" data-hasqtip="2" aria-describedby="qtip-2"> <img class="gravatar " width="48" src="./Data Dragon api_ - Riot Developer Community_files/view.html" id="" alt="avatar image">
+</a></div>                <div class="labels"><span class="label label-success">Best Answer</span>
+                    
+                    
+                </div>
+                <p class="muted author-info">
+                    <strong>Answer</strong> by <a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html" rel="user" nodeid="50" data-hasqtip="3">Derpthemeus (NA)</a>                    
+ <span class="post-info muted">·
+12 hours ago                    </span></p>
+
+                <div class="answer-body">
+                <p></p><p>You can get the rune list from <a href="http://ddragon.leagueoflegends.com/cdn/8.16.1/data/en_US/runesReforged.json">http://ddragon.leagueoflegends.com/cdn/8.16.1/data/en_US/runesReforged.json</a>, and each rune's <code>icon</code> field is relative to <a href="https://ddragon.leagueoflegends.com/cdn/img/">https://ddragon.leagueoflegends.com/cdn/img/</a> (e.g. <a href="https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Domination/Electrocute/Electrocute.png">https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Domination/Electrocute/Electrocute.png</a>)</p>
+
+
+                </div>
+
+                <div class="comment-tools hidden"><span class="add-comment-link "><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Comment</a></span></div>
+<div class="control-bar" nodeid="6122">
+    <div id="post-6122-stats" class="post-stats" nodeid="6122">
+
+        <div id="post-6122-users-liked" class="hidden">
+        </div>
+        <div id="post-6122-votes-modal" class="post-votes-modal modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+            <div class="modal-header">
+                <h3 id="myModalLabel">People who like this</h3>
+            </div>
+            <div class="modal-body">
+                <ul class="clearfix unstyled">
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            if ($("#post-6122-users-liked").children().length > 0) {
+                $('#post-6122-score-wrapper').tooltip({
+                    html: true,
+                    title: $("#post-6122-users-liked").html(),
+                    trigger: 'hover'
+                })
+            }
+        </script>
+    </div>
+
+    <div class="post-controls" nodeid="6122">
+        <span id="post-6122-score-wrapper" class="post-score-wrapper count" data-toggle="modal" data-target="#post-6122-votes-modal">
+            <span id="post-6122-score" class="score"><i class="icon-thumbs-up"></i> 0</span>
+        </span>
+        ·
+                <a class="reply-link" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Add comment</a>
+
+    <a id="6122-show-comments-container" class="show-comments-container" commentcount="1"><i class="icon-comments"></i> Hide 1</a>
+
+        ·
+        <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+            ·
+            <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="acceptAnswer" id="post-6122-accept" class="accept-answer off on" title="Remove this answers accepted status" data-process="no"><i class="icon-ok"></i> Unaccept</a>
+        <a id="vote-down-button-6122" class="hidden" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="voteDown" title="Click to down vote"></a>
+    </div>
+</div>
+<div id="comment-6122-form-container" class="clearfix well comment-form-container">
+    <form id="comment-6122-form" action="https://discussion.developer.riotgames.com/comments/6122/add.json" method="POST" accept-charset="utf-8"><input type="hidden" name="TH_CSRF" value="i3126571153755400127">
+        <div class="comment-form-widgets-container">
+        
+            <div class="comment-form-textarea-container">
+                <div class="redactor_box"><ul class="redactor_toolbar" id="redactor_toolbar_2"><li><a href="javascript:;" title="Bold" tabindex="-1" class="redactor_btn redactor_btn_bold"></a></li><li><a href="javascript:;" title="Italic" tabindex="-1" class="redactor_btn redactor_btn_italic"></a></li><li><a href="javascript:;" title="• Unordered List" tabindex="-1" class="redactor_btn redactor_btn_unorderedlist"></a></li><li><a href="javascript:;" title="1. Ordered List" tabindex="-1" class="redactor_btn redactor_btn_orderedlist"></a></li><li></li><div class="redactor_dropdown redactor_dropdown_box_link" style="display: none;"><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_link" tabindex="-1">Insert link</a><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_unlink" tabindex="-1">Remove link</a></div><li><a href="javascript:;" title="Link" tabindex="-1" class="redactor_btn redactor_btn_link"></a></li><li><a href="javascript:;" title="Insert Image" tabindex="-1" class="redactor_btn redactor_btn_image"></a></li><li><a href="javascript:;" title="Insert File" tabindex="-1" class="redactor_btn redactor_btn_file"></a></li><li><a href="javascript:;" title="Insert Code" tabindex="-1" class="redactor_btn redactor_btn_code"></a></li></ul><div class="redactor_commentBox redactor_editor" contenteditable="true" dir="ltr"><p>​</p></div><textarea name="body" class="commentBox" data-type="comment" dir="ltr" style="display: none;"></textarea></div>
+            </div>
+            <div class="comment-form-buttons">
+                <span id="comment-{{ post.id }}-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count warn">10
+                        |60000</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg">characters left</span>
+                    <span class="comments-chars-exceeded-msg">characters exceeded</span>
+                </span>
+
+                <div class="comment-form-buttons-container">
+                    <input type="submit" class="btn btn-primary comment-submit" value="Submit">
+                    <input type="submit" class="btn comment-cancel" value="Cancel">
+                </div>
+                
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <input type="hidden" name="parent" value="6122">
+        <input type="hidden" name="visibility" value="full">
+
+        <div style="display: none" class="comment-form-extra-inputs"></div>
+    <div class="comments-form-attachments"><div></div><div></div></div></form>
+</div>
+              
+                <div class="comments-container" id="comments-container-6122" nodeid="6122" style="display: block;">
+        <span name="6124"></span>
+        <div class="comment nsc " id="comment-6124" activerev="9479" nodeid="6124" authorid="5661">
+            <div class="comment-content" nodeid="6124">
+                <div class="comment-header" nodeid="6124">
+<a href="https://discussion.developer.riotgames.com/users/5661/promness-euw.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="5661" data-hasqtip="4"> <img class="gravatar comment-user-gravatar" width="24" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource(2)" id="" alt="avatar image" title="ProMness (EUW)">
+</a><a href="https://discussion.developer.riotgames.com/users/5661/promness-euw.html" class="comment-user userinfo" rel="user" nodeid="5661" data-hasqtip="5">ProMness (EUW) </a>                    
+                    <span class="comment-age friendly-date" title="2018, Sep 02 at 08:28:17+0000">
+                        ·
+                        <a href="https://discussion.developer.riotgames.com/comments/6124/view.html">2 hours ago</a>
+                    </span>
+                    <span id="post-6124-score" class="comment-score">0</span>
+                    <div class="comment-info" id="comment-6124-info">
+
+                        <a id="vote-up-button-6124" command="voteUp" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="make-tooltip vote-up " title="Click to up vote">Like</a>
+
+                        <a id="vote-down-button-6124" command="voteDown" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="make-tooltip vote-down " title="Click to down vote"><i class=" icon-chevron-down"></i></a>
+
+
+                                        <a id="comment-6124-reply" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="comment-reply"><i class="icon-reply"></i> Reply</a>
+
+                        <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+
+
+
+                    </div>
+                </div>
+                <div id="comment-6124-left" class="comment-left">
+                    <div id="post-6124-score" class="comment-score"></div>
+                </div>
+                <div class="comment-text"><p></p><p>Some endpoints are documented on <a href="https://developer.riotgames.com/static-data.html">https://developer.riotgames.com/static-data.html</a> but you can also take a look at <a href="http://0.0.0.62/">http://62</a>.4.9.216:7000/cdn/ to see the folders structure.</p><p>Replace <a href="http://0.0.0.62/">http://62</a>.4.9.216:7000/cdn/ by <a href="https://ddragon.leagueoflegends.com/cdn">https://ddragon.leagueoflegends.com/cdn</a></p>
+
+</div>
+
+            </div>
+
+
+        </div>
+                </div>
+                
+                <script type="text/javascript">
+                    $(function () {
+                        setupComments($('#answer-container-6122'), true, false, croles, "full", false)
+                    });
+                    $(document).ready(function () {
+                        var $answer = $("#answer-container-6122");
+                        var $replyLink = $answer.find(".reply-link");
+                        $replyLink.click(function (e) {
+                            e.preventDefault();
+                            $answer.find(".add-comment-link").click();
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+                <div id="answer-container-6129" class="post-container answer-container clearfix 
+            " nodeid="6129">
+            <div id="answer-6129" class="answer clearfix post">
+<div class="post-gravatar answer-gravatar">
+<a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw.html" style="display: inline-block; max-width: 48px;" rel="user" nodeid="261" data-hasqtip="6"> <img class="gravatar " width="48" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource(1)" id="" alt="avatar image" title="Picklè Rick (EUW)">
+</a></div>                    <div class="post-tools" nodeid="6129">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#"><i class="icon-cog"></i></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li class="item">
+                                    <a rel="nofollow" class="node-tools-edit-link" href="https://discussion.developer.riotgames.com/answers/6129/edit.html"><i class="icon-edit"></i> Edit</a>
+                                </li>
+
+                                <li class="item">
+                                    <a rel="nofollow" class="node-tools-revisions-link" href="https://discussion.developer.riotgames.com/revisions/6129.html">See revisions</a>
+                                </li>
+
+
+                                <li class="item">
+                                    <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="ajax-command convert-to-comment" command="convertToComment">Convert to Comment</a>
+                                </li>
+
+
+
+                                <li class="item">
+                                    <a title="" class="ajax-command" command="deletePost" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Delete</a>
+                                </li>
+
+                                <li class="item">
+                                    <a class="ajax-command" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="wikifyPost">Wikify</a>
+                                </li>
+                        </ul>
+                    </div>
+                <div class="labels">
+                    
+                    
+                </div>
+                <p class="muted author-info">
+                    <strong>Answer</strong> by <a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw.html" rel="user" nodeid="261" data-hasqtip="7">Picklè Rick (EUW)</a>                    
+ <span class="post-info muted">·
+0 secs ago                    </span></p>
+
+                <div class="answer-body">
+                <p></p>
+<p>Thank you both, I can't upvote until I have at least one reputation xD but I appreciate your help :)</p> 
+<p></p>
+                </div>
+
+                <div class="comment-tools hidden"><span class="add-comment-link "><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Comment</a></span></div>
+<div class="control-bar" nodeid="6129">
+    <div id="post-6129-stats" class="post-stats" nodeid="6129">
+
+        <div id="post-6129-users-liked" class="hidden">
+        </div>
+        <div id="post-6129-votes-modal" class="post-votes-modal modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+            <div class="modal-header">
+                <h3 id="myModalLabel">People who like this</h3>
+            </div>
+            <div class="modal-body">
+                <ul class="clearfix unstyled">
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            if ($("#post-6129-users-liked").children().length > 0) {
+                $('#post-6129-score-wrapper').tooltip({
+                    html: true,
+                    title: $("#post-6129-users-liked").html(),
+                    trigger: 'hover'
+                })
+            }
+        </script>
+    </div>
+
+    <div class="post-controls" nodeid="6129">
+        <span id="post-6129-score-wrapper" class="post-score-wrapper count" data-toggle="modal" data-target="#post-6129-votes-modal">
+            <span id="post-6129-score" class="score"><i class="icon-thumbs-up"></i> 0</span>
+        </span>
+        ·
+                <a class="reply-link" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#">Add comment</a>
+
+    <a id="6129-show-comments-container" class="show-comments-container" commentcount="0" style="display: none;"><i class="icon-comments"></i> Show 0</a>
+
+        ·
+        <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class="ajax-command" command="share" title="Share a link to this answer">Share</a>
+            ·
+            <a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="acceptAnswer" id="post-6129-accept" class="accept-answer off" title="Accept this answer as correct"><i class="icon-ok"></i> Accept</a>
+        <a id="vote-down-button-6129" class="hidden" href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" command="voteDown" title="Click to down vote"></a>
+    </div>
+</div>
+<div id="comment-6129-form-container" class="clearfix well comment-form-container">
+    <form id="comment-6129-form" action="https://discussion.developer.riotgames.com/comments/6129/add.json" method="POST" accept-charset="utf-8"><input type="hidden" name="TH_CSRF" value="i3126571153755400127">
+        <div class="comment-form-widgets-container">
+        
+            <div class="comment-form-textarea-container">
+                <div class="redactor_box"><ul class="redactor_toolbar" id="redactor_toolbar_3"><li><a href="javascript:;" title="Bold" tabindex="-1" class="redactor_btn redactor_btn_bold"></a></li><li><a href="javascript:;" title="Italic" tabindex="-1" class="redactor_btn redactor_btn_italic"></a></li><li><a href="javascript:;" title="• Unordered List" tabindex="-1" class="redactor_btn redactor_btn_unorderedlist"></a></li><li><a href="javascript:;" title="1. Ordered List" tabindex="-1" class="redactor_btn redactor_btn_orderedlist"></a></li><li></li><div class="redactor_dropdown redactor_dropdown_box_link" style="display: none;"><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_link" tabindex="-1">Insert link</a><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_unlink" tabindex="-1">Remove link</a></div><li><a href="javascript:;" title="Link" tabindex="-1" class="redactor_btn redactor_btn_link"></a></li><li><a href="javascript:;" title="Insert Image" tabindex="-1" class="redactor_btn redactor_btn_image"></a></li><li><a href="javascript:;" title="Insert File" tabindex="-1" class="redactor_btn redactor_btn_file"></a></li><li><a href="javascript:;" title="Insert Code" tabindex="-1" class="redactor_btn redactor_btn_code"></a></li></ul><div class="redactor_commentBox redactor_editor" contenteditable="true" dir="ltr"><p>​</p></div><textarea name="body" class="commentBox" data-type="comment" dir="ltr" style="display: none;"></textarea></div>
+            </div>
+            <div class="comment-form-buttons">
+                <span id="comment-{{ post.id }}-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count warn">10
+                        |60000</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg">characters left</span>
+                    <span class="comments-chars-exceeded-msg">characters exceeded</span>
+                </span>
+
+                <div class="comment-form-buttons-container">
+                    <input type="submit" class="btn btn-primary comment-submit" value="Submit">
+                    <input type="submit" class="btn comment-cancel" value="Cancel">
+                </div>
+                
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <input type="hidden" name="parent" value="6129">
+        <input type="hidden" name="visibility" value="full">
+
+        <div style="display: none" class="comment-form-extra-inputs"></div>
+    <div class="comments-form-attachments"><div></div><div></div></div></form>
+</div>
+              
+                <div class="comments-container" id="comments-container-6129" nodeid="6129">
+                </div>
+                
+                <script type="text/javascript">
+                    $(function () {
+                        setupComments($('#answer-container-6129'), true, false, croles, "full", false)
+                    });
+                    $(document).ready(function () {
+                        var $answer = $("#answer-container-6129");
+                        var $replyLink = $answer.find(".reply-link");
+                        $replyLink.click(function (e) {
+                            e.preventDefault();
+                            $answer.find(".add-comment-link").click();
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+</div>
+</div>
+
+
+<style type="text/css">
+    #notifyFollowers{
+        margin: 0px;
+    }
+</style>
+<div class="widget answer-form-widget">
+    <div class="widget-header">
+        <i class="icon-pencil"></i>
+
+        <h3>Your answer</h3>
+    </div>
+    <div class="widget-content">
+
+        <div class="row-fluid">
+            <div class="span1 hidden-phone">
+    		  <img class="gravatar " width="44" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource(3)" id="" alt="avatar image" title="Picklè Rick (EUW)">
+
+
+
+            </div>
+
+            <div class="span11">
+                <form id="answer-form" data-drafttype="an answer" data-draftkey="answer-6121" action="https://discussion.developer.riotgames.com/answers/6121/post.html" method="POST"><input type="hidden" name="TH_CSRF" value="i3126571153755400127">
+
+
+                    <fieldset>
+                        <div class="control-group">
+                            <div class="controls">
+                                <div class="redactor_box"><ul class="redactor_toolbar" id="redactor_toolbar_0"><li><a href="javascript:;" title="Bold" tabindex="-1" class="redactor_btn redactor_btn_bold"></a></li><li><a href="javascript:;" title="Italic" tabindex="-1" class="redactor_btn redactor_btn_italic"></a></li><li><a href="javascript:;" title="• Unordered List" tabindex="-1" class="redactor_btn redactor_btn_unorderedlist"></a></li><li><a href="javascript:;" title="1. Ordered List" tabindex="-1" class="redactor_btn redactor_btn_orderedlist"></a></li><li></li><div class="redactor_dropdown redactor_dropdown_box_link" style="display: none;"><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_link" tabindex="-1">Insert link</a><a href="https://discussion.developer.riotgames.com/questions/6121/data-dragon-api.html?childToView=6129#" class=" redactor_dropdown_unlink" tabindex="-1">Remove link</a></div><li><a href="javascript:;" title="Link" tabindex="-1" class="redactor_btn redactor_btn_link"></a></li><li><a href="javascript:;" title="Insert Image" tabindex="-1" class="redactor_btn redactor_btn_image"></a></li><li><a href="javascript:;" title="Insert File" tabindex="-1" class="redactor_btn redactor_btn_file"></a></li><li><a href="javascript:;" title="Insert Code" tabindex="-1" class="redactor_btn redactor_btn_code"></a></li></ul><div class="redactor_redactor redactor_editor" contenteditable="true" dir="ltr"><inline class="redactor_placeholder" data-redactor="verified" contenteditable="false">Fill in the details...</inline></div><textarea class="redactor" data-type="answer" id="body" name="body" rows="10" placeholder="Fill in the details..." dir="ltr" style="display: none;"></textarea></div>
+                                <span class="help-inline">Hint: You can notify a user about this post by typing @username</span>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+
+<script type="text/javascript">
+    var attachmentsEnabled = true;
+    pageContext.url.authorizeAttachmentsUrl = "/authorizeAttachment.json";
+    pageContext.authorizeUploadContext = {
+        type: 'answer'
+    };
+</script>
+
+<div id="main-attachments-container" class="message">
+    <p>
+        <strong><label>Attachments:</label></strong>
+Up to 2 attachments (including images) can be used with a maximum of 524.3 kB each and 1.0 MB total.    </p>
+
+    <div id="img-attachments-container"></div>
+    <div id="attachments-container"></div>
+</div>
+
+
+                    <div class="form-actions">
+                        <input type="submit" class="btn btn-primary" value="Post Answer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+        commands.likeComment.setMsg('title.on', "click to cancel");
+    commands.likeComment.setMsg('title.off', "I like this comment");
+
+    commands.likeComment.setUrl('click.on', "/commands/%25ID%25/cancelvote.json");
+    commands.likeComment.setUrl('click.off', "/commands/%25ID%25/voteup.json");
+
+    commands.deleteComment.setUrl('click.off', "/commands/%25ID%25/delete.json");
+
+    commands.voteUp.urls = commands.likeComment.urls;
+
+    commands.voteUp.setMsg('title.on',  "Click to cancel vote");
+    commands.voteUp.setMsg('title.off',  "Click to up vote");
+
+    commands.voteDown.setUrl('click.on', commands.voteUp.urls['click.on']);
+    commands.voteDown.setUrl('click.off', "/commands/%25ID%25/votedown.json");
+
+    commands.voteDown.setMsg('title.on',  commands.voteUp.messages['title.on']);
+    commands.voteDown.setMsg('title.off', "Click to down vote");
+
+    commands.acceptAnswer.setUrl('click.on', "/commands/%25ID%25/unaccept.json");
+    commands.acceptAnswer.setUrl('click.off', "/commands/%25ID%25/accept.json");
+
+    commands.markFavorite.setMsg('title.on', "Remove your favorite mark from this question");
+    commands.markFavorite.setMsg('title.off', "Mark this question as favorite");
+
+    commands.markFavorite.setUrl('click.on', "/commands/%25ID%25/unmarkfavorite.json");
+    commands.markFavorite.setUrl('click.off', "/commands/%25ID%25/markfavorite.json");
+
+    commands.reportPost.setMsg('title.on', "Cancel your report");
+    commands.reportPost.setMsg('title.off', "Report as offensive (i.e containing spam, advertising, malicious text, etc.)");
+    commands.reportPost.setMsg('link.on', "Cancel Report");
+    commands.reportPost.setMsg('link.off', "Report");
+    commands.reportPost.setMsg('description', "Please select a reason below or use the text box to input your own reason.");
+
+    commands.reportPost.setMsg('reportHints', [
+        "Spam",
+        "Advertising",
+        "Offensive, Abusive, or Inappropriate",
+        "Content violates terms of use",
+        "Copyright Violation",
+        "Misleading",
+        "Someone is not being nice",
+        "Not relevant/off-topic",
+        "Other"]);
+
+
+    commands.reportPost.setUrl('click.on', "/commands/%25ID%25/cancelReport.json");
+    commands.reportPost.setUrl('click.off', "/commands/%25ID%25/report.json");
+
+    commands.publishPost.setUrl('click', "/commands/%25ID%25/publish.json");
+    commands.publishPost.setMsg('linkText', "Publish");
+
+    commands.sendToMod.setUrl('click', "/commands/%25ID%25/sendToMod.json");
+    commands.sendToMod.setMsg('linkText', "Send to Moderation");
+
+    commands.redirectQuestion.setMsg('linkText.off', "Redirect");
+    commands.redirectQuestion.setMsg('linkText.on', "Cancel Redirect");
+    commands.redirectQuestion.setMsg('header', "Redirect Into An Existing Question");
+    commands.redirectQuestion.setMsg('search', "Search for a question:");
+    commands.redirectQuestion.setMsg('related', "Pick a related question:");
+
+    commands.redirectQuestion.setUrl('click.off', "/commands/%25ID%25/redirect.json");
+    commands.redirectQuestion.setUrl('click.on', "/commands/%25ID%25/unredirect.json");
+    commands.redirectQuestion.setUrl('search', "/search.json");
+
+    commands.deletePost.urls = commands.deleteComment.urls;
+    commands.deletePost.setUrl('click.on', "/commands/%25ID%25/undelete.json");
+
+    commands.deletePost.setMsg('linkText.off', "Delete");
+    commands.deletePost.setMsg('linkText.on', "Undelete");
+
+    commands.closeQuestion.setMsg('linkText.on', "Reopen");
+    commands.closeQuestion.setMsg('linkText.off', "Close");
+    commands.closeQuestion.setMsg('description', "Please select a reason below or use the text box to input your own reason.");
+    commands.closeQuestion.setMsg('lock', "also lock comments");
+
+    commands.closeQuestion.setMsg('reportHints', [
+        "Duplicate Question",
+        "Question is off-topic or not relevant",
+        "Too subjective and argumentative",
+        "The question is answered, right answer was accepted",
+        "Problem is not reproducible or outdated",
+        "Other"]);
+
+    commands.closeQuestion.setUrl('click.on', "/commands/%25ID%25/reopen.json");
+    commands.closeQuestion.setUrl('click.off', "/commands/%25ID%25/close.json");
+
+    commands.lockPost.setMsg('linkText.on', "Unlock Comments");
+    commands.lockPost.setMsg('linkText.off', "Lock Comments");
+    commands.lockPost.setMsg('description', "Please select a reason below or use the text box to input your own reason.");
+
+    commands.lockPost.setMsg('reportHints', [
+        "Discussion has gone too far",
+        "No more thank you or +1 comments",
+        "Other"]);
+
+    commands.lockPost.setUrl('click.on', "/commands/%25ID%25/unlock.json");
+    commands.lockPost.setUrl('click.off', "/commands/%25ID%25/lock.json");
+
+    commands.wikifyPost.setMsg('linkText.off', "Wikify");
+    commands.wikifyPost.setMsg('linkText.on', "Unwikify");
+
+    commands.wikifyPost.setUrl('click.on', "/commands/%25ID%25/cancelwiki.json");
+    commands.wikifyPost.setUrl('click.off', "/commands/%25ID%25/wikify.json");
+
+    commands.convertToComment.setUrl('click', "/commands/%25ID%25/convertToComment.json");
+    commands.convertToComment.setUrl('candidates', "/commands/%25ID%25/convertToComment/possibleParents.json");
+    commands.convertToComment.setMsg('linkText', "Convert to Comment");
+    commands.convertToComment.setMsg('description', "Place the comment under:");
+    commands.convertToComment.setMsg('question', "Question");
+    commands.convertToComment.setMsg('answer', "Answer");
+
+    commands.convertToAnswer.setUrl('click', "/commands/%25ID%25/convertToAnswer.json");
+
+    commands.moveToSpace.setUrl('click', "/commands/%25ID%25/moveToSpace.json");
+    commands.moveToSpace.setUrl('candidates', "/spaces/%25ID%25/moveToCandidates.json");
+    commands.moveToSpace.setMsg('linkText', "Move");
+    commands.moveToSpace.setMsg('description', "Select the space to move the question to");
+
+	commands.switchPrivacy.setMsg('linkText.off', "Make private");
+    commands.switchPrivacy.setMsg('linkText.on', "Make public");
+
+    commands.switchPrivacy.setUrl('click.on', "/commands/%25ID%25/makePublic.json");
+    commands.switchPrivacy.setUrl('click.off', "/commands/%25ID%25/makePrivate.json");
+
+    commands.giveReputation.setUrl('click', "/commands/giveReputation.json");
+    commands.giveReputation.setMsg('answerIntro', "If you like this answer you can reward the user with reputation points.");
+    commands.giveReputation.setMsg('questionIntro', "If you like this question you can reward the user with reputation points.");
+    commands.giveReputation.setMsg('description', "Use the input field to choose the number of points you would like to give.");
+    commands.giveReputation.setMsg('points', "Points:");
+
+    commands.share.setUrl("answer-url", "https://discussion.developer.riotgames.com/answers/%25ID%25/view.html");
+    commands.share.setUrl("comment-url", "https://discussion.developer.riotgames.com/comments/%25ID%25/view.html");
+    commands.share.setMsg("description", "Copy and paste the URL below to share a direct link to this answer.");
+    commands.share.setMsg("comment-description", "Copy and paste the URL below to share a direct link to this comment.");
+    commands.share.setMsg("title", "Share a link to this answer");
+    commands.share.setMsg("comment-title", "Share a link to this comment");
+
+    pageContext.i18n.seeRevisions = 'see revisions';
+    pageContext.url.seeRevisions = '/revisions/%25ID%25.html';
+    pageContext.url.questionEdit = '/questions/%25ID%25/edit.html';
+    pageContext.url.answerEdit = '/answers/%25ID%25/edit.html';
+    pageContext.url.commentEdit = '/comments/%25ID%25/edit.html';
+
+    commands.giveReputation.setMsg('currentPointsLabel', "points remaining");
+</script>
+<script type="text/x-jquery-tmpl" id="give-reputation-dialog">
+        <p style="font-size:14px;">{{if isAnswer }} ${answerIntro} {{/if}} {{if !isAnswer }} ${questionIntro} {{/if}}</p>
+        <p style="font-size:14px;">${description}</p>
+        <form >
+            <div style="font-size:14px;">
+                ${points} <input class="input-mini" style="margin-top: 10px;" type="text" name="points" /> (${currentUserPoints} ${currentPointsLabel})
+            </div>
+        </form>
+        <p style="color:red" id="invaliderror"></p>
+</script>
+<script type="text/x-jquery-tmpl" id="flag-or-close-post-dialog">
+
+    <p>${description}</p>
+
+    <form style="with: 250px;margin-bottom:10px">
+      <p>  <select name="sample" class="prompt-examples" style="width: 100%;">
+            {{each(i, hint) reportHints }}
+            <option value="${hint}">${hint}</option>
+            {{/each}}
+        </select>
+
+          </p>
+        <p><textarea name="prompt" style="width: 100%; padding: 0;"></textarea>
+        {{if canLock }}
+        <input type="checkbox" name="lock" value="true" /> ${lock}
+        {{/if}}
+        </p>
+    </form>
+
+</script>
+<script type="text/x-jquery-tmpl" id="convert-to-comment-dialog">
+    ${description}
+    <form>
+        <select name="targetParent" class="prompt-examples">
+            {{each(p, target) parentCandidates }}
+            <option value="${target.id}">${target.summary}</option>
+            {{/each}}
+        </select>
+    </form>
+</script>
+<script type="text/x-jquery-tmpl" id="move-to-space-dialog">
+    ${description}
+    <form>
+        <select name="targetSpace" class="prompt-examples">
+            {{each(p, target) spaces }}
+            <option value="${target.id}">${target.name}</option>
+            {{/each}}
+        </select>
+    </form>
+</script>
+
+<script type="text/x-jquery-tmpl" id="share-dialog">
+    <p>${description}</p>
+    <input type="text" class="input-block-level" value="${shareURL}"/>
+</script>
+
+<script type="text/x-jquery-tmpl" id="advanced-visibility-dialog">
+    <form>
+        <div>
+            {{if (perm.ag || perm.og) }}
+                <h4>${msg.selectGroups}</h4>
+                {{if groupsCheck }}
+                    {{each(i, group) groups }}
+                        <p><input type="checkbox" name="recipients" value="${group.id}" /> ${group.name}</p>
+                    {{/each}}
+                {{else}}
+                    <input type="text" class="comment-recipients-groups-autocomplete" />
+                    <div class="comment-recipients-groups-container" ></div>
+                {{/if}}
+            {{/if}}
+            {{if (perm.op || perm.mod || perm.as) }}
+                <h4>${msg.selectOther}</h4>
+                {{if perm.op }}
+                    <input type="checkbox" name="specialRecipients" value="op" /> ${msg.selectOriginalPoster}<br />
+                {{/if}}
+                {{if perm.m }}
+                    <input type="checkbox" name="specialRecipients" value="mod" /> ${msg.selectModerators}<br />
+                {{/if}}
+                {{if perm.as }}
+                    <input type="checkbox" name="specialRecipients" value="asg" /> ${msg.selectAssignees}<br />
+                {{/if}}
+            {{/if}}
+        </div>
+    </form>
+</script>
+<script type="text/x-jquery-tmpl" id="new-comment-skeleton">
+<div class="comment nsc" id="comment-${comment.id}" activerev="${comment.activeRevisionId}" nodeid="${comment.id}"
+     authorid="${comment.author.id}">
+<div class="comment-content" nodeid="${comment.id}">
+<div class="comment-header">
+    <a class="comment-user-gravatar" nodeId="${author.id}" rel="user" href="${author.url}"><img class="gravatar"
+                                                                                                src="${author.avatar}"
+                                                                                                style="width:${comment.depth > 0 ? 24 : 36};"></a>
+    <a class="comment-user userinfo" nodeId="${author.id}" rel="user" href="${author.url}">${(pageContext.userRealName && comment.author.realname)? comment.author.realname : comment.author.username}</a>
+    {{if comment.parentId != comment.originalParentId}}<span class="comment-parent"><i class="icon-share-alt"></i> ${(pageContext.userRealName && comment.parentAuthor.realname)?comment.parentAuthor.realname : comment.parentAuthor.username}</span>
+    {{/if}}
+    <span class="comment-age friendly-date" title="${creationDateFormatted}">
+                &middot; ${commentDateFriendly}
+            </span>
+<div class="comment-info btn-broup" id="comment-${comment.id}-info">
+    <span id="post-${comment.id}-score" class="comment-score">${comment.score}</span>
+        <a id="vote-up-button-${comment.id}" command="voteUp"  href="#" class="make-tooltip"
+           title="Vote comment up">Like </a>
+        <a id="vote-down-button-${comment.id}" command="voteDown" href="#" class="make-tooltip"
+         title="Vote comment up"><i class=" icon-chevron-down"></i></a>
+
+        {{if crel.canComment }}
+            <a id="comment-${comment.id}-reply" href="#" class="comment-reply"><i
+                class="icon-reply"></i> Reply</a>
+        {{/if}}
+
+        <a href="#" class="ajax-command"
+                           command="share">Share</a>
+
+        {{if (crel.canReport || crel.canCancelReport) || crel.canEdit || crel.canDelete || crel.canConvertToAnswer }}
+
+        <div class="dropdown" style="display:inline">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class=" icon-cog"></i> More...</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                {{if crel.canReport || crel.canCancelReport }}
+                    <li><a rel="nofollow" class="ajax-coxmmand {{if crel.reported }} on{{/if}}" href="#"
+                           command="reportPost">
+
+
+                        {{if !crel.reported }}123Flag{{else}}label.report.cancel{{/if}}
+                        {{if crel.canViewReports }}(${comment.reportCount}){{/if}}
+                    </a></li>
+                {{/if}}
+                {{if crel.canViewRevisions }}
+                    <li class="item">
+                        <a rel="nofollow" class="node-tools-revisions-link"
+                           href="${revisionUrl}">See revisions</a>
+                    </li>
+
+                {{/if}}
+                {{if crel.canEdit }}
+                    <li><a id="comment-${comment.id}-edit" href="#"
+                           class="comment-edit">Edit</a>
+                    </li>
+                {{/if}}
+                {{if crel.canDelete }}
+                    <li><a id="comment-${comment.id}-delete" href="#" class="comment-delete"
+                           command="deleteComment">Delete </a>
+                    </li>
+                {{/if}}
+                {{if crel.canConvertToAnswer }}
+                    <li><a href="#" class="convert-to-answer"
+                           command="convertToAnswer">Convert to answer</a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+
+        {{/if}}
+
+</div>
+</div>
+    <div id="comment-${comment.id}-left" class="comment-left">
+        <div id="post-${comment.id}-score" class="comment-score"></div>
+    </div>
+    <div class="comment-text">{{html comment.bodyAsHTML}}</div>
+</div>
+</div>
+</script>
+<script type="text/x-jquery-tmpl" id="flag-or-close-post-dialog">
+    ${description}
+    <select name="sample" class="prompt-examples">
+        {{each(i, hint) reportHints }}
+        <option value="${hint}">${hint}</option>
+        {{/each}}
+    </select>
+    <textarea name="prompt">${reportHints[0]}</textarea>
+</script><script type="text/x-jquery-tmpl" id="redirect-question-dialog">
+    <h4>Data Dragon api?</h4>
+    <label class="control-label" style="margin: 18px 0 22px;" for="searchQuestion">into:</label>
+    <div class="controls">
+        <div class="SearchAnswers">
+            <input type="text" style="background-image: none;" class="textInput input-block-level" id="searchQuestion" placeholder="Search for a question" onclick="if(this.value=='Find Question'){this.value = ''}" />
+            <div id="results"></div>
+            <form class="hidden">
+                <input type="hidden" name="to" />
+            </form>
+        </div>
+    </div>
+</script><script type="text/x-jquery-tmpl" id="switch-privacy-dialog">
+Are you sure you want to make this post private? Only you and users with special permissions will be able to see it.</script><script type="text/x-jquery-tmpl" id="post-wiki-mark">
+    <div class="community-wiki">
+        <div class="wiki-icon">&nbsp;</div>
+        <div class="wiki-text">
+            {{if isAnswer }}
+        This answer is marked "community wiki".
+            {{else}}
+        This question is marked "community wiki".
+            {{/if}}
+
+            {{if canEdit }}
+            <br />Feel free to <a href="${editUrl}">edit it</a>.
+            {{/if}}
+        </div>
+    </div>
+</script><script type="text/x-jquery-tmpl" id="user-with-follow">
+    <li class="userWithFollow">
+        <a class="gravatar-link" href="${user.profileUrl}"><img class="gravatar" src="${user.avatarUrl}"></a>
+        <div class="info">
+            <a href="${user.profileUrl}" class="username">${user.displayName}</a>
+        </div>
+        {{if user.id != currentUser.id}}
+        {{if $.grep(follows, function(follow){ return follow.followed.id == user.id }).length < 1}}
+        <a class="followLink btn" command="follow" data-node-type="user" nodeId="${user.id}"></a>
+        {{else}}
+        <a class="followLink on btn" command="follow" data-node-type="user" nodeId="${user.id}" ></a>
+        {{/if}}
+        {{/if}}
+    </li>
+</script>
+
+
+
+                                </div>
+                                <div class="span4 sidebarTwo">
+        <div>
+            
+
+<div class="widget question-follow-widget">
+    <div class="widget-header">
+        <i class="icon-arrow-right"></i>
+	                <a href="https://discussion.developer.riotgames.com/unfollow/6121/question.html" class="btn btn-danger pull-right widget-action">
+	                    <i class=" icon-remove-circle"></i>
+	                    Unfollow</a>
+        <h3>Follow this Question</h3>
+    </div>
+    <div class="widget-content">
+        <p>
+            <a class="btn btn-small" title="Subscribe to Answers" href="https://discussion.developer.riotgames.com/feed/6121/answers.rss">
+                <i class="icon-rss"></i>
+
+                Answers </a>
+
+
+            <a class="btn btn-small" title="Subscribe to Comments and Answers" href="https://discussion.developer.riotgames.com/feed/6121/comments-and-answers.rss">
+                <i class="icon-rss"></i>
+Answers and Comments            </a>
+        </p>
+
+        <p>
+<strong>6</strong> People are following this question.
+        </p><div class="followers">
+
+<a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="261" data-hasqtip="8"> <img class="gravatar " width="24" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource(2)" id="" alt="avatar image" title="Picklè Rick (EUW)">
+</a><a href="https://discussion.developer.riotgames.com/users/2527/monkeydieluffy1-euw.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="2527" data-hasqtip="9"> <img class="gravatar " width="24" src="./Data Dragon api_ - Riot Developer Community_files/view(1).html" id="" alt="avatar image" title="DoctaEnkoda (EUW)">
+</a><a href="https://discussion.developer.riotgames.com/users/20598/beardfather-euw.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="20598" data-hasqtip="10"> <img class="gravatar " width="24" src="./Data Dragon api_ - Riot Developer Community_files/view(2).html" id="" alt="avatar image" title="BeardFather (EUW)">
+</a><a href="https://discussion.developer.riotgames.com/users/5661/promness-euw.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="5661" data-hasqtip="11"> <img class="gravatar " width="24" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource(2)" id="" alt="avatar image" title="ProMness (EUW)">
+</a><a href="https://discussion.developer.riotgames.com/users/24335/%D1%82%D0%BE%D0%BC%D0%BE%D1%8D-%D0%B1%D0%B5%D0%BB%D1%8B%D0%B8-%D0%BB%D0%B8%D1%81-ru.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="24335" data-hasqtip="12"> <img class="gravatar " width="24" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource(2)" id="" alt="avatar image" title="Томоэ Белый Лис (RU)">
+</a><a href="https://discussion.developer.riotgames.com/users/58/tifu-euw.html" style="display: inline-block; max-width: 24px;" rel="user" nodeid="58" data-hasqtip="13"> <img class="gravatar " width="24" src="./Data Dragon api_ - Riot Developer Community_files/2bad593fb55ae2ba2ebf335ea34c3e6d" id="" alt="avatar image" title="TiFu (EUW)">
+</a>        </div>
+        <p></p>
+    </div>
+
+</div>
+
+
+
+
+
+        </div>
+        <div>
+            
+
+
+<div class="widget">
+    <div class="widget-header">
+        <i class="icon-list-alt"></i>
+        <h3>Related Questions</h3>
+    </div>
+    <div class="widget-content">
+                <p><a href="https://discussion.developer.riotgames.com/questions/5599/reforged-rune-paths-ddragon-cdn.html">Reforged rune paths ddragon CDN</a>
+                1
+Answer
+                </p>
+
+                <p><a href="https://discussion.developer.riotgames.com/questions/284/seeding-champion-data-in-postgres-database.html">Seeding champion data in postgres database</a>
+                1
+Answer
+                </p>
+
+                <p><a href="https://discussion.developer.riotgames.com/questions/2155/data-dragon-what-are-the-js-files-for-dragonheadjs.html">Data Dragon: what are the js files for? (dragonhead.js/dragonmagic.js) ?</a>
+                0
+Answers
+                </p>
+
+                <p><a href="https://discussion.developer.riotgames.com/questions/902/spell-type.html">Spell type?</a>
+                1
+Answer
+                </p>
+
+                <p><a href="https://discussion.developer.riotgames.com/questions/6113/i-am-getting-an-error-accessing-static-data.html">I am getting an error accessing static data</a>
+                0
+Answers
+                </p>
+
+    </div>
+</div>
+
+
+        </div>
+        <div>
+            
+        </div>
+
+                                </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <div class="push" style="height: 169px;"></div>
+</div>
+
+
+<section id="bottom">
+    <div class="extra">
+
+        <div class="extra-inner">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="span12 text-center">
+                        <ul class="inline">
+                            <li><a href="https://discussion.developer.riotgames.com/page/about.html">About</a></li>
+                            <li><a href="https://discussion.developer.riotgames.com/page/faq.html">FAQ</a></li>
+                            <li><a href="https://discussion.developer.riotgames.com/page/privacy.html">Privacy</a></li>
+                        </ul>
+                        Copyright © 2010-16 <a href="http://dzone.com/corporate/about">DZone, Inc.</a> - All rights reserved.
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span12 text-center">
+                        <p class="footer-copyright" style="font-size: 85%">
+                            <a href="http://www.dzonesoftware.com/products/answerhub-question-answer-software?utm_source=appfooter&amp;utm_medium=web&amp;utm_campaign=Application%2BReferral%2B" style="color: #fff;"><img src="./Data Dragon api_ - Riot Developer Community_files/ah-logo-white.png">
+                            <br>Enterprise<br>Social Q&amp;A</a>
+                        </p>
+                    </div>
+
+                </div> <!-- /row -->
+
+            </div> <!-- /container -->
+
+        </div> <!-- /extra-inner -->
+
+    </div> <!-- /extra -->
+</section>
+
+<a class="dummy-navbar-link hidden"></a>
+<div class="off-canvas-nav sidr left" id="sidr" style="display:none;">
+<ul class="nav nav-list">
+    <li class="nav-header">
+    		  <img class="gravatar " width="20" src="./Data Dragon api_ - Riot Developer Community_files/saved_resource" id="" alt="avatar image" title="Picklè Rick (EUW)">
+
+        Picklè Rick (EUW)</li>
+    <li>
+        <a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw.html">Profile</a>
+    </li>
+    <li>
+        <a href="https://discussion.developer.riotgames.com/users/261/tang0-with-reng0-euw/preferences.html">My Preferences</a>
+    </li>
+
+
+    <li class="nav-header">Create</li>
+    <li>
+        <a href="https://discussion.developer.riotgames.com/questions/ask.html?space=8">Ask a question</a>
+    </li>
+    <li>
+        <a href="https://discussion.developer.riotgames.com/articles/create.html?space=8">Create an article</a>
+    </li>
+
+
+    <li class="nav-header">Spaces</li>
+
+
+
+            
+                        <li>
+                <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/11/index.html">Announcements</a>
+            </li><li>
+                <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/9/index.html">Discussions</a>
+            </li><li class="active">
+                <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/8/index.html">Help</a>
+            </li><li>
+                <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/24/index.html">Guides and Knowledge</a>
+            </li><li>
+                <a class="main-nav" href="https://discussion.developer.riotgames.com/spaces/21/index.html">Feedback</a>
+
+
+
+        </li><li class="nav-header">Explore</li>
+        <li>
+            <a href="https://discussion.developer.riotgames.com/topics.html">Topics</a>
+        </li>
+                <li>
+                    <a href="https://discussion.developer.riotgames.com/questions/index.html">Questions</a>
+                </li>
+                <li>
+                    <a href="https://discussion.developer.riotgames.com/content/kbentry/list.html">Articles</a>
+                </li>
+
+            <li>
+                <a href="https://discussion.developer.riotgames.com/users/index.html">Users</a>
+            </li>
+        
+
+            <li>
+                <a href="https://discussion.developer.riotgames.com/badge/types.html">Badges</a>
+            </li>
+        <li class="divider"></li>
+        <li><a href="https://discussion.developer.riotgames.com/users/logout.html">Logout</a></li>
+</ul>
+</div><script type="text/x-jquery-tmpl" id="user-popover">
+    <div class="user-popover ahub-popover">
+        <div class="ahub-popover-content">
+            <div class="header">
+                <div class="popover-gravatar">
+                    <a href="${profileUser.profileUrl}">
+                        <img id="" class="gravatar " height="84" width="84" title="${profileUser.displayName}" alt="avatar image"  src="${pageContext.url.userAvatar.replace("%7BuserId%7D",profileUser.id)}?s=84">
+                    </a>
+                </div>
+                <p class="nameAndTagline">
+                    <a href="${profileUser.profileUrl}" class="username">${profileUser.displayName}</a><br>
+                    {{if profileUser.tagline}}<span class="tagline">${profileUser.tagline}</span>{{else}}{{if profileUser.location}}<span class="location">${profileUser.location}</span>{{/if}}{{/if}}
+                </p>
+                {{if currentUser.id != profileUser.id}}<a class="btn btn-follow {{if currentUserFollowing}}on btn-info{{/if}}" command="follow" data-node-type="user" nodeId="${profileUser.id}"></a>{{/if}}
+            </div>
+            <div class="body">
+                <div class="stats-wrapper">
+                    <ul class="stats unstyled">
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.reputation}</span><br>${i18n.reputation}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.postCount}</span><br>${i18n.posts}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.userFollowCount}</span><br>${i18n.following}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.followerCount}</span><br>${i18n.followers}</a></li>
+                        <li><a href="${profileUser.profileUrl}"><span class="count">${profileUser.creationDateObj.getMonth() + 1 + "/" + profileUser.creationDateObj.getFullYear().toString().substring(2,4)}</span><br>${i18n.joined}</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script><script type="text/x-jquery-tmpl" id="topic-popover">
+    <div class="topic-popover ahub-popover">
+        <div class="ahub-popover-content">
+            <div class="header">
+                <div class="popover-icon">
+                    <a href="${topic.url}">
+                        <img id="" class="gravatar " height="84" width="84" title="${topic.name}" alt="${topic.name} icon" src="${topic.icon}">
+                    </a>
+                </div>
+                <p class="name"><a href="${topic.url}">${topic.name}</a></p>
+                <a class="btn btn-follow {{if currentUserFollowing}}on btn-info{{/if}}" command="follow" data-node-type="topic" nodeId="${topic.name}"></a>
+            </div>
+            <div class="body">
+                <div class="stats-wrapper">
+                    <ul class="stats unstyled">
+                        <li><a href="${topic.url}"><span class="count">${followerCount}</span><br>${i18n.followers}</a></li>
+                        <li><a href="${topic.url}"><span class="count">${questionCount}</span><br>${i18n.questions}</a></li>
+                        <li><a href="${topic.url}"><span class="count">${answerCount}</span><br>${i18n.answers}</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                {{if description}}<div class="description">{{html description}}</div>{{/if}}
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/x-jquery-tmpl" id="badge-popover">
+    <div class="badge-popover ahub-popover">
+        <div class="ahub-popover-content">
+            <div class="header">
+                <div class="pull-left">
+                    <img class="gravatar award-icon" height="84" width="84" title="${awardType.name}" alt="avatar image" src="${awardType.awardIconSrc}">
+                </div>
+                <p class="nameAndTagline">
+                    <a href="${awardType.awardUrl}" class="name">${awardType.name}</a><br>
+                    <span class="tagline">${awardType.description}</span>
+                </p>   
+            </div>
+            <div class="body">
+                	<div class="stats-wrapper">
+	                	<ul class="stats unstyled">
+							<li><a href="${awardType.awardUrl}"><span class="count">${awardPager.totalCount}</span><br>${i18n.awarded}</a></li>
+	                		<li>
+	                			<ul class="users unstyled">
+	                				<li><span class="user-list-title">${i18n.completedBy}:</span></li>
+			                		{{each awardPager.list}}
+				                		<li>
+					                		<a href="${$value.user.profileUrl}" title="${$value.user.username}">
+					                			<img class="gravatar " width="32" height="32" src="${$value.user.avatar}?s=32">
+					                		</a>
+					                	</li>
+				                	{{/each}}
+				                	<div class="clearfix"></div>
+		                		</ul>
+	                		</li>
+	                		<div class="clearfix"></div>
+	                	</ul>
+	                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+    var searchItemMouseDown = false;
+    var $searchAuto = $("#search-query").autocomplete({
+        open: function () {
+            $searchAuto.addClass("open");
+            $("#searchResultsAutoComplete").find("a").mousedown(function (e) {
+                searchItemMouseDown = true;
+            });
+        },
+        close: function (e) {
+            $searchAuto.removeClass("open");
+        },
+        appendTo: '#searchResultsAutoComplete',
+        autoFocus: false,
+        highlight: function (match, keywords) {
+            keywords = keywords.split(' ').join('|');
+            return match.replace(new RegExp("(" + keywords + ")", "gi"), '<b>$1</b>');
+        },
+        source: function (request, response) {
+            var query = request.term;
+            var labelText = $('<div/>').text(request.term).html();
+
+            if (!/\s/.test(query)) {
+                query += "*";
+            }
+
+            $.ajax({
+                url: '/search.json',
+                dataType: 'json',
+                minLength: 0,
+                delay: 30,
+                data: { q: query, page: 1, pageSize: 7, type: "object", compact: 'true' },
+                success: function (data) {
+                	var allResults = data.searchResults.results.concat(data.externalSearchResults.results);
+                    var $results = $.map(allResults, function (item, index) {
+                        if (item != null) {
+                            if (item.username){
+                                var name = item.username;
+                                if(item.realname){
+                                    name += " | " + item.realname;
+                                }
+                                return {
+
+                                    label: name.replace(
+                                            new RegExp(
+                                                            "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                            $.ui.autocomplete.escapeRegex(request.term) +
+                                                            ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                            ), "<strong>$1</strong>"),
+                                    url: "/users/%7Bid%7D/%7Bplug%7D.html", //item.id
+                                    value: name,
+                                    id: item.id,
+                                    plug: item.plug,
+                                    type: "User",
+                                    emailHash: item.emailHash
+                                };
+                            }
+                            switch (item.type) {
+                                case 'topic':
+                                    return {
+                                        label: item.name.replace(
+                                                new RegExp(
+                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                                $.ui.autocomplete.escapeRegex(request.term) +
+                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                                ), "<strong>$1</strong>"),
+                                        url: "/topics/%7Bid%7D.html", //item.id
+                                        value: item.name,
+                                        id: item.name,
+                                        plug: item.plug,
+                                        type: "Topic"
+                                    };
+                                case 'user':
+                                    var name = item.username;
+                                    if(item.realname){
+                                        name += " | " + item.realname;
+                                    }
+                                    return {
+
+                                        label: name.replace(
+                                                new RegExp(
+                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                                $.ui.autocomplete.escapeRegex(request.term) +
+                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                                ), "<strong>$1</strong>"),
+                                        url: "/users/%7Bid%7D/%7Bplug%7D.html", //item.id
+                                        value: name,
+                                        id: item.id,
+                                        plug: item.plug,
+                                        type: "User",
+                                        emailHash: item.emailHash
+                                    };
+                                case 'question':
+                                    return {
+                                        label: item.title.replace(
+                                                new RegExp(
+                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                                $.ui.autocomplete.escapeRegex(request.term) +
+                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+                                                ), "<strong>$1</strong>"),
+                                        url: "/questions/%7Bid%7D/%7Bplug%7D.html", //item.id
+                                        value: item.title,
+                                        id: item.id,
+                                        plug: item.plug,
+                                        type: item.type
+                                    };
+                                default:
+                                    if (item.title) {
+	                                    return {
+	                                        label: item.title.replace(
+	                                                new RegExp(
+	                                                        "(?![^&;]+;)(?!<[^<>]*)(" +
+	                                                                $.ui.autocomplete.escapeRegex(request.term) +
+	                                                                ")(?![^<>]*>)(?![^&;]+;)", "gi"
+	                                                ), "<strong>$1</strong>"),
+	                                        //url: "/content/%7Btype%7D/%7Bid%7D/%7Bplug%7D.html", //item.id
+	                                        url: item.url,
+	                                        value: item.title,
+	                                        id: item.id,
+	                                        plug: item.plug,
+	                                        type: item.type
+	                                    };
+                                    }
+                                    return null;
+                            }
+                        }
+                    });
+                    $results.push({
+                        label: "Search: " + "\"" + $.trim(labelText) + "\"",
+                        url: "/search.html?q={query}",
+                        query: request.term,
+                        value: request.term
+                    });
+                    $results.push({
+                        label: "Add Question: <strong>\"$q\"<\/strong>".replace("$q", $.trim(labelText)),
+                        url: "/questions/ask.html?a=true&q={query}&space=8",
+                        query: request.term,
+                        value: request.term
+                    });
+
+                    response($results);
+                }
+            });
+        },
+        select: function (event, ui) {
+            var url = ui.item.url.replace("%7Bid%7D", ui.item.id);
+            url = url.replace("%7Bplug%7D", ui.item.plug);
+            url = url.replace("{query}", ui.item.query);
+            url = url.replace("%7Btype%7D", ui.item.type);
+            window.location = url;
+            return false;
+        }
+    }).keydown(function () {
+                $(this).css('color', '#000');
+            });
+
+    if ($searchAuto.length) {
+        $searchAuto.data("uiAutocomplete")._renderItem = function (ul, item) {
+            var type_str = "";
+            if (item.type == "Topic")
+                    type_str = "<span class='autocomplete-type'>" + "Topic" + "</span>";
+            return $("<li></li>")
+                    .data("item.autocomplete", item)
+                    .append("<a>" + (item.type == 'User' ? '<img class="gravatar" align="left" width="16" height="16" style="margin-right: 5px;" src="http://www.gravatar.com/avatar/'
+                            + item.emailHash + '?s=16&amp;d=identicon&amp;r=PG"/>' : '') + " " + item.label + " " + type_str + "</a>")
+                    .appendTo(ul);
+        };
+    }
+</script><script type="text/javascript">
+
+    $(document).ready(function () {
+        $bottom = $("#bottom");
+        $notFooter = $("#not-footer");
+        $push = $(".push");
+        $push.css("height", $bottom.outerHeight() + "px");
+        $notFooter.css("margin-bottom", "-" + $bottom.outerHeight() + "px");
+
+        $(".dummy-navbar-link").sidr();
+
+        $(".search-button").click(function(){
+            $(".navbar-search").submit();
+        });
+
+        $(".off-canvas-nav-btn").on("click", function(){
+            $.sidr(
+                "open",
+                "sidr",
+                function(){
+                    $(document.body).prepend("<div class='cover'></div>");
+                    $(".cover").fadeIn().on("click", function(){
+                        $.sidr('close', 'sidr');
+                        $(this).remove();
+                    });
+                }
+            );
+        });
+    });
+
+
+    $(".answer-body pre").addClass("prettyprint").addClass("linenums");
+    $(".node-body pre").addClass("prettyprint").addClass("linenums");
+    $(".question-body pre").addClass("prettyprint").addClass("linenums");
+    prettyPrint();
+
+</script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-43132214-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+<div id="viewPortSize" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); font-size: 12px;" class="bottom_right">Inner: 1140 x 1210<br>Outer: 1140 x 1351</div><div id="qtip-2" class="qtip qtip-default qtip-bootstrap user qtip-pos-tl qtip-fixed" tracking="false" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="qtip-2-content" aria-hidden="true" data-qtip-id="2" style="z-index: 15001;"><div class="qtip-tip" style="background-color: transparent !important; border: 0px !important; width: 8px; height: 8px; line-height: 8px; left: -1px; top: -8px;"><canvas style="background-color: transparent !important; border: 0px !important;" width="8" height="8"></canvas></div><div class="qtip-content" id="qtip-2-content" aria-atomic="true"><div class="user-popover ahub-popover" style="display: block;">         <div class="ahub-popover-content">             <div class="header">                 <div class="popover-gravatar">                     <a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html">                         <img id="" class="gravatar " height="84" width="84" title="Derpthemeus (NA)" alt="avatar image" src="./Data Dragon api_ - Riot Developer Community_files/view(3).html">                     </a>                 </div>                 <p class="nameAndTagline">                     <a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html" class="username">Derpthemeus (NA)</a><br>                     <span class="location">United States</span>                 </p>                 <a class="btn btn-follow" command="follow" data-node-type="user" nodeid="50"><i class="icon-plus"></i> Follow</a>             </div>             <div class="body">                 <div class="stats-wrapper">                     <ul class="stats unstyled">                         <li><a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html"><span class="count">1390</span><br>Reputation</a></li>                         <li><a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html"><span class="count">346</span><br>Posts</a></li>                         <li><a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html"><span class="count">0</span><br>Following</a></li>                         <li><a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html"><span class="count">10</span><br>Followers</a></li>                         <li><a href="https://discussion.developer.riotgames.com/users/50/derpthemeus-na.html"><span class="count">3/17</span><br>Joined</a></li>                     </ul>                     <div class="clearfix"></div>                 </div>             </div>         </div>     </div></div></div></body></html>

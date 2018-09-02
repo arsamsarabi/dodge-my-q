@@ -18,7 +18,7 @@ const database_url = process.env.NODE_ENV === 'development'
 mongoose.connect(database_url, { useNewUrlParser: true })
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
 mongoose.connection.once('open', function() {
-  console.log(chalk.bgCyanBright.black('🧙  db connected 🧙  '))
+  console.log(chalk.bgCyanBright.black('👾  db connected 👾  '))
 })
 
 app.use(cors())

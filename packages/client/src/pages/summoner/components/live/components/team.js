@@ -56,6 +56,7 @@ const Team = props => {
     color,
     ddVersion,
     champions,
+    runes,
   } = props
   return (
     <Wrapper color={color}>
@@ -90,7 +91,14 @@ const Team = props => {
           const backgroundImage = {
             backgroundImage: `url(${getChampionLoadingScreenImage(champKey)})`
           }
-          return <Player key={player.summonerId} player={player} color={color} background={backgroundImage} version={ddVersion}/>
+          return <Player
+            key={player.summonerId}
+            player={player}
+            color={color}
+            background={backgroundImage}
+            version={ddVersion}
+            runes={runes}
+          />
         })}
       </div>
     </Wrapper>
@@ -106,10 +114,12 @@ Team.propTypes = {
   bans: PropTypes.arrayOf(PropTypes.object),
   ddVersion: PropTypes.string.isRequired,
   champions: PropTypes.arrayOf(PropTypes.object),
+  runes: PropTypes.arrayOf(PropTypes.object),
 }
 
 Team.defaultProps = {
-  champions: {}
+  champions: {},
+  runes: {},
 }
 
 export default Team

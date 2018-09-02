@@ -4,7 +4,6 @@
     "complexity": "off",
 */
 
-import * as perks from './perkImages'
 import {
   bronze_i, bronze_ii, bronze_iii, bronze_iv, bronze_v,
   silver_i, silver_ii, silver_iii, silver_iv, silver_v,
@@ -105,14 +104,8 @@ const getLeagueImage = (tier, rank) => {
 }
 helpers.getLeagueImage = getLeagueImage
 
-const getPerkImages = id => {
-  return perks[`p${id}`]
-}
-helpers.getPerkImages = getPerkImages
-
 export default helpers
 export {
   urlFriendly,
   getLeagueImage,
-  getPerkImages
 }
