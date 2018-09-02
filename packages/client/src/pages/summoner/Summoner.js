@@ -100,11 +100,11 @@ export default class Summoner extends Reflux.Component {
         this.props.match.params.region
       )
     }
-    if (!this.state.champions) {
-      LeagueActions.getChampions()
-    }
-    if (!this.state.ddVersion) {
-      LeagueActions.getDdVersion()
+    if (
+      !this.state.champions
+      || !this.state.ddVersion
+    ) {
+      LeagueActions.init()
     }
   }
 
@@ -142,7 +142,7 @@ export default class Summoner extends Reflux.Component {
     } = this.state
 
     // console.log('SUMMONER MATCHES', summoner.matches)
-    console.log(match)
+    // console.log(match)
     return (
       <Wrapper>
         <SummonerDetails
@@ -187,11 +187,7 @@ export default class Summoner extends Reflux.Component {
               />
             </TabContainer>
             <TabContainer dir={theme.direction}>
-              <LiveMatch
-                version={ddVersion}
-                champions={champions}
-                summoner={summoner}
-              />
+              <LiveMatch />
             </TabContainer>
           </SwipeableViews>
         </main>

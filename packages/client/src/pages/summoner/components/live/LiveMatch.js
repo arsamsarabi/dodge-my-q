@@ -26,13 +26,22 @@ class LiveMatch extends Reflux.Component {
       'isLoading',
       'errorMessages',
       'runes',
+      'summoner',
+      'champions'
     ]
   }
 
   componentDidMount() {
-    const { summoner } = this.props
+    const { summoner } = this.state
     if (!this.state.match) {
       LeagueActions.lookupLiveMatch(summoner.summonerId, summoner.region)
+    }
+    if (
+      !this.state.ddVersion 
+      || !this.state.champions 
+      || !this.state.runes 
+    ) {
+      LeagueActions.init()
     }
   }
 
@@ -42,11 +51,10 @@ class LiveMatch extends Reflux.Component {
       isLoading,
       errorMessages,
       runes,
-    } = this.state
-    const {
-      version,
+      ddVersion,
       champions,
-    } = this.props
+      summoner,
+    } = this.state
 
     const matchIsLoading = !match && isLoading
     const matchNotFound = !match && !isLoading
@@ -82,13 +90,13 @@ class LiveMatch extends Reflux.Component {
                       : 'Twisted Treeline'
                     : ''
                   }</H4>
-                  <IconButton
+                  {/* <IconButton
                     variant="outlined"
                     color="primary"
                     onClick={this.handleSearch}
                   >
                     <RefreshRounded/>
-                  </IconButton>
+                  </IconButton> */}
                 </div>
               </div>
             </Card>
@@ -97,17 +105,13 @@ class LiveMatch extends Reflux.Component {
                 players={match.participants.filter(player => player.teamId === 100)}
                 bans={match.bannedChampions.filter(champ => champ.teamId === 100)}
                 color="blue"
-                ddVersion={version}
-                champions={champions}
-                runes={runes}
+                region={summoner.region}
               />
               <Team
                 players={match.participants.filter(player => player.teamId === 200)}
                 bans={match.bannedChampions.filter(champ => champ.teamId === 200)}
                 color="red"
-                ddVersion={version}
-                champions={champions}
-                runes={runes}
+                region={summoner.region}
               />
             </Card>
           </div>
@@ -117,10 +121,6 @@ class LiveMatch extends Reflux.Component {
   }
 }
 
-LiveMatch.propTypes = {
-  champions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  summoner: PropTypes.object.isRequired,
-  version: PropTypes.string.isRequired,
-}
+LiveMatch.propTypes = {}
 
 export default LiveMatch

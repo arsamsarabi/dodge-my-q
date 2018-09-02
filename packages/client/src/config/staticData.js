@@ -98,7 +98,15 @@ const getRunesImage = (runes, key, parent = false) => {
 }
 staticData.getRunesImage = getRunesImage
 
-const getSummonerSpellsImage = (version, key) => `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${key}.png`
+const getSummonerSpellsImage = (spells, spellKey, version) => {
+  let imageName
+  Object.keys(spells).forEach(key => {
+    if (parseInt(spells[key].key) === spellKey) {
+      imageName = spells[key].image.full
+    }
+  })
+  return `https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${imageName}`
+}
 staticData.getSummonerSpellsImage = getSummonerSpellsImage
 
 export default staticData

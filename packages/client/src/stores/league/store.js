@@ -19,6 +19,8 @@ export default class store extends Reflux.Store {
       champions: undefined,
       errorMessages: {},
       runes: [],
+      matchPlayers: [],
+      summonerSpells: {},
     }
   }
 
@@ -33,43 +35,13 @@ export default class store extends Reflux.Store {
       champions: undefined,
       errorMessages: {},
       runes: [],
+      matchPlayers: [],
+      summonerSpells: {},
     })
   };
 
-  init = async () => {
-    await this.getDdVersion()
-    await this.getRunesData()
-    await this.getChampions()
-  }
-
-  getDdVersion = (cb) => {
-    axios.get('https://ddragon.leagueoflegends.com/api/versions.json')
-      .then(response => {
-        this.setState({
-          ddVersion: response.data[0],
-        })
-        if (cb) cb()
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  getRunesData = (cb) => {
-    if (!this.state.ddVersion) {
-      this.getDdVersion(this.getRunesData)
-    } else {
-      axios.get(`http://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/runesReforged.json`)
-        .then(response => {
-          this.setState({
-            runes: response.data,
-          })
-          if (cb) cb()
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    }
+  init = () => {
+    this.getDdVersion()
   }
 
   getSummonerByName = async (summonerName, region, history = null) => { 
@@ -89,24 +61,20 @@ export default class store extends Reflux.Store {
         console.log(error)        
       })
   }
-  
-  getChampions = () => {
-    if (!this.state.ddVersion) {
-      this.getDdVersion(this.getChampions)
-    } else {
-      axios.get(`https://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/champion.json`)
+
+  getPlayersForMatch = (players, region) => {
+    players.forEach(player => {
+      const uri = `${API}/getSummonerByName/${region}/${encodeURIComponent(player.summonerName)}`
+      axios.get(uri)
         .then(response => {
-          const championsObject = response.data.data
-          let champions = []
-          Object.keys(championsObject).forEach(key => {
-            champions.push(championsObject[key])
+          let matchPlayers = this.state.matchPlayers
+          matchPlayers.push(response.data)
+          this.setState({
+            matchPlayers,
           })
-          this.setState({ champions })
         })
-        .catch(error => {
-          console.log(error)
-        })
-    }
+        .catch(error => console.log(error))
+    })
   }
 
   lookupLiveMatch = (id, region, cb) => {
@@ -130,6 +98,62 @@ export default class store extends Reflux.Store {
           isLoading: false,
           errorMessages,
         })
+        console.log(error)
+      })
+  }
+
+  /* -------------------------------------------------------------------------------
+    INITIAL DATA FUNCTIONS
+  ------------------------------------------------------------------------------- */
+  getDdVersion = () => {
+    axios.get('https://ddragon.leagueoflegends.com/api/versions.json')
+      .then(response => {
+        this.setState({
+          ddVersion: response.data[0],
+        })
+        this.getRunesData()
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  getRunesData = () => {
+    axios.get(`http://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/runesReforged.json`)
+      .then(response => {
+        this.setState({
+          runes: response.data,
+        })
+        this.getChampions()
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  getChampions = () => {
+    axios.get(`https://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/champion.json`)
+      .then(response => {
+        const championsObject = response.data.data
+        let champions = []
+        Object.keys(championsObject).forEach(key => {
+          champions.push(championsObject[key])
+        })
+        this.setState({ champions })
+        this.getSummonerSpells()
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  getSummonerSpells = () => {
+    axios.get(`http://ddragon.leagueoflegends.com/cdn/${this.state.ddVersion}/data/en_US/summoner.json`)
+      .then(response => {
+        console.log(response.data.data)
+        this.setState({ summonerSpells: response.data.data })
+      })
+      .catch(error => {
         console.log(error)
       })
   }

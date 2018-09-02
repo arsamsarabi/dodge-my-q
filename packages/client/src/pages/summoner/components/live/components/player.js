@@ -2,13 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { rgba } from 'polished'
 import styled from 'styled-components'
-import { Text } from 'components/Text'
+import Loading from 'components/loading/Loading'
+import { Text, H6 } from 'components/Text'
 import theme from 'resources/styles/theme'
 import {
-  getLeagueImage,
   getRunesImage,
-  getSummonerSpellsImage
+  getSummonerSpellsImage,
 } from 'config/staticData'
+import {
+  getLeagueImage,
+} from 'config/helpers'
+
 
 const Wrapper = styled.div`
   flex: 1;
@@ -33,7 +37,7 @@ const Wrapper = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     .summonerName {
       font-size: 1rem;
       overflow: hidden;
@@ -41,34 +45,119 @@ const Wrapper = styled.div`
       text-align: center;
       margin-top: 6px;
     }
+    .player_rankedInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .player_rankedImage {
+        img {
+          width: 50px;
+          height: auto;
+        }
+      }
+      .player_rankedname {
+
+      }
+    }
+    .summonerSpells {
+      margin-top: auto;
+      img {
+        max-width: 25px;
+        max-height: 25px;
+        &:first-of-type {
+          margin-right: 4px;
+        }
+      }
+    }
     .runes {
       .rune_row1,
       .rune_row2 {
         display: flex;
       }
+      .rune_row1 {
+        margin-bottom: 12px;
+      }
       .rune_imagebox {
-        max-width: 35px;
-        max-height: 35px;
+        max-width: 30px;
+        max-height: 30px;
+        &.topRune {
+          max-width: 20px;
+          max-height: 20px;
+          &:first-of-type {
+            margin-right: 12px;
+          }
+        }
       }
     }
   }
 `
 
-const Player = ({ player, color, background, version, runes }) => {
-  // console.dir(player)
+const Player = props => {
+  const {
+    player,
+    color,
+    background,
+    version,
+    runes,
+    fullDetails,
+    summonerSpells,
+  } = props
+  console.dir(player)
+  // console.dir(fullDetails)
+
+  if (!fullDetails) {
+    return <Loading/>
+  }
+
+  const league = fullDetails.leaguePositions.find(league => league.queueType === 'RANKED_SOLO_5x5')
+  
   return (
     <Wrapper color={color} style={background}>
       <div className="content">
+        {/* -----------------------------------
+          PLAYER NAME
+        ----------------------------------- */}
         <Text
           color={theme.white}
           className="summonerName"
         >{player.summonerName}</Text>
+        
+        {/* -----------------------------------
+          PLAYER RANKED IMAGE
+        ----------------------------------- */}        
+        <div
+          className="player_rankedInfo"
+        >
+          <div className="player_rankedImage">
+            <img src={getLeagueImage(league.tier, league.rank)} alt={`${player.summonerName}'s ranked tier image`}/>
+          </div>
+          <div className="player_rankedName">
+            <H6 
+              color={theme.white}
+            >{`${league.tier} ${league.rank}`}</H6>
+          </div>
+        </div>
+        {/* -----------------------------------
+          SUMMONER SPELLS
+        ----------------------------------- */}
+        <div
+          className="summonerSpells"
+        >
+          <img src={getSummonerSpellsImage(summonerSpells, player.spell1Id, version)} alt={`${player.summonerName}'s summoner spell image`}/>
+          <img src={getSummonerSpellsImage(summonerSpells, player.spell2Id, version)} alt={`${player.summonerName}'s summoner spell image`}/>
+        </div>
+
+
+        {/* -----------------------------------
+          RUNES
+        ----------------------------------- */}
         <div className="runes">
           <div className="rune_row1">
-            <div className="rune_imagebox">
+            <div className="rune_imagebox topRune">
               <img src={getRunesImage(runes, player.perks.perkStyle, true)} alt="runes"/>
             </div>
-            <div className="rune_imagebox">
+            <div className="rune_imagebox topRune">
               <img src={getRunesImage(runes, player.perks.perkSubStyle, true)} alt="runes"/>
             </div>
           </div>
@@ -80,6 +169,7 @@ const Player = ({ player, color, background, version, runes }) => {
             })}
           </div>
         </div>
+
       </div>
     </Wrapper>
   )
@@ -94,8 +184,13 @@ Player.propTypes = {
   background: PropTypes.object.isRequired,
   version: PropTypes.string.isRequired,
   runes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  fullDetails: PropTypes.object,
+  summonerSpells: PropTypes.object,
 }
 
-Player.defaultProps = {}
+Player.defaultProps = {
+  fullDetails: undefined,
+  summonerSpells: undefined,
+}
 
 export default Player
