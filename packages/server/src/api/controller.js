@@ -17,6 +17,21 @@ controller.getSummonerByName = (req, res) => {
   })
 }
 
+controller.upadteSummoner = (req, res) => {
+  const data = {
+    name: req.params.name.toLowerCase().replace(/^\s+/g, ''),
+    region: req.params.region,
+  }
+  service.upadteSummoner(data, (error, results) => {
+    if (error) {
+      console.error(error)
+      res.status(500).send()
+    } else {
+      res.json(results)
+    }
+  })
+}
+
 controller.getLiveGameBySummonerID = (req, res) => {
   const data = {
     summonerId: req.params.summonerId,

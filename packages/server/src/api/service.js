@@ -1,7 +1,7 @@
 import Summoner from '../models/Summoner'
 import riot from './riot'
 
-const fetchSummonerFromRito = async (data, callback) => {
+const fetchSummonerFromRito = async (data, callback, mode) => {
   let newSummoner = {}
   newSummoner = await riot.getSummonerByName(data)
   const masteryPoints = await riot.getSummonerMasteryPoints(data, newSummoner.summonerId)
@@ -16,7 +16,11 @@ const fetchSummonerFromRito = async (data, callback) => {
     newSummoner.championMasteries = values[1]
     newSummoner.leaguePositions = values[2]
     newSummoner.matches = values[3]
-    saveSummoner(newSummoner, callback)
+    if (mode === 'save') {
+      saveSummoner(newSummoner, callback)
+    } else if (mode === 'update') {
+      updateSummoner(newSummoner, callback)
+    }
   })
 }
 
@@ -31,25 +35,37 @@ const saveSummoner = async (data, callback) => {
   })
 }
 
+const updateSummoner = (data, callback) => {
+  const summoner = new Summoner(data)
+  summoner.findByIdAndUpdate({ summonerId: summoner.summonerId }, false, (err, results) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, results)
+    }
+  })
+}
+
 const service = {}
 
 service.getSummonerByName = (data, callback) => {
   Summoner.find({
-    name: data.name.toLowerCase().replace(/\s/g, ''),
+    name: data.name,
     region: data.region,
   }, (err, summoners) => {
     if (err) {
       callback(err)
     } else {
       if (summoners.length === 0) {
-        fetchSummonerFromRito(data, callback)
+        fetchSummonerFromRito(data, callback, 'save')
       } else {
         callback(null, summoners[0])
       }      
     }
   })
-
 }
+
+service.updateSummoner = (data, callback) => fetchSummonerFromRito(data, callback, 'update')
 
 service.getLiveGameBySummonerID = async (data, callback) => {
   riot.getLiveGameBySummonerID(data, callback)

@@ -4,6 +4,7 @@ const actions = Reflux.createActions([
   'init',
   'reset',
   'getSummonerByName',
+  'updateSummoner',
   'lookupLiveMatch',
   'getRunesData',
   'getPlayersForMatch',
