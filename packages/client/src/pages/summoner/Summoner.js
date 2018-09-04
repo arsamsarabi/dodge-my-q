@@ -113,7 +113,7 @@ export default class Summoner extends Reflux.Component {
   }
 
   handleOnUpdateSummoner = () => {
-    LeagueActions.updateSummoner(this.state.summoner.region, this.state.summoner.summonerName)
+    LeagueActions.updateSummoner(this.state.summoner.summonerName, this.state.summoner.region)
   }
 
   handleChange = (event, value) => {

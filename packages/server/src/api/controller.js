@@ -22,7 +22,7 @@ controller.upadteSummoner = (req, res) => {
     name: req.params.name.toLowerCase().replace(/^\s+/g, ''),
     region: req.params.region,
   }
-  service.upadteSummoner(data, (error, results) => {
+  service.updateSummonerFromRiot(data, (error, results) => {
     if (error) {
       console.error(error)
       res.status(500).send()

@@ -51,14 +51,12 @@ export default class store extends Reflux.Store {
     })
   }
 
-  getSummonerByName = (summonerName, region, history = null) => { 
+  getSummonerByName = (summonerName, region, cb = null) => { 
     const uri = `${API}/getSummonerByName/${region}/${encodeURIComponent(summonerName)}`
     axios.get(uri)
       .then(response => {
         this.setState({ summoner: response.data })
-        if (history) {
-          history.push(`summoner/${region}/${response.data.name}`)          
-        }
+        if (cb) cb()
       })
       .catch(error => console.log(error))
   }
@@ -66,7 +64,10 @@ export default class store extends Reflux.Store {
   updateSummoner = (summonerName, region) => {
     const uri = `${API}/updateSummoner/${region}/${encodeURIComponent(summonerName)}`
     axios.get(uri)
-      .then(response => this.setState({ summoner: response.data }))
+      .then(response => {
+        debugger;
+        this.setState({ summoner: response.data })
+      })
       .catch(error => console.log(error))
   }
 

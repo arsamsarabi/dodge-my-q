@@ -36,11 +36,13 @@ const saveSummoner = async (data, callback) => {
 }
 
 const updateSummoner = (data, callback) => {
-  const summoner = new Summoner(data)
-  summoner.findByIdAndUpdate({ summonerId: summoner.summonerId }, false, (err, results) => {
+  Summoner.findOneAndUpdate({ summonerId: data.summonerId }, data, {
+    returnNewDocument: true,
+  }, (err, results) => {
     if (err) {
       callback(err)
     } else {
+      debugger;
       callback(null, results)
     }
   })
@@ -50,7 +52,7 @@ const service = {}
 
 service.getSummonerByName = (data, callback) => {
   Summoner.find({
-    name: data.name,
+    name: data.name.toLowerCase().replace(/\s/g, ''),
     region: data.region,
   }, (err, summoners) => {
     if (err) {
@@ -65,7 +67,7 @@ service.getSummonerByName = (data, callback) => {
   })
 }
 
-service.updateSummoner = (data, callback) => fetchSummonerFromRito(data, callback, 'update')
+service.updateSummonerFromRiot = (data, callback) => fetchSummonerFromRito(data, callback, 'update')
 
 service.getLiveGameBySummonerID = async (data, callback) => {
   riot.getLiveGameBySummonerID(data, callback)

@@ -1,6 +1,6 @@
 
 Todo:
-  ☐ Live Match 
+  ✔ Live Match @done(18-09-04 12:16)
   ✔ GQL Summoner Schema @done(18-08-15 10:48)
   ✔ RIOT Get Summoner if not in DB @done(18-08-15 10:48)
-  
+  ☐ Update Dependacies

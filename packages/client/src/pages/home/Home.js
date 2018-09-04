@@ -39,14 +39,14 @@ export default class Home extends Reflux.Component {
       summonerName,
       region,
     } = this.state
-    LeagueActions.getSummonerByName(summonerName, region, this.props.history)
+    LeagueActions.getSummonerByName(summonerName, region, this.handleRedirect)
   }
 
-  // handleRedirect = () => {
-  //   const { history } = this.props
-  //   const { summonerName, region } = this.state
-  //   history.push(`summoner/${region}/${urlFriendly(summonerName)}`)
-  // }
+  handleRedirect = () => {
+    const { history } = this.props
+    const { summonerName, region } = this.state
+    history.push(`summoner/${region}/${urlFriendly(summonerName)}`)
+  }
 
   render() {
     const {
