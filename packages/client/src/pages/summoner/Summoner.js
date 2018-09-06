@@ -20,6 +20,7 @@ import IconsSprite from 'resources/images/pixel_sprite.png'
 import { pageContainer } from '../../resources/styles/helpers'
 import SummonerProfile from './components/profile/Profile'
 import SummonerDetails from './components/SummonerDetails'
+import ChampionMasteries from './components/masteries'
 import LiveMatch from './components/live/LiveMatch'
 
 function TabContainer({ children }) {
@@ -41,7 +42,9 @@ const Wrapper = styled.div`
       margin-top: 24px;
     }
     .profileTabButton,
-    .matchTabButton {
+    .matchTabButton,
+    .masteryTabButton,
+    .recentTabButton {
       & > span:first-of-type {
         display: flex;
         flex-direction: row;
@@ -54,7 +57,9 @@ const Wrapper = styled.div`
 
     }
     .profileTabIcon,
-    .matchTabIcon {
+    .matchTabIcon,
+    .masteryTabIcon,
+    .recentTabIcon {
       width: 35px;
       height: 35px;
       overflow: hidden;
@@ -66,6 +71,12 @@ const Wrapper = styled.div`
     }
     .matchTabIcon {
       background-position: 0 -850px;
+    }
+    .masteryTabIcon {
+      background-position: -201px -884px;
+    }
+    .recentTabIcon {
+      background-position: -407px -578px;
     }
   }
 `
@@ -141,7 +152,7 @@ export default class Summoner extends Reflux.Component {
       match,
     } = this.state
 
-    // console.log('SUMMONER MATCHES', summoner.matches)
+    // console.log('SUMMONER', summoner.championMasteries)
     // console.log(match)
     return (
       <Wrapper>
@@ -166,6 +177,16 @@ export default class Summoner extends Reflux.Component {
                 icon={<span className="profileTabIcon"/>}
               />
               <Tab
+                className="recentTabButton"
+                label="Recent Matches"
+                icon={<span className="recentTabIcon"/>}
+              />
+              <Tab
+                className="masteryTabButton"
+                label="Champion Masteries"
+                icon={<span className="masteryTabIcon"/>}
+              />
+              <Tab
                 className="matchTabButton"
                 label="Live Match"
                 icon={<span className="matchTabIcon"/>}
@@ -184,6 +205,16 @@ export default class Summoner extends Reflux.Component {
                 version={ddVersion}
                 theme={theme}
                 champions={champions}
+              />
+            </TabContainer>
+            <TabContainer dir={theme.direction}>
+              RECENT MATCHES
+            </TabContainer>
+            <TabContainer dir={theme.direction}>
+              <ChampionMasteries
+                masteries={summoner.championMasteries}
+                champions={champions}
+                version={ddVersion}
               />
             </TabContainer>
             <TabContainer dir={theme.direction}>
