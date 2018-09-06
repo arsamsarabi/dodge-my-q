@@ -20,6 +20,9 @@ export default class store extends Reflux.Store {
       runes: [],
       matchPlayers: [],
       summonerSpells: {},
+      notificationOpen: false,
+      notificationMessage: '',
+      notificationType: 'error',
     }
   }
 
@@ -37,6 +40,7 @@ export default class store extends Reflux.Store {
       summonerSpells: {},
       notificationOpen: false,
       notificationMessage: '',
+      notificationType: 'error',
     })
   };
 
@@ -56,6 +60,7 @@ export default class store extends Reflux.Store {
   dismissNotification = () => this.setState({
     notificationOpen: false,
     notificationMessage: '',
+    notificationType: 'error',
   })
 
   getSummonerByName = (summonerName, region, cb = null) => { 
@@ -71,6 +76,7 @@ export default class store extends Reflux.Store {
           this.setState({
             notificationOpen: true,
             notificationMessage: 'Summoner not found',
+            notificationType: 'error'
           })
         } else {
           console.dir(error)
