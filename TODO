@@ -3,12 +3,10 @@ General:
   ✔ Live Match @done(18-09-04 12:16)
   ✔ GQL Summoner Schema @done(18-08-15 10:48)
   ✔ RIOT Get Summoner if not in DB @done(18-08-15 10:48)
-  ☐ Summoner not found notification
+  ✔ Summoner not found notification @done(18-09-06 19:33)
   ☐ Recent Matches
   ☐ Implement Statistics
   ☐ Update Dependacies
-  ☐ Not in a match notification
-  ☐ Improve app icons
 Champion Masteries:
   ☐ Styling
   ☐ Sorting
@@ -16,3 +14,9 @@ Champion Masteries:
 Navbar:
   ☐ Search
   ☐ Re-design
+Notification:
+  ☐ Types
+  ☐ Styling
+  ☐ Not in a match notification
+UI/UX:
+  ☐ Improve app icons
