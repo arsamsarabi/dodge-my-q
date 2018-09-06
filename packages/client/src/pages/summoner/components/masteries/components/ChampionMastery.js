@@ -10,16 +10,19 @@ import {
 
 
 const Wrapper = styled.div`
-  margin: 12px;
   display: flex;
   .col-1 {
     margin-right: 12px;
+    img {
+      width: 50px;
+    }
   }
   .col-2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    font-size: 14px;
   }
 `
 
@@ -36,10 +39,13 @@ const ChampionsMastery = props => {
         <img src={getChampionSquareImage(version, champion.id)} alt={champion.name}/>
       </div>
       <div className="col-2">
-        <Text>{champion.name}</Text>
-        <Text>{`Level ${mastery.championLevel}`}</Text>
-        <Text>{`Points ${mastery.championPoints}`}</Text>
-        <Text>{`Last played ${moment(mastery.lastPlayTime).format('Do MMM YYYY')}`}</Text>  
+        <div>
+          <Text>{`Level ${mastery.championLevel} ${champion.name}`}</Text>
+        </div>
+        <div>
+          <Text>{`Points ${mastery.championPoints}`}</Text>
+          <Text>{`Last played ${moment(mastery.lastPlayTime).format('Do MMM YYYY')}`}</Text>  
+        </div>
       </div>
     </Wrapper>
   )

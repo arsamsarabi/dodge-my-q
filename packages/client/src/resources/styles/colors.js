@@ -14,6 +14,7 @@ const colors = {
   success: '#66BB6A',
   pink: '#FC427B',
   purple: '#2c2c54',
+  snowWhite: '#fff',
 }
 
 export default colors

@@ -17,6 +17,7 @@ const theme = {
   blue:colors.primary,
   red: colors.danger,
   white: colors.white,
+  snowWhite: colors.snowWhite,
   fontHeading: '\'Press Start 2P\', Roboto',
 }
 

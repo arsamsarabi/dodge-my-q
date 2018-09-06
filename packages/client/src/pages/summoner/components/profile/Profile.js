@@ -8,6 +8,7 @@ import MatchList from './components/MatchList'
 const Wrapper = styled.div`
   margin-top: 24px;
   display: flex;
+  margin-bottom: 48px;
   & > div.summoner_leftcol {
     width: 25%;
     margin-right: 24px;

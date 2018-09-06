@@ -6,7 +6,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Card from '@material-ui/core/Card'
-// import Button from '@material-ui/core/Button';
+import Pagination from 'react-js-pagination';
 import { Text, H5 } from 'components/Text'
 import Match from './Match'
 
@@ -14,40 +14,93 @@ const Wrapper = styled.div`
   & > div {
     padding: 24px;
   }
+  .paginationContainer {
+    margin: 24px 0;
+    font-size: 14px;
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* border: 1px dotted ${props => props.theme.grey}; */
+      li {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dotted ${props => props.theme.grey};
+        margin: 4px 8px;
+        &.active {
+          background-color: ${props => props.theme.primary};
+          border: none;
+          a {
+            color: ${props => props.theme.snowWhite};
+          }
+        }
+        &.disabled {
+          background-color: ${props => props.theme.lightGrey};
+          border: none;
+          a {
+            color: ${props => props.theme.text};
+            cursor: default;
+          }
+        }
+        &:first-of-type:not(.disabled),
+        &:last-of-type:not(.disabled) {
+          /* background-color: ${props => props.theme.darkGrey}; */
+          border: 1px solid ${props => props.theme.grey};
+          a {
+            /* color: ${props => props.theme.snowWhite}; */
+          }
+        }
+        &:nth-of-type(2):not(.disabled),
+        &:nth-of-type(8):not(.disabled) {
+          border: 1px dashed ${props => props.theme.grey};
+          /* background-color: ${props => props.theme.grey}; */
+        }
+        a {
+          text-decoration: none;
+          color: ${props => props.theme.text};
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          line-height: 1.75;
+        }
+      }
+    }
+  }
 `
 
 class MatchList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      matchesToShow: [],
+      activePage: 1,
     }
   }
 
-  // componentWillMount() {
-  //   const { matchesToShow } = this.state;
-  //   this.setState({
-  //     matchesToShow: matchesToShow.concat(this.fetchSomeMoreMatches(10, 0)),
-  //   });
-  // }
+  makeMatchListArray = activePage => {
+    const {
+      champions,
+      version,
+      matches,
+    } = this.props
+    const result = []
+    const index = (activePage - 1) * 10
+    for (let i = index; i < index + 10; i++) {
+      if (i <= matches.length) {
+        const _champ = champions.find(champion => parseInt(champion.key) === matches[i].champion)
+        result.push(<Match key={matches[i].gameId} version={version} champion={_champ} match={matches[i]}/>)
+      }
+    }
+    return result
+    // return matches.map(match => {
+    //   const _champ = champions.find(champion => parseInt(champion.key) === match.champion)
+    //   return <Match key={match.gameId} version={version} champion={_champ} match={match}/>
+    // })
+  }
 
-  // fetchSomeMoreMatches = (number, from) => {
-  //   const { matches } = this.props;
-  //   const result = [];
-  //   for (let i = 0; i < number || i; i++) {
-  //     if (from + i <= matches.length) {
-  //       result.push(matches[from + i]);
-  //     }
-  //   }
-  //   return result;
-  // }
-
-  // fetchMoreData = () => {
-  //   const { matchesToShow } = this.state;
-  //   this.setState({
-  //     matchesToShow: matchesToShow.concat(this.fetchSomeMoreMatches(10, matchesToShow.length)),
-  //   });
-  // }
+  handlePageChange = pageNumber => this.setState({activePage: pageNumber})
 
   render() {
     const {
@@ -56,30 +109,31 @@ class MatchList extends React.Component {
       theme,
       matches,
     } = this.props
-    // const { matchesToShow } = this.state;
+    const {
+      activePage,
+    } = this.state
+    const matchesToShow = this.makeMatchListArray(activePage)
     return (
       <Wrapper>
         <Card>
           <H5 color={theme.primary} underline underlineStyle="dotted">
             Recent Matches
           </H5>
-          {matches.length > 0
-            ? matches.map(match => {
-              const _champ = champions.find(champion => parseInt(champion.key) === match.champion)
-              return <Match key={match.gameId} version={version} champion={_champ} match={match}/>
-            })
+          {matchesToShow.length > 0
+            ? matchesToShow.map(match => match)
             : <Text>
               No Recent Match to display!
             </Text>
           }
-          {/* <Button
-            onClick={() => this.fetchMoreData()}
-            color="primary"
-            disabled={matchesToShow.length >= matches.length}
-            variant="outlined"
-          >
-            Load more ...
-          </Button> */}
+          <div className="paginationContainer">
+            <Pagination
+              activePage={activePage}
+              itemsCountPerPage={10}
+              totalItemsCount={matches.length}
+              pageRangeDisplayed={5}
+              onChange={this.handlePageChange}
+            />
+          </div> 
         </Card>
       </Wrapper>
     )

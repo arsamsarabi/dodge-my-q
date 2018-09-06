@@ -7,12 +7,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Reflux from 'reflux'
 import styled from 'styled-components'
-import SwipeableViews from 'react-swipeable-views'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Card from '@material-ui/core/Card'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import Loading from 'components/loading/Loading'
+import {Text, H1, H2, H3} from 'components/Text'
 import LeagueStore from 'stores/league/store'
 import LeagueActions from 'stores/league/actions'
 import theme from 'resources/styles/theme'
@@ -37,46 +36,69 @@ TabContainer.propTypes = {
 
 const Wrapper = styled.div`
   ${pageContainer()}
+  padding-bottom: 48px;
   main{
-    .tabsCard {
+    .tablist-container {
       margin-top: 24px;
-    }
-    .profileTabButton,
-    .matchTabButton,
-    .masteryTabButton,
-    .recentTabButton {
-      & > span:first-of-type {
+      ul.react-tabs__tab-list {
+        height: 75px;
         display: flex;
-        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
       }
-    }
-    .profileTabButton {
-      
-    }
-    .matchTabButton {
-
-    }
-    .profileTabIcon,
-    .matchTabIcon,
-    .masteryTabIcon,
-    .recentTabIcon {
-      width: 35px;
-      height: 35px;
-      overflow: hidden;
-      background-repeat: no-repeat;
-      background-image: url(${IconsSprite});
-    }
-    .profileTabIcon {
-      background-position: -204px -716px;
-    }
-    .matchTabIcon {
-      background-position: 0 -850px;
-    }
-    .masteryTabIcon {
-      background-position: -201px -884px;
-    }
-    .recentTabIcon {
-      background-position: -407px -578px;
+      .profile-tab,
+      .masteries-tab,
+      .match-tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex: 1;
+        height: 100%;
+        background-color: ${props => props.theme.snowWhite};
+        transition: 0.3s all ease-in-out;
+        &:hover {
+          background-color: ${props => props.theme.white};
+          transition: 0.3s all ease-in-out;
+        }
+        &:not(:last-of-type) {
+          border-right: 1px dotted ${props => props.theme.grey}
+        }
+        span {
+          display: block;
+          width: 35px;
+          height: 35px;
+          overflow: hidden;
+          background-repeat: no-repeat;
+          background-image: url(${IconsSprite});
+          margin-right: 6px;
+        }
+      }
+      .profile-tab {
+        span{
+          background-position: -204px -716px;
+        }
+      }
+      .masteries-tab {
+        span{
+          background-position: -201px -884px;
+        }
+      }
+      .match-tab {
+        &.offline {
+          cursor: initial;
+          pointer-events: none;
+          P {
+            color: ${props => props.theme.grey}
+          }          
+          span{
+            opacity: 0.3;
+          }
+        }
+        span{
+          background-position: 0 -850px;
+        }
+      }
     }
   }
 `
@@ -163,64 +185,44 @@ export default class Summoner extends Reflux.Component {
           updateSummoner={this.handleOnUpdateSummoner}
         />
         <main>
-          <Card className="tabsCard">
-            <Tabs
-              value={this.state.value}
-              onChange={this.handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              fullWidth
-            >
-              <Tab
-                className="profileTabButton"
-                label="Profile"
-                icon={<span className="profileTabIcon"/>}
-              />
-              <Tab
-                className="recentTabButton"
-                label="Recent Matches"
-                icon={<span className="recentTabIcon"/>}
-              />
-              <Tab
-                className="masteryTabButton"
-                label="Champion Masteries"
-                icon={<span className="masteryTabIcon"/>}
-              />
-              <Tab
-                className="matchTabButton"
-                label="Live Match"
-                icon={<span className="matchTabIcon"/>}
-                disabled={match === undefined}
-              />
-            </Tabs>
-          </Card>
-          <SwipeableViews
-            axis="x"
-            index={value}
-            onChangeIndex={this.handleChangeIndex}
-          >
-            <TabContainer dir={theme.direction}>
+          <Tabs>
+            <Card className="tablist-container">
+              <TabList>
+                <Tab className="profile-tab">
+                  <span/>
+                  <Text>Profile</Text>
+                </Tab>
+                <Tab className="masteries-tab">
+                  <span/>                  
+                  <Text>Champion Masteries</Text>
+                </Tab>
+                <Tab className={['match-tab', match === undefined ? 'offline' : '' ].join(' ')}>
+                  <span/>
+                  <Text>{`Live Match ${match === undefined && '(Offline)'}`}</Text>
+                </Tab>
+              </TabList>
+            </Card>
+
+            <TabPanel>
               <SummonerProfile
                 summoner={summoner}
                 version={ddVersion}
                 theme={theme}
                 champions={champions}
               />
-            </TabContainer>
-            <TabContainer dir={theme.direction}>
-              RECENT MATCHES
-            </TabContainer>
-            <TabContainer dir={theme.direction}>
+            </TabPanel>
+            <TabPanel>
               <ChampionMasteries
                 masteries={summoner.championMasteries}
                 champions={champions}
                 version={ddVersion}
               />
-            </TabContainer>
-            <TabContainer dir={theme.direction}>
+            </TabPanel>
+            <TabPanel>
               <LiveMatch />
-            </TabContainer>
-          </SwipeableViews>
+            </TabPanel>
+
+          </Tabs>
         </main>
       </Wrapper>
     )
