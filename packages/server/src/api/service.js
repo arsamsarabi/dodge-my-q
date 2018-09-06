@@ -37,12 +37,11 @@ const saveSummoner = async (data, callback) => {
 
 const updateSummoner = (data, callback) => {
   Summoner.findOneAndUpdate({ summonerId: data.summonerId }, data, {
-    returnNewDocument: true,
+    new: true,
   }, (err, results) => {
     if (err) {
       callback(err)
     } else {
-      debugger;
       callback(null, results)
     }
   })

@@ -65,7 +65,6 @@ export default class store extends Reflux.Store {
     const uri = `${API}/updateSummoner/${region}/${encodeURIComponent(summonerName)}`
     axios.get(uri)
       .then(response => {
-        debugger;
         this.setState({ summoner: response.data })
       })
       .catch(error => console.log(error))
