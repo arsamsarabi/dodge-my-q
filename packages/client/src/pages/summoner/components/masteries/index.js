@@ -13,8 +13,8 @@ const ChampionMasteries = props => {
     version,
   } = props
 
-  console.log('CHAMPIONS', champions)
-  console.log('MASTERIES', masteries)
+  // console.log('CHAMPIONS', champions)
+  // console.log('MASTERIES', masteries)
 
   return (
     <Wrapper>

@@ -8,6 +8,9 @@ import styled from 'styled-components'
 import { darken } from 'polished'
 import moment from 'moment'
 import { Text } from 'components/Text'
+import {
+  getChampionSquareImage,
+} from 'config/staticData'
 
 const Wrapper = styled.div`
   border: 1px dotted ${props => darken(0.2, `${props.theme.lightGrey}`)};
@@ -36,17 +39,24 @@ class Match extends React.Component {
       champion,
       version,
     } = this.props
+
+    console.log('MATCH', match)
+    console.log('CHAMPION', champion)
+    
     return (
       <Wrapper>
         <div className="champImage">
           <img
-            src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`}
+            src={getChampionSquareImage(version,champion.id)}
             alt={champion.name}
           />
         </div>
         <div className="matchDetails">
           <Text>
-            {moment(match.timestamp).format('Do/MMM/YYYY hh:mm a')}
+            {moment(match.timestamp).format('Do MMM hh:mm a')}
+          </Text>
+          <Text>
+            {`Lane: ${match.lane}`}
           </Text>
         </div>
       </Wrapper>
