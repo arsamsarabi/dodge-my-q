@@ -35,6 +35,8 @@ export default class store extends Reflux.Store {
       runes: [],
       matchPlayers: [],
       summonerSpells: {},
+      notificationOpen: false,
+      notificationMessage: '',
     })
   };
 
@@ -51,6 +53,11 @@ export default class store extends Reflux.Store {
     })
   }
 
+  dismissNotification = () => this.setState({
+    notificationOpen: false,
+    notificationMessage: '',
+  })
+
   getSummonerByName = (summonerName, region, cb = null) => { 
     const uri = `${API}/getSummonerByName/${region}/${encodeURIComponent(summonerName)}`
     axios.get(uri)
@@ -58,7 +65,17 @@ export default class store extends Reflux.Store {
         this.setState({ summoner: response.data })
         if (cb) cb()
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        if(error.response.status === 404) {
+          console.log('Summoner not found')
+          this.setState({
+            notificationOpen: true,
+            notificationMessage: 'Summoner not found',
+          })
+        } else {
+          console.dir(error)
+        }
+      })
   }
 
   updateSummoner = (summonerName, region) => {

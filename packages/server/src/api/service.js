@@ -4,6 +4,11 @@ import riot from './riot'
 const fetchSummonerFromRito = async (data, callback, mode) => {
   let newSummoner = {}
   newSummoner = await riot.getSummonerByName(data)
+  
+  if (newSummoner.response && newSummoner.response.status === 404) {
+    callback(newSummoner.response, null)
+    return null
+  }
   const masteryPoints = await riot.getSummonerMasteryPoints(data, newSummoner.summonerId)
   const championMasteries = await riot.getSummonerChampionMasteries(data, newSummoner.summonerId)
   const leaguePositions = await riot.getSummonerLeaguesPosition(data, newSummoner.summonerId)

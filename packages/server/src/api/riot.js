@@ -10,8 +10,11 @@ const riot = {}
 riot.getSummonerByName = async (data) => {
   const result = {}
   const summonerUrl = `${RIOT.base}${data.region}${RIOT.summoner.getByName}${encodeURIComponent(data.name)}`
-  const response = await axiosInstance.get(summonerUrl).catch(error => console.error(error))
-  
+  const response = await axiosInstance.get(summonerUrl).catch(error => error)
+  console.dir(response)
+  if (response.response && response.response.status === 404) {
+    return response
+  }
   result.summonerName = response.data.name
   result.name = response.data.name.toLowerCase().replace(/\s/g, '')
   result.summonerId = response.data.id

@@ -10,7 +10,7 @@ controller.getSummonerByName = (req, res) => {
   service.getSummonerByName(data, (error, results) => {
     if (error) {
       console.error(error)
-      res.status(500).send()
+      res.status(error.status ? error.status : 500).send()
     } else {
       res.json(results)
     }

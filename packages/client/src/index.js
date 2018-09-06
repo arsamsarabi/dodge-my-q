@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { AppContainer } from 'react-hot-loader'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import theme from 'resources/styles/theme'
 import Router from './Router'
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import Reflux from 'reflux'
-import NotificationSystem from 'react-notification-system'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Input from '@material-ui/core/Input'

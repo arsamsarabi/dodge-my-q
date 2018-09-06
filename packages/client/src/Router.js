@@ -10,6 +10,7 @@ import { hot } from 'react-hot-loader'
 import LeagueStore from 'stores/league/store'
 import LeagueActions from 'stores/league/actions'
 import Navbar from 'components/navbar/Navbar'
+import Notification from 'components/notification'
 import GrabTeemo from 'components/grabTeemo'
 import Loading from 'components/loading/Loading'
 import Home from 'pages/home/Home'
@@ -40,6 +41,7 @@ class Router extends Reflux.Component {
           <Wrapper>
             <Route exact path="/" render={() => <Redirect to="/home"/>}/>
             <Route path="*" component={Navbar}/>
+            <Route path="*" component={Notification}/>
             <div className="page_Wrapper">
               <Route exact path="/home" component={Home}/>
               <Route exact path="/summoner/:region/:summoner" component={Summoner}/>
