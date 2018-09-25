@@ -23,6 +23,7 @@ export default class store extends Reflux.Store {
       notificationOpen: false,
       notificationMessage: '',
       notificationType: 'error',
+      matchesToShow: undefined,
     }
   }
 
@@ -41,6 +42,7 @@ export default class store extends Reflux.Store {
       notificationOpen: false,
       notificationMessage: '',
       notificationType: 'error',
+      matchesToShow: undefined,
     })
   };
 
@@ -124,6 +126,12 @@ export default class store extends Reflux.Store {
         errorMessages.liveMatch = error.response.status === 404 ? 'Summoner is not in a live game' : null
         this.setState({ errorMessages })
       })
+  }
+
+  getDetailsForMatches = matchesToShow => {
+    matchesToShow.forEach(match => {
+      console.log(match)
+    })
   }
 
   /* -------------------------------------------------------------------------------

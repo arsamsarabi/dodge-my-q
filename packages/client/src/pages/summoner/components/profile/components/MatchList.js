@@ -3,10 +3,13 @@
     "react/prefer-stateless-function": "off"
 */
 import React from 'react'
+import Reflux from 'reflux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Card from '@material-ui/core/Card'
-import Pagination from 'react-js-pagination';
+import Pagination from 'react-js-pagination'
+import LeagueStore from 'stores/league/store'
+import LeagueActions from 'stores/league/actions'
 import { Text, H5 } from 'components/Text'
 import Match from './Match'
 
@@ -71,48 +74,59 @@ const Wrapper = styled.div`
   }
 `
 
-class MatchList extends React.Component {
+class MatchList extends Reflux.Component {
   constructor(props) {
     super(props)
     this.state = {
       activePage: 1,
+      matchesToShow: [],
     }
+    this.store = LeagueStore
+    this.storeKeys = [
+      'detailedMatches'
+    ]
   }
 
-  makeMatchListArray = activePage => {
+  componentDidMount() {
+    this.makeMatchListArray()
+  }
+  
+
+  makeMatchListArray = (pageNumber = null) => {
+    const page = pageNumber || this.state.activePage
     const {
       champions,
       version,
       matches,
     } = this.props
-    const result = []
-    const index = (activePage - 1) * 10
+    const matchesToShow = []
+    const index = (page - 1) * 10
     for (let i = index; i < index + 10; i++) {
       if (i <= matches.length) {
         const _champ = champions.find(champion => parseInt(champion.key) === matches[i].champion)
-        result.push(<Match key={matches[i].gameId} version={version} champion={_champ} match={matches[i]}/>)
+        matchesToShow.push(<Match key={matches[i].gameId} version={version} champion={_champ} match={matches[i]}/>)
       }
     }
-    return result
-    // return matches.map(match => {
-    //   const _champ = champions.find(champion => parseInt(champion.key) === match.champion)
-    //   return <Match key={match.gameId} version={version} champion={_champ} match={match}/>
-    // })
+    LeagueActions.getDetailsForMatches(matchesToShow)
+    this.setState({ matchesToShow })
   }
 
-  handlePageChange = pageNumber => this.setState({activePage: pageNumber})
+  handlePageChange = pageNumber => {
+    this.setState({activePage: pageNumber})
+    this.makeMatchListArray(pageNumber)
+  }
+
 
   render() {
     const {
-      champions,
-      version,
       theme,
       matches,
     } = this.props
     const {
       activePage,
+      matchesToShow,
     } = this.state
-    const matchesToShow = this.makeMatchListArray(activePage)
+    // const matchesToShow = this.makeMatchListArray(activePage)
     return (
       <Wrapper>
         <Card>

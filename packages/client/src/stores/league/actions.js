@@ -8,7 +8,8 @@ const actions = Reflux.createActions([
   'lookupLiveMatch',
   'getRunesData',
   'getPlayersForMatch',
-  'dismissNotification'
+  'dismissNotification',
+  'getDetailsForMatches'
 ])
 
 export default actions
